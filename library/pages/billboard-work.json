@@ -1,0 +1,42 @@
+{
+ "key": "billboard-work",
+ "style": "billboard",
+ "label": "Our work",
+ "order": 40,
+ "description": "A gallery of recent jobs with customer reviews.",
+ "title": "Our work",
+ "sections": [
+  {
+   "key": "hero",
+   "variant": "billboard-page",
+   "content": {
+    "eyebrow": "Our work",
+    "headline": "Recent jobs, before and after",
+    "subhead": "A few of the projects we've finished lately.",
+    "cta_primary": {
+     "label": "Start your project",
+     "url": "/contact/"
+    },
+    "cta_secondary": null,
+    "image": null
+   }
+  },
+  {
+   "key": "gallery",
+   "variant": "billboard",
+   "content": {
+    "eyebrow": "",
+    "heading": "Recent projects",
+    "cta": null
+   }
+  },
+  {
+   "key": "testimonials",
+   "variant": "billboard"
+  },
+  {
+   "key": "cta-band",
+   "variant": "billboard"
+  }
+ ]
+}

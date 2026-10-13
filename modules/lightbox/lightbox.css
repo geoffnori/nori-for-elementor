@@ -1,0 +1,182 @@
+/* Nori: Lightbox. Add .open-lightbox-np (or data-lightbox-video / data-lightbox-src) to any element
+   to open an image, MP4, YouTube or Vimeo link in an overlay. */
+.plb-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 999999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 20px !important;
+  box-sizing: border-box !important;
+  background: rgba(8, 12, 22, var(--nori-lb-backdrop, 0.88)) !important;
+  -webkit-backdrop-filter: blur(var(--lightbox-blur-np, var(--nori-lb-blur, 16px))) saturate(160%) !important;
+  backdrop-filter: blur(var(--lightbox-blur-np, var(--nori-lb-blur, 16px))) saturate(160%) !important;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+.plb-overlay.is-active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+.plb-container {
+  position: relative !important;
+  width: min(1040px, 92vw) !important;
+  max-width: 1080px !important;
+  max-height: 88vh !important;
+  margin: auto !important;
+  background: #000000 !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.7),
+              0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+  transform: scale(0.94) translateY(12px);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.plb-container.is-fit-content {
+  width: -webkit-fit-content !important;
+  width: -moz-fit-content !important;
+  width: fit-content !important;
+}
+
+.plb-overlay.is-active .plb-container {
+  transform: scale(1) translateY(0) !important;
+  opacity: 1 !important;
+}
+
+.plb-media-wrapper {
+  position: relative !important;
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #000000 !important;
+}
+
+.plb-media-wrapper video {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 84vh !important;
+  object-fit: contain !important;
+  display: block !important;
+  border-radius: 16px !important;
+  outline: none !important;
+  background: #000000 !important;
+}
+
+.plb-media-wrapper iframe {
+  width: 100% !important;
+  aspect-ratio: 16 / 9 !important;
+  min-height: 280px !important;
+  max-height: 84vh !important;
+  border: none !important;
+  border-radius: 16px !important;
+  display: block !important;
+}
+
+.plb-media-wrapper img {
+  width: auto !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: 84vh !important;
+  object-fit: contain !important;
+  border-radius: 16px !important;
+  display: block !important;
+}
+
+.plb-close-btn {
+  position: absolute !important;
+  top: 14px !important;
+  right: 14px !important;
+  z-index: 10 !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  background: rgba(20, 24, 36, 0.72) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  color: #ffffff !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.2s ease,
+              border-color 0.2s ease !important;
+  outline: none !important;
+}
+
+.plb-close-btn:hover {
+  background: rgba(255, 255, 255, 0.22) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  transform: scale(1.08) !important;
+}
+
+.plb-close-btn:active {
+  transform: scale(0.94) !important;
+}
+
+.plb-close-btn svg {
+  width: 18px !important;
+  height: 18px !important;
+  fill: none !important;
+  stroke: #ffffff !important;
+  stroke-width: 2.2 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  pointer-events: none !important;
+}
+
+@media (max-width: 767px) {
+  .plb-overlay {
+    padding: 12px !important;
+  }
+  .plb-container {
+    border-radius: 12px !important;
+    max-height: 92vh !important;
+  }
+  .plb-media-wrapper video,
+  .plb-media-wrapper iframe,
+  .plb-media-wrapper img {
+    border-radius: 12px !important;
+    max-height: 80vh !important;
+  }
+  .plb-close-btn {
+    top: 10px !important;
+    right: 10px !important;
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .plb-close-btn svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+}
+
+body.plb-scroll-locked {
+  overflow: hidden !important;
+  touch-action: none !important;
+}
+
+.open-lightbox-np,
+[data-lightbox-video],
+[data-lightbox-src] {
+  cursor: pointer;
+}

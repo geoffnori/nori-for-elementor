@@ -1,0 +1,850 @@
+{
+ "key": "steps",
+ "label": "Steps",
+ "group": "page",
+ "order": 45,
+ "anchor": "how-it-works",
+ "description": "How working with the business goes, in two to four steps.",
+ "slots": {
+  "eyebrow": {
+   "label": "Eyebrow",
+   "type": "text",
+   "sample": "How a visit works"
+  },
+  "heading": {
+   "label": "Heading",
+   "type": "text",
+   "required": true,
+   "sample": "Fixed today, priced first"
+  },
+  "items": {
+   "label": "Steps",
+   "type": "list",
+   "required": true,
+   "min": 2,
+   "max": 4,
+   "fields": {
+    "title": {
+     "type": "text"
+    },
+    "text": {
+     "type": "textarea"
+    }
+   },
+   "sample": [
+    {
+     "title": "Call or book online",
+     "text": "Tell us what's happening. Most calls before noon get a same-day visit."
+    },
+    {
+     "title": "A price before we start",
+     "text": "We look, explain the fix and give you a written price. No surprises."
+    },
+    {
+     "title": "Fixed and cleaned up",
+     "text": "We do the work, test it with you and leave the space as we found it."
+    }
+   ]
+  }
+ },
+ "variants": {
+  "studio": {
+   "label": "Studio: numbered columns",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "Steps",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Inner",
+       "children": [
+        {
+         "el": "e-flexbox",
+         "label": "Heading",
+         "children": [
+          {
+           "el": "e-paragraph",
+           "text": "{eyebrow}",
+           "classes": [
+            "type-overline"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(muted)",
+             "margin": "0px"
+            }
+           },
+           "if": "eyebrow"
+          },
+          {
+           "el": "e-heading",
+           "text": "{heading}",
+           "classes": [
+            "type-h2"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(primary)"
+            }
+           },
+           "tag": "h2"
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "column",
+           "align-items": "flex-start"
+          }
+         },
+         "classes": [
+          "gap-s"
+         ]
+        },
+        {
+         "el": "e-grid",
+         "label": "Steps",
+         "children": [
+          {
+           "each": "items",
+           "as": "item",
+           "node": {
+            "el": "e-flexbox",
+            "label": "Step",
+            "children": [
+             {
+              "el": "e-paragraph",
+              "text": "{_index|num}",
+              "classes": [
+               "type-label"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(muted)",
+                "margin": "0px"
+               }
+              }
+             },
+             {
+              "el": "e-paragraph",
+              "text": "{item.title}",
+              "classes": [
+               "type-h5"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(primary)",
+                "margin": "0px"
+               }
+              }
+             },
+             {
+              "el": "e-paragraph",
+              "text": "{item.text}",
+              "classes": [
+               "type-small"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(muted)",
+                "margin": "0px"
+               }
+              }
+             }
+            ],
+            "css": {
+             "desktop": {
+              "padding": {
+               "block-start": "28px",
+               "block-end": "0px",
+               "inline-start": "0px",
+               "inline-end": "28px"
+              },
+              "flex-direction": "column",
+              "align-items": "flex-start"
+             },
+             "mobile": {
+              "padding": {
+               "block-start": "22px",
+               "block-end": "22px",
+               "inline-start": "0px",
+               "inline-end": "0px"
+              }
+             }
+            },
+            "classes": [
+             "gap-s"
+            ]
+           }
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "grid-template-rows": "auto",
+           "grid-template-columns": "repeat({items|count}, minmax(0, 1fr))"
+          },
+          "mobile": {
+           "grid-template-columns": "minmax(0, 1fr)"
+          }
+         },
+         "classes": [
+          "border-top",
+          "gap-m"
+         ]
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "flex-direction": "column",
+         "align-items": "stretch"
+        }
+       },
+       "classes": [
+        "container-max-1200",
+        "gap-l",
+        "scroll-anim"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(background)"
+      }
+     },
+     "classes": [
+      "section-gutter",
+      "section-tb-padding-l"
+     ],
+     "tag": "section"
+    }
+   ]
+  },
+  "bento": {
+   "label": "Bento: numbered tiles",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "Steps",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Inner",
+       "children": [
+        {
+         "el": "e-flexbox",
+         "label": "Top",
+         "children": [
+          {
+           "el": "e-flexbox",
+           "label": "Heading",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "{eyebrow}",
+             "classes": [
+              "type-overline"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(muted)",
+               "margin": "0px"
+              }
+             },
+             "if": "eyebrow"
+            },
+            {
+             "el": "e-heading",
+             "text": "{heading}",
+             "classes": [
+              "type-h2"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(primary)"
+              }
+             },
+             "tag": "h2"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column",
+             "align-items": "flex-start"
+            }
+           },
+           "classes": [
+            "gap-xs"
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": {
+            "block-start": "40px",
+            "block-end": "10px",
+            "inline-start": "0px",
+            "inline-end": "0px"
+           },
+           "flex-direction": "row",
+           "justify-content": "space-between",
+           "align-items": "flex-end",
+           "flex-wrap": "wrap"
+          },
+          "mobile": {
+           "padding": {
+            "block-start": "24px",
+            "block-end": "4px",
+            "inline-start": "0px",
+            "inline-end": "0px"
+           }
+          }
+         },
+         "classes": [
+          "gap-m"
+         ]
+        },
+        {
+         "el": "e-grid",
+         "label": "Steps",
+         "children": [
+          {
+           "each": "items",
+           "as": "item",
+           "node": {
+            "el": "e-flexbox",
+            "label": "Step",
+            "children": [
+             {
+              "el": "e-flexbox",
+              "label": "Number",
+              "children": [
+               {
+                "el": "e-paragraph",
+                "text": "{_index|num}",
+                "classes": [
+                 "type-label"
+                ],
+                "css": {
+                 "desktop": {
+                  "color": "var(on-accent)",
+                  "margin": "0px"
+                 }
+                }
+               }
+              ],
+              "css": {
+               "desktop": {
+                "padding": "0px",
+                "flex-direction": "row",
+                "width": "44px",
+                "height": "44px",
+                "background": "var(accent)",
+                "align-items": "center",
+                "justify-content": "center"
+               }
+              },
+              "classes": [
+               "border-radius-pill"
+              ]
+             },
+             {
+              "el": "e-paragraph",
+              "text": "{item.title}",
+              "classes": [
+               "type-h5"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(primary)",
+                "margin": "0px"
+               }
+              }
+             },
+             {
+              "el": "e-paragraph",
+              "text": "{item.text}",
+              "classes": [
+               "type-small"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(muted)",
+                "margin": "0px"
+               }
+              }
+             }
+            ],
+            "css": {
+             "desktop": {
+              "flex-direction": "column",
+              "background": "var(background)",
+              "align-items": "flex-start"
+             },
+             "mobile": {
+              "padding": "22px",
+              "border-radius": "18px"
+             }
+            },
+            "classes": [
+             "card-border-radius",
+             "gap-s",
+             "padding-m"
+            ]
+           }
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "grid-template-rows": "auto",
+           "grid-template-columns": "repeat({items|count}, minmax(0, 1fr))"
+          },
+          "mobile": {
+           "grid-template-columns": "minmax(0, 1fr)"
+          }
+         },
+         "classes": [
+          "gap-s"
+         ]
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "flex-direction": "column",
+         "align-items": "stretch"
+        }
+       },
+       "classes": [
+        "container-max-1200",
+        "gap-s",
+        "scroll-anim"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(surface)"
+      }
+     },
+     "classes": [
+      "section-gutter",
+      "section-tb-padding-s"
+     ],
+     "tag": "section"
+    }
+   ]
+  },
+  "billboard": {
+   "label": "Billboard: big numbers",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "Steps",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Inner",
+       "children": [
+        {
+         "el": "e-flexbox",
+         "label": "Top",
+         "children": [
+          {
+           "el": "e-flexbox",
+           "label": "Heading",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "{eyebrow}",
+             "classes": [
+              "type-overline"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(muted)",
+               "margin": "0px"
+              }
+             },
+             "if": "eyebrow"
+            },
+            {
+             "el": "e-heading",
+             "text": "{heading}",
+             "classes": [
+              "type-h2",
+              "all-caps"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(primary)",
+               "max-width": "900px"
+              }
+             },
+             "tag": "h2"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column",
+             "align-items": "flex-start",
+             "flex": {
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "flexBasis": "420px"
+             }
+            }
+           },
+           "classes": [
+            "gap-s"
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "row",
+           "justify-content": "space-between",
+           "align-items": "flex-end",
+           "flex-wrap": "wrap"
+          }
+         },
+         "classes": [
+          "gap-m"
+         ]
+        },
+        {
+         "el": "e-grid",
+         "label": "Steps",
+         "children": [
+          {
+           "each": "items",
+           "as": "item",
+           "node": {
+            "el": "e-flexbox",
+            "label": "Step",
+            "children": [
+             {
+              "el": "e-paragraph",
+              "text": "{_index|num}",
+              "classes": [
+               "type-display",
+               "headline-poster"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(primary)",
+                "margin": "0px"
+               }
+              }
+             },
+             {
+              "el": "e-paragraph",
+              "text": "{item.title}",
+              "classes": [
+               "type-h4",
+               "all-caps"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(primary)",
+                "margin": "0px"
+               }
+              }
+             },
+             {
+              "el": "e-paragraph",
+              "text": "{item.text}",
+              "classes": [
+               "type-body"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(muted)",
+                "margin": "0px"
+               }
+              }
+             }
+            ],
+            "css": {
+             "desktop": {
+              "padding": {
+               "block-start": "24px",
+               "block-end": "0px",
+               "inline-start": "0px",
+               "inline-end": "0px"
+              },
+              "flex-direction": "column",
+              "align-items": "flex-start"
+             }
+            },
+            "classes": [
+             "gap-s",
+             "border-top"
+            ]
+           }
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "grid-template-rows": "auto",
+           "grid-template-columns": "repeat({items|count}, minmax(0, 1fr))"
+          },
+          "mobile": {
+           "grid-template-columns": "minmax(0, 1fr)"
+          }
+         },
+         "classes": [
+          "gap-l"
+         ]
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "flex-direction": "column",
+         "align-items": "stretch"
+        }
+       },
+       "classes": [
+        "container-max-1600",
+        "gap-l",
+        "scroll-anim"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(background)"
+      }
+     },
+     "classes": [
+      "section-gutter",
+      "section-tb-padding-l"
+     ],
+     "tag": "section"
+    }
+   ]
+  },
+  "lens": {
+   "label": "Lens: numbered columns on a soft band",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "Steps",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Inner",
+       "children": [
+        {
+         "el": "e-flexbox",
+         "label": "Top",
+         "children": [
+          {
+           "el": "e-flexbox",
+           "label": "Heading",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "{eyebrow}",
+             "classes": [
+              "type-overline"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(muted)",
+               "margin": "0px"
+              }
+             },
+             "if": "eyebrow"
+            },
+            {
+             "el": "e-heading",
+             "text": "{heading}",
+             "classes": [
+              "type-h1",
+              "headline-refined"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(primary)",
+               "max-width": "880px"
+              }
+             },
+             "tag": "h2"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column",
+             "align-items": "flex-start",
+             "text-align": "start",
+             "flex": {
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "flexBasis": "420px"
+             }
+            }
+           },
+           "classes": [
+            "gap-s"
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "row",
+           "justify-content": "space-between",
+           "align-items": "flex-end",
+           "flex-wrap": "wrap"
+          }
+         },
+         "classes": [
+          "gap-m"
+         ]
+        },
+        {
+         "el": "e-grid",
+         "label": "Steps",
+         "children": [
+          {
+           "each": "items",
+           "as": "item",
+           "node": {
+            "el": "e-flexbox",
+            "label": "Step",
+            "children": [
+             {
+              "el": "e-flexbox",
+              "label": "Number",
+              "children": [
+               {
+                "el": "e-paragraph",
+                "text": "{_index|num}",
+                "classes": [
+                 "type-label"
+                ],
+                "css": {
+                 "desktop": {
+                  "color": "var(primary)",
+                  "margin": "0px"
+                 }
+                }
+               }
+              ],
+              "css": {
+               "desktop": {
+                "padding": "0px",
+                "flex-direction": "row",
+                "width": "52px",
+                "height": "52px",
+                "border-width": "1px",
+                "border-style": "solid",
+                "border-color": "var(line)",
+                "background": "var(background)",
+                "align-items": "center",
+                "justify-content": "center"
+               }
+              },
+              "classes": [
+               "border-radius-pill"
+              ]
+             },
+             {
+              "el": "e-paragraph",
+              "text": "{item.title}",
+              "classes": [
+               "type-h4",
+               "headline-refined"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(primary)",
+                "margin": "0px"
+               }
+              }
+             },
+             {
+              "el": "e-paragraph",
+              "text": "{item.text}",
+              "classes": [
+               "type-body"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(muted)",
+                "margin": "0px"
+               }
+              }
+             }
+            ],
+            "css": {
+             "desktop": {
+              "padding": "0px",
+              "flex-direction": "column",
+              "align-items": "flex-start"
+             }
+            },
+            "classes": [
+             "gap-s"
+            ]
+           }
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "grid-template-rows": "auto",
+           "grid-template-columns": "repeat({items|count}, minmax(0, 1fr))"
+          },
+          "mobile": {
+           "grid-template-columns": "minmax(0, 1fr)"
+          }
+         },
+         "classes": [
+          "gap-l"
+         ]
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "flex-direction": "column",
+         "align-items": "stretch"
+        }
+       },
+       "classes": [
+        "container-max-1400",
+        "gap-xl",
+        "scroll-anim"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(surface)"
+      }
+     },
+     "classes": [
+      "section-gutter",
+      "section-tb-padding-l"
+     ],
+     "tag": "section"
+    }
+   ]
+  }
+ }
+}

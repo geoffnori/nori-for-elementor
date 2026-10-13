@@ -1,0 +1,41 @@
+{
+ "key": "studio-home",
+ "style": "studio",
+ "label": "Home",
+ "order": 10,
+ "description": "A full home page: hero, services, about, how it works, a review, questions and a call to action.",
+ "title": "Home",
+ "sections": [
+  {
+   "key": "hero",
+   "variant": "studio"
+  },
+  {
+   "key": "services",
+   "variant": "studio"
+  },
+  {
+   "key": "about",
+   "variant": "studio"
+  },
+  {
+   "key": "steps",
+   "variant": "studio"
+  },
+  {
+   "key": "testimonials",
+   "variant": "studio"
+  },
+  {
+   "key": "faq",
+   "variant": "studio"
+  },
+  {
+   "key": "cta-band",
+   "variant": "studio",
+   "content": {
+    "heading": "Need a plumber today?"
+   }
+  }
+ ]
+}

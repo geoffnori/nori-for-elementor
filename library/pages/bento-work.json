@@ -1,0 +1,59 @@
+{
+ "key": "bento-work",
+ "style": "bento",
+ "label": "Our work",
+ "order": 40,
+ "description": "A gallery of recent jobs with customer reviews.",
+ "title": "Our work",
+ "sections": [
+  {
+   "key": "hero",
+   "variant": "bento-page",
+   "content": {
+    "eyebrow": "Our work",
+    "headline": "Recent jobs, before and after",
+    "subhead": "A few of the projects we've finished lately.",
+    "cta_primary": {
+     "label": "Start your project",
+     "url": "/contact/"
+    },
+    "cta_secondary": null,
+    "image": null
+   }
+  },
+  {
+   "key": "gallery",
+   "variant": "bento",
+   "content": {
+    "eyebrow": "",
+    "heading": "Recent projects",
+    "cta": null,
+    "images": [
+     {
+      "caption": "Photo"
+     },
+     {
+      "caption": "Photo"
+     },
+     {
+      "caption": "Photo"
+     },
+     {
+      "caption": "Photo"
+     },
+     {
+      "caption": "Photo"
+     }
+    ]
+   }
+  },
+  {
+   "key": "testimonials",
+   "variant": "bento"
+  },
+  {
+   "key": "cta-band",
+   "variant": "bento"
+  }
+ ]
+}

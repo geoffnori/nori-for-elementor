@@ -1,0 +1,45 @@
+{
+ "key": "lens-services",
+ "style": "lens",
+ "label": "Services",
+ "order": 20,
+ "description": "Everything you offer, how it works and the questions people ask.",
+ "title": "Services",
+ "sections": [
+  {
+   "key": "hero",
+   "variant": "lens-page",
+   "content": {
+    "eyebrow": "Services",
+    "headline": "What we fix, and how we price it",
+    "subhead": "Every job starts with a written price. Here's what we do most.",
+    "cta_primary": {
+     "label": "Book a visit",
+     "url": "/contact/"
+    },
+    "cta_secondary": null,
+    "image": null
+   }
+  },
+  {
+   "key": "services",
+   "variant": "lens",
+   "content": {
+    "heading": "Our services",
+    "eyebrow": ""
+   }
+  },
+  {
+   "key": "steps",
+   "variant": "lens"
+  },
+  {
+   "key": "faq",
+   "variant": "lens"
+  },
+  {
+   "key": "cta-band",
+   "variant": "lens"
+  }
+ ]
+}

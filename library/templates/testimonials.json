@@ -1,0 +1,1256 @@
+{
+ "key": "testimonials",
+ "label": "Testimonials",
+ "group": "proof",
+ "order": 60,
+ "anchor": "reviews",
+ "description": "Customer reviews in a three-up grid. Use real reviews, with the reviewer's permission.",
+ "slots": {
+  "eyebrow": {
+   "label": "Eyebrow",
+   "type": "text",
+   "sample": "Reviews"
+  },
+  "heading": {
+   "label": "Heading",
+   "type": "text",
+   "required": true,
+   "sample": "What our customers say"
+  },
+  "rating_line": {
+   "label": "Rating line",
+   "type": "text",
+   "help": "For example your Google rating. Real numbers only."
+  },
+  "items": {
+   "label": "Reviews",
+   "type": "list",
+   "min": 1,
+   "max": 6,
+   "required": true,
+   "fields": {
+    "quote": {
+     "type": "textarea"
+    },
+    "name": {
+     "type": "text"
+    },
+    "detail": {
+     "type": "text"
+    }
+   },
+   "sample": [
+    {
+     "quote": "Replace this with a real review from a happy customer. Two or three sentences work best.",
+     "name": "Customer name",
+     "detail": "Town or service"
+    },
+    {
+     "quote": "Replace this with a real review from a happy customer. Two or three sentences work best.",
+     "name": "Customer name",
+     "detail": "Town or service"
+    },
+    {
+     "quote": "Replace this with a real review from a happy customer. Two or three sentences work best.",
+     "name": "Customer name",
+     "detail": "Town or service"
+    }
+   ]
+  },
+  "video": {
+   "label": "Video",
+   "type": "video",
+   "sample": "sample",
+   "help": "Billboard and Lens: a short looping video (MP4, no sound needed). Studio and Bento don't use it."
+  }
+ },
+ "variants": {
+  "studio": {
+   "label": "Studio: one large review, more below",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "Reviews",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Inner",
+       "children": [
+        {
+         "el": "e-flexbox",
+         "label": "Heading",
+         "children": [
+          {
+           "el": "e-paragraph",
+           "text": "{eyebrow}",
+           "classes": [
+            "type-overline"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(muted)",
+             "margin": "0px"
+            }
+           },
+           "if": "eyebrow"
+          },
+          {
+           "el": "e-paragraph",
+           "text": "{rating_line}",
+           "classes": [
+            "type-small"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(muted)",
+             "margin": "0px"
+            }
+           },
+           "if": "rating_line"
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "column",
+           "align-items": "flex-start"
+          }
+         },
+         "classes": [
+          "gap-xs"
+         ]
+        },
+        {
+         "el": "e-flexbox",
+         "label": "Featured review",
+         "children": [
+          {
+           "el": "e-paragraph",
+           "text": "“{items.0.quote}”",
+           "classes": [
+            "type-h3"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(primary)",
+             "margin": "0px",
+             "font-weight": "500",
+             "max-width": "980px"
+            }
+           }
+          },
+          {
+           "el": "e-flexbox",
+           "label": "Who",
+           "children": [
+            {
+             "el": "e-flexbox",
+             "label": "Initials",
+             "children": [
+              {
+               "el": "e-paragraph",
+               "text": "{items.0.name|initials}",
+               "classes": [
+                "type-label"
+               ],
+               "css": {
+                "desktop": {
+                 "color": "var(primary)",
+                 "margin": "0px"
+                }
+               }
+              }
+             ],
+             "css": {
+              "desktop": {
+               "padding": "0px",
+               "flex-direction": "row",
+               "width": "46px",
+               "height": "46px",
+               "background": "var(surface)",
+               "align-items": "center",
+               "justify-content": "center"
+              }
+             },
+             "classes": [
+              "border-radius-pill"
+             ]
+            },
+            {
+             "el": "e-flexbox",
+             "label": "Name",
+             "children": [
+              {
+               "el": "e-paragraph",
+               "text": "{items.0.name}",
+               "classes": [
+                "type-label"
+               ],
+               "css": {
+                "desktop": {
+                 "color": "var(primary)",
+                 "margin": "0px"
+                }
+               }
+              },
+              {
+               "el": "e-paragraph",
+               "text": "{items.0.detail}",
+               "classes": [
+                "type-small"
+               ],
+               "css": {
+                "desktop": {
+                 "color": "var(muted)",
+                 "margin": "0px"
+                }
+               },
+               "if": "items.0.detail"
+              }
+             ],
+             "css": {
+              "desktop": {
+               "padding": "0px",
+               "flex-direction": "column",
+               "gap": "2px"
+              }
+             }
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "row",
+             "align-items": "center"
+            }
+           },
+           "classes": [
+            "gap-s"
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "column",
+           "align-items": "flex-start"
+          }
+         },
+         "classes": [
+          "gap-l"
+         ]
+        },
+        {
+         "el": "e-grid",
+         "label": "More reviews",
+         "children": [
+          {
+           "each": "items",
+           "as": "item",
+           "node": {
+            "el": "e-flexbox",
+            "label": "Review",
+            "children": [
+             {
+              "el": "e-paragraph",
+              "text": "“{item.quote}”",
+              "classes": [
+               "type-body"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(text)",
+                "margin": "0px"
+               }
+              }
+             },
+             {
+              "el": "e-paragraph",
+              "text": "{item.name}",
+              "classes": [
+               "type-label"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(primary)",
+                "margin": "0px"
+               }
+              }
+             },
+             {
+              "el": "e-paragraph",
+              "text": "{item.detail}",
+              "classes": [
+               "type-small"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(muted)",
+                "margin": "0px"
+               }
+              },
+              "if": "item.detail"
+             }
+            ],
+            "css": {
+             "desktop": {
+              "padding": {
+               "block-start": "24px",
+               "block-end": "0px",
+               "inline-start": "0px",
+               "inline-end": "0px"
+              },
+              "flex-direction": "column",
+              "align-items": "flex-start"
+             }
+            },
+            "classes": [
+             "gap-s",
+             "border-top"
+            ]
+           },
+           "from": 1,
+           "limit": 3
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "grid-template-rows": "auto",
+           "grid-template-columns": "repeat(3, minmax(0, 1fr))"
+          },
+          "mobile": {
+           "grid-template-columns": "minmax(0, 1fr)"
+          }
+         },
+         "classes": [
+          "gap-l"
+         ],
+         "if": "items.1"
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "flex-direction": "column",
+         "align-items": "stretch"
+        }
+       },
+       "classes": [
+        "container-max-1200",
+        "gap-xl",
+        "scroll-anim"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(background)"
+      }
+     },
+     "classes": [
+      "section-gutter",
+      "section-tb-padding-l"
+     ],
+     "tag": "section"
+    }
+   ]
+  },
+  "bento": {
+   "label": "Bento: review tiles",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "Reviews",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Inner",
+       "children": [
+        {
+         "el": "e-flexbox",
+         "label": "Top",
+         "children": [
+          {
+           "el": "e-flexbox",
+           "label": "Heading",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "{eyebrow}",
+             "classes": [
+              "type-overline"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(muted)",
+               "margin": "0px"
+              }
+             },
+             "if": "eyebrow"
+            },
+            {
+             "el": "e-heading",
+             "text": "{heading}",
+             "classes": [
+              "type-h2"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(primary)"
+              }
+             },
+             "tag": "h2"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column",
+             "align-items": "flex-start"
+            }
+           },
+           "classes": [
+            "gap-xs"
+           ]
+          },
+          {
+           "el": "e-paragraph",
+           "text": "{rating_line}",
+           "classes": [
+            "type-label"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(primary)",
+             "margin": "0px"
+            }
+           },
+           "if": "rating_line"
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": {
+            "block-start": "40px",
+            "block-end": "10px",
+            "inline-start": "0px",
+            "inline-end": "0px"
+           },
+           "flex-direction": "row",
+           "justify-content": "space-between",
+           "align-items": "flex-end",
+           "flex-wrap": "wrap"
+          },
+          "mobile": {
+           "padding": {
+            "block-start": "24px",
+            "block-end": "4px",
+            "inline-start": "0px",
+            "inline-end": "0px"
+           }
+          }
+         },
+         "classes": [
+          "gap-m"
+         ]
+        },
+        {
+         "el": "e-grid",
+         "label": "Reviews",
+         "children": [
+          {
+           "each": "items",
+           "as": "item",
+           "node": {
+            "el": "e-flexbox",
+            "label": "Review",
+            "children": [
+             {
+              "el": "e-flexbox",
+              "label": "Stars",
+              "children": [
+               {
+                "el": "e-svg",
+                "icon": "star",
+                "css": {
+                 "desktop": {
+                  "width": "16px",
+                  "height": "16px",
+                  "color": "var(primary)"
+                 }
+                }
+               },
+               {
+                "el": "e-svg",
+                "icon": "star",
+                "css": {
+                 "desktop": {
+                  "width": "16px",
+                  "height": "16px",
+                  "color": "var(primary)"
+                 }
+                }
+               },
+               {
+                "el": "e-svg",
+                "icon": "star",
+                "css": {
+                 "desktop": {
+                  "width": "16px",
+                  "height": "16px",
+                  "color": "var(primary)"
+                 }
+                }
+               },
+               {
+                "el": "e-svg",
+                "icon": "star",
+                "css": {
+                 "desktop": {
+                  "width": "16px",
+                  "height": "16px",
+                  "color": "var(primary)"
+                 }
+                }
+               },
+               {
+                "el": "e-svg",
+                "icon": "star",
+                "css": {
+                 "desktop": {
+                  "width": "16px",
+                  "height": "16px",
+                  "color": "var(primary)"
+                 }
+                }
+               }
+              ],
+              "css": {
+               "desktop": {
+                "padding": "0px",
+                "flex-direction": "row",
+                "gap": "3px"
+               }
+              }
+             },
+             {
+              "el": "e-paragraph",
+              "text": "“{item.quote}”",
+              "classes": [
+               "type-lead"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(primary)",
+                "margin": "0px"
+               }
+              }
+             },
+             {
+              "el": "e-flexbox",
+              "label": "Who",
+              "children": [
+               {
+                "el": "e-flexbox",
+                "label": "Initials",
+                "children": [
+                 {
+                  "el": "e-paragraph",
+                  "text": "{item.name|initials}",
+                  "classes": [
+                   "type-label"
+                  ],
+                  "css": {
+                   "desktop": {
+                    "color": "var(on-accent)",
+                    "margin": "0px"
+                   }
+                  }
+                 }
+                ],
+                "css": {
+                 "desktop": {
+                  "padding": "0px",
+                  "flex-direction": "row",
+                  "width": "40px",
+                  "height": "40px",
+                  "background": "var(accent)",
+                  "align-items": "center",
+                  "justify-content": "center"
+                 }
+                },
+                "classes": [
+                 "border-radius-pill"
+                ]
+               },
+               {
+                "el": "e-flexbox",
+                "label": "Name",
+                "children": [
+                 {
+                  "el": "e-paragraph",
+                  "text": "{item.name}",
+                  "classes": [
+                   "type-label"
+                  ],
+                  "css": {
+                   "desktop": {
+                    "color": "var(primary)",
+                    "margin": "0px"
+                   }
+                  }
+                 },
+                 {
+                  "el": "e-paragraph",
+                  "text": "{item.detail}",
+                  "classes": [
+                   "type-small"
+                  ],
+                  "css": {
+                   "desktop": {
+                    "color": "var(muted)",
+                    "margin": "0px"
+                   }
+                  },
+                  "if": "item.detail"
+                 }
+                ],
+                "css": {
+                 "desktop": {
+                  "padding": "0px",
+                  "flex-direction": "column",
+                  "gap": "2px"
+                 }
+                }
+               }
+              ],
+              "css": {
+               "desktop": {
+                "padding": "0px",
+                "flex-direction": "row",
+                "align-items": "center"
+               }
+              },
+              "classes": [
+               "gap-s"
+              ]
+             }
+            ],
+            "css": {
+             "desktop": {
+              "flex-direction": "column",
+              "background": "var(background)",
+              "align-items": "flex-start",
+              "justify-content": "space-between"
+             },
+             "mobile": {
+              "padding": "22px",
+              "border-radius": "18px"
+             }
+            },
+            "classes": [
+             "card-border-radius",
+             "gap-s",
+             "padding-m"
+            ]
+           }
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "grid-template-rows": "auto",
+           "grid-template-columns": "repeat(3, minmax(0, 1fr))"
+          },
+          "mobile": {
+           "grid-template-columns": "minmax(0, 1fr)"
+          }
+         },
+         "classes": [
+          "gap-s"
+         ]
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "flex-direction": "column",
+         "align-items": "stretch"
+        }
+       },
+       "classes": [
+        "container-max-1200",
+        "gap-s",
+        "scroll-anim"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(surface)"
+      }
+     },
+     "classes": [
+      "section-gutter",
+      "section-tb-padding-s"
+     ],
+     "tag": "section"
+    }
+   ]
+  },
+  "billboard": {
+   "label": "Billboard: one review in huge type on your accent color",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "Reviews",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Inner",
+       "children": [
+        {
+         "el": "e-flexbox",
+         "label": "Top",
+         "children": [
+          {
+           "el": "e-paragraph",
+           "text": "{eyebrow}",
+           "classes": [
+            "type-overline"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(on-accent)",
+             "margin": "0px"
+            }
+           },
+           "if": "eyebrow"
+          },
+          {
+           "el": "e-paragraph",
+           "text": "{rating_line}",
+           "classes": [
+            "type-label"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(on-accent)",
+             "margin": "0px"
+            }
+           },
+           "if": "rating_line"
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "row",
+           "justify-content": "space-between",
+           "flex-wrap": "wrap"
+          }
+         },
+         "classes": [
+          "gap-m"
+         ]
+        },
+        {
+         "el": "e-paragraph",
+         "text": "“{items.0.quote}”",
+         "classes": [
+          "type-h1",
+          "headline-poster"
+         ],
+         "css": {
+          "desktop": {
+           "color": "var(on-accent)",
+           "margin": "0px",
+           "max-width": "1300px"
+          },
+          "mobile": {
+           "font-size": "30px"
+          }
+         },
+         "label": "Featured review"
+        },
+        {
+         "el": "e-flexbox",
+         "label": "Who",
+         "children": [
+          {
+           "el": "e-paragraph",
+           "text": "{items.0.name}",
+           "classes": [
+            "type-label",
+            "all-caps"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(on-accent)",
+             "margin": "0px"
+            }
+           }
+          },
+          {
+           "el": "e-paragraph",
+           "text": "{items.0.detail}",
+           "classes": [
+            "type-small"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(on-accent)",
+             "margin": "0px",
+             "opacity": "75%"
+            }
+           },
+           "if": "items.0.detail"
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "column",
+           "gap": "2px"
+          }
+         }
+        },
+        {
+         "el": "e-flexbox",
+         "label": "More reviews",
+         "children": [
+          {
+           "each": "items",
+           "as": "item",
+           "node": {
+            "el": "e-flexbox",
+            "label": "Review",
+            "children": [
+             {
+              "el": "e-paragraph",
+              "text": "“{item.quote}”",
+              "classes": [
+               "type-body"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(on-accent)",
+                "margin": "0px"
+               }
+              }
+             },
+             {
+              "el": "e-paragraph",
+              "text": "{item.name}",
+              "classes": [
+               "type-label",
+               "all-caps"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(on-accent)",
+                "margin": "0px"
+               }
+              }
+             },
+             {
+              "el": "e-paragraph",
+              "text": "{item.detail}",
+              "classes": [
+               "type-small"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(on-accent)",
+                "margin": "0px",
+                "opacity": "75%"
+               }
+              },
+              "if": "item.detail"
+             }
+            ],
+            "css": {
+             "desktop": {
+              "padding": {
+               "block-start": "20px",
+               "block-end": "0px",
+               "inline-start": "0px",
+               "inline-end": "0px"
+              },
+              "flex-direction": "column",
+              "align-items": "flex-start",
+              "border-color": "var(on-accent)",
+              "flex": {
+               "flexGrow": 1,
+               "flexShrink": 1,
+               "flexBasis": "280px"
+              }
+             }
+            },
+            "classes": [
+             "gap-s",
+             "border-top"
+            ]
+           },
+           "from": 1,
+           "limit": 3
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "row",
+           "flex-wrap": "wrap",
+           "align-items": "stretch"
+          }
+         },
+         "classes": [
+          "gap-l"
+         ],
+         "if": "items.1"
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "flex-direction": "column",
+         "align-items": "stretch"
+        }
+       },
+       "classes": [
+        "container-max-1600",
+        "gap-l",
+        "scroll-anim"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(accent)"
+      }
+     },
+     "classes": [
+      "section-gutter",
+      "section-tb-padding-l"
+     ],
+     "tag": "section"
+    }
+   ]
+  },
+  "lens": {
+   "label": "Lens: one review over video, more below",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "Reviews",
+     "children": [
+      {
+       "el": "e-background-video",
+       "label": "Featured review",
+       "video": "{video}",
+       "classes": [
+        "bg-video",
+        "section-gutter",
+        "section-tb-padding-xl"
+       ],
+       "css": {
+        "desktop": {
+         "min-height": "620px"
+        },
+        "mobile": {
+         "min-height": "460px"
+        }
+       },
+       "children": [
+        {
+         "el": "e-background-video-content",
+         "label": "Content",
+         "children": [
+          {
+           "el": "e-flexbox",
+           "label": "Inner",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "{eyebrow}",
+             "classes": [
+              "type-overline"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(on-band)",
+               "margin": "0px",
+               "opacity": "70%"
+              }
+             },
+             "if": "eyebrow"
+            },
+            {
+             "el": "e-paragraph",
+             "text": "“{items.0.quote}”",
+             "classes": [
+              "type-h2",
+              "headline-refined"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(on-band)",
+               "margin": "0px",
+               "max-width": "980px",
+               "text-align": "center"
+              }
+             },
+             "label": "Quote"
+            },
+            {
+             "el": "e-paragraph",
+             "text": "{items.0.name}",
+             "classes": [
+              "type-label"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(on-band)",
+               "margin": "0px"
+              }
+             }
+            },
+            {
+             "el": "e-paragraph",
+             "text": "{items.0.detail}",
+             "classes": [
+              "type-small"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(on-band)",
+               "margin": "0px",
+               "opacity": "70%"
+              }
+             },
+             "if": "items.0.detail"
+            },
+            {
+             "el": "e-paragraph",
+             "text": "{rating_line}",
+             "classes": [
+              "type-small"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(on-band)",
+               "margin": "0px",
+               "opacity": "70%"
+              }
+             },
+             "if": "rating_line"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column",
+             "align-items": "center",
+             "text-align": "center"
+            }
+           },
+           "classes": [
+            "container-max-1200",
+            "gap-s",
+            "scroll-anim"
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "justify-content": "center"
+          }
+         }
+        },
+        {
+         "el": "e-background-video-controls",
+         "label": "Controls",
+         "children": [
+          {
+           "el": "e-background-video-play",
+           "label": "Play button",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "Play",
+             "tag": "span"
+            }
+           ]
+          },
+          {
+           "el": "e-background-video-pause",
+           "label": "Pause button",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "Pause",
+             "tag": "span"
+            }
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "inset-block-start": "20px",
+           "inset-block-end": "auto"
+          }
+         }
+        }
+       ]
+      },
+      {
+       "el": "e-flexbox",
+       "label": "More reviews",
+       "children": [
+        {
+         "el": "e-flexbox",
+         "label": "Inner",
+         "children": [
+          {
+           "el": "e-flexbox",
+           "label": "Reviews",
+           "children": [
+            {
+             "each": "items",
+             "as": "item",
+             "node": {
+              "el": "e-flexbox",
+              "label": "Review",
+              "children": [
+               {
+                "el": "e-paragraph",
+                "text": "“{item.quote}”",
+                "classes": [
+                 "type-lead"
+                ],
+                "css": {
+                 "desktop": {
+                  "color": "var(primary)",
+                  "margin": "0px"
+                 }
+                }
+               },
+               {
+                "el": "e-paragraph",
+                "text": "{item.name}",
+                "classes": [
+                 "type-label"
+                ],
+                "css": {
+                 "desktop": {
+                  "color": "var(primary)",
+                  "margin": "0px"
+                 }
+                }
+               },
+               {
+                "el": "e-paragraph",
+                "text": "{item.detail}",
+                "classes": [
+                 "type-small"
+                ],
+                "css": {
+                 "desktop": {
+                  "color": "var(muted)",
+                  "margin": "0px"
+                 }
+                },
+                "if": "item.detail"
+               }
+              ],
+              "css": {
+               "desktop": {
+                "flex-direction": "column",
+                "align-items": "flex-start",
+                "background": "var(surface)",
+                "flex": {
+                 "flexGrow": 1,
+                 "flexShrink": 1,
+                 "flexBasis": "300px"
+                }
+               }
+              },
+              "classes": [
+               "gap-s",
+               "card-border-radius",
+               "padding-m"
+              ]
+             },
+             "from": 1,
+             "limit": 3
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "row",
+             "flex-wrap": "wrap",
+             "align-items": "stretch"
+            }
+           },
+           "classes": [
+            "gap-s"
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "column",
+           "align-items": "stretch"
+          }
+         },
+         "classes": [
+          "container-max-1400"
+         ]
+        }
+       ],
+       "css": {
+        "desktop": {
+         "flex-direction": "column",
+         "padding": {
+          "block-start": "16px",
+          "block-end": "0px",
+          "inline-start": "40px",
+          "inline-end": "40px"
+         }
+        },
+        "mobile": {
+         "padding": {
+          "block-start": "12px",
+          "block-end": "0px",
+          "inline-start": "18px",
+          "inline-end": "18px"
+         }
+        }
+       },
+       "classes": [
+        "section-gutter"
+       ],
+       "if": "items.1"
+      }
+     ],
+     "css": {
+      "desktop": {
+       "padding": "0px",
+       "flex-direction": "column",
+       "background": "var(background)",
+       "align-items": "stretch"
+      }
+     },
+     "tag": "section"
+    }
+   ]
+  }
+ }
+}

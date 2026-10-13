@@ -1,0 +1,46 @@
+{
+ "studio": {
+  "label": "Studio",
+  "description": "Quiet and editorial: large type, lots of white space and hairline rules instead of boxes.",
+  "fonts": {
+   "heading_font": "Newsreader",
+   "body_font": "Inter",
+   "heading_weight": "500",
+   "ratio": "1.25",
+   "alternate": "Fraunces + Inter"
+  }
+ },
+ "bento": {
+  "label": "Bento",
+  "description": "Friendly and bold: rounded tiles in mixed sizes, with whole tiles in your accent color.",
+  "fonts": {
+   "heading_font": "Bricolage Grotesque",
+   "body_font": "DM Sans",
+   "heading_weight": "700",
+   "ratio": "1.25",
+   "alternate": "Plus Jakarta Sans + Plus Jakarta Sans"
+  }
+ },
+ "billboard": {
+  "label": "Billboard",
+  "description": "Poster-sized type and full-width video: your name across the page with video inside the letters, huge service names and bold color blocks.",
+  "fonts": {
+   "heading_font": "Big Shoulders Display",
+   "body_font": "Archivo",
+   "heading_weight": "800",
+   "ratio": "1.333",
+   "alternate": "Anton + Archivo (Anton has one weight, already heavy)"
+  }
+ },
+ "lens": {
+  "label": "Lens",
+  "description": "Refined and full width: headlines that rise in word by word, a video that opens to the full screen as you scroll, rounded panels.",
+  "fonts": {
+   "heading_font": "Instrument Serif",
+   "body_font": "Hanken Grotesk",
+   "heading_weight": "500",
+   "ratio": "1.333",
+   "alternate": "Manrope + Manrope (headings at 500)"
+  }
+ }
+}

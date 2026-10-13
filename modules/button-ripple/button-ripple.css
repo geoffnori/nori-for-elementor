@@ -1,0 +1,43 @@
+/* Nori: Button Ripple Fill. Add .btn-overlay-fx-np to a button container.
+   Ripple color: the color variable picked in WP Admin > Nori > Modules (accent-np by default), or a custom
+   color, which becomes the Elementor variable ripple-color-np. Speed: ripple-speed-np (Pro). Text color:
+   the class's Hover state.
+
+   The class is doubled on purpose: Elementor's own .e-con rule (overflow: var(--overflow)) loads after
+   this file, and would otherwise switch the clipping off on flexbox buttons. Styles you set on the class
+   in Elementor still win, since Elementor prints them as .elementor .btn-overlay-fx-np, later. */
+.btn-overlay-fx-np.btn-overlay-fx-np {
+	position: relative;
+	overflow: hidden;
+	isolation: isolate;
+}
+/* The circle sits under the button's content (z-index -1 inside the isolated button), so the text never
+   needs lifting. That matters in the Elementor editor, which wraps each child in a display: contents box. */
+.btn-overlay-fx-np::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 150%;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	background: var(--nori-ripple-color, var(--accent-np, #D6FF00));
+	transform: translate(-50%, -50%) scale(0);
+	opacity: 0;
+	pointer-events: none;
+	transition: transform calc(var(--ripple-speed-np, var(--nori-ripple-speed, 650ms)) * 0.7) ease-out, opacity 0.3s ease-out;
+	z-index: -1;
+}
+.btn-overlay-fx-np:hover::after,
+.btn-overlay-fx-np:focus-visible::after {
+	transform: translate(-50%, -50%) scale(1);
+	opacity: 1;
+	transition: transform var(--ripple-speed-np, var(--nori-ripple-speed, 650ms)) cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.12s ease-in;
+}
+/* The text color over the ripple is the class's own Hover color (editable in Elementor).
+   Children inherit it, unless they set a color of their own. */
+.btn-overlay-fx-np:is(:hover, :focus-visible) :where(*) { color: inherit; }
+
+@media (prefers-reduced-motion: reduce) {
+	.btn-overlay-fx-np::after { transition: none !important; }
+}

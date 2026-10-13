@@ -1,0 +1,17 @@
+/* Nori: Faded Carousel. Add .faded-carousel-np (every screen size) or .faded-carousel-mobile-np
+   (tablet and mobile only) to a flexbox; each child becomes a slide. The flexbox gap is the space
+   between slides. Faded opacity and slide widths come from WP Admin > Nori > Modules. */
+html.nori-js .faded-carousel-np.nori-carousel-ready,
+html.nori-js .faded-carousel-mobile-np.nori-carousel-ready {
+	--nori-carousel-fade: var(--nori-fc-fade, 0.5);
+	/* Desktop: the active slides plus a quarter of a slide peeking in on each side. */
+	--nori-carousel-slide: calc((100% - (var(--nori-carousel-count, 3) - 1) * var(--nori-carousel-gap, 0px)) / (var(--nori-carousel-count, 3) + 0.5));
+}
+@media (max-width: 1024px) {
+	html.nori-js .faded-carousel-np.nori-carousel-ready,
+	html.nori-js .faded-carousel-mobile-np.nori-carousel-ready { --nori-carousel-slide: var(--nori-fc-tablet, 70%); }
+}
+@media (max-width: 767px) {
+	html.nori-js .faded-carousel-np.nori-carousel-ready,
+	html.nori-js .faded-carousel-mobile-np.nori-carousel-ready { --nori-carousel-slide: var(--nori-fc-mobile, 80%); }
+}

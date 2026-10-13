@@ -1,0 +1,42 @@
+{
+ "key": "studio-work",
+ "style": "studio",
+ "label": "Our work",
+ "order": 40,
+ "description": "A gallery of recent jobs with customer reviews.",
+ "title": "Our work",
+ "sections": [
+  {
+   "key": "hero",
+   "variant": "studio-page",
+   "content": {
+    "eyebrow": "Our work",
+    "headline": "Recent jobs, before and after",
+    "subhead": "A few of the projects we've finished lately.",
+    "cta_primary": {
+     "label": "Start your project",
+     "url": "/contact/"
+    },
+    "cta_secondary": null,
+    "image": null
+   }
+  },
+  {
+   "key": "gallery",
+   "variant": "studio",
+   "content": {
+    "eyebrow": "",
+    "heading": "Recent projects",
+    "cta": null
+   }
+  },
+  {
+   "key": "testimonials",
+   "variant": "studio"
+  },
+  {
+   "key": "cta-band",
+   "variant": "studio"
+  }
+ ]
+}

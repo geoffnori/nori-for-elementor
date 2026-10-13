@@ -1,0 +1,61 @@
+/* Nori for Elementor: carousel base shared by the Faded Carousel and Video Carousel modules.
+   Only applies once the script has built the carousel (.nori-carousel-ready), so the Elementor
+   editor and visitors without JavaScript see your normal layout. */
+html.nori-js .nori-carousel-ready {
+	display: flex !important;
+	flex-direction: row !important;
+	flex-wrap: nowrap !important;
+	justify-content: flex-start !important;
+	overflow-x: auto !important;
+	overflow-y: hidden !important;
+	scroll-snap-type: x mandatory;
+	overscroll-behavior-x: contain;
+	-webkit-overflow-scrolling: touch;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+	cursor: grab;
+	user-select: none;
+	-webkit-user-select: none;
+}
+html.nori-js .nori-carousel-ready::-webkit-scrollbar { display: none; }
+html.nori-js .nori-carousel-ready > * {
+	flex: 0 0 var(--nori-carousel-slide, 80%) !important;
+	width: var(--nori-carousel-slide, 80%) !important;
+	min-width: var(--nori-carousel-slide, 80%) !important;
+	max-width: var(--nori-carousel-slide, 80%) !important;
+	box-sizing: border-box;
+	scroll-snap-align: center;
+	opacity: var(--nori-carousel-fade, 0.5);
+	transform: scale(var(--nori-carousel-scale, 0.96));
+	transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+	will-change: opacity, transform;
+}
+html.nori-js .nori-carousel-ready > .is-active-np { opacity: 1; transform: none; }
+
+/* Dragging and loop jumps: no snapping or easing in the way. */
+html.nori-js .nori-carousel-ready.is-dragging-np { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; }
+html.nori-js .nori-carousel-ready.no-transition-np { scroll-snap-type: none; scroll-behavior: auto; }
+html.nori-js .nori-carousel-ready.no-transition-np > * { transition: none !important; }
+
+/* Pause/play control (WCAG 2.2.2), when switched on: sits under the carousel. */
+.nori-carousel-toggle {
+	display: block;
+	margin: 12px auto 0;
+	min-width: 36px;
+	height: 36px;
+	padding: 0 12px;
+	border: 1.5px solid currentColor;
+	border-radius: 999px;
+	background: transparent;
+	color: inherit;
+	font: 700 12px/1 system-ui, sans-serif;
+	cursor: pointer;
+	opacity: 0.7;
+}
+.nori-carousel-toggle:hover,
+.nori-carousel-toggle:focus-visible { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+	html.nori-js .nori-carousel-ready { scroll-behavior: auto; }
+	html.nori-js .nori-carousel-ready > * { transition: none; }
+}

@@ -1,0 +1,618 @@
+#nori-app{--ink:#121212; --text-2:#3A3A3A; --muted:#666666; --faint:#8C8C8C;
+  --bg:#F0F0F1; --surface:#FFFFFF; --sunken:#F6F6F6; --stage:#EDEDED;
+  --line:#E2E2E2; --line-2:#CFCFCF;
+  --volt:#D6FF00; --volt-soft:#F5FFCC; --volt-text:#4A5A00;
+  --amber:#8A5A00; --amber-soft:#FFF6DB; --amber-line:#E7C27A; --red:#B42318; --red-soft:#FFF1F0; --blue-soft:#EEF4FB; --blue-line:#B9D0EA;
+  --wp-bar:#1D2327; --wp-menu:#1D2327; --wp-text:#F0F0F1; --wp-text-2:#C3C4C7; --wp-blue:#2271B1;
+  --font:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --bp:#0C4A6E; --ba:#7DD3FC; --bo:#0C1A2B; --bb:#FFFFFF; --bs:#F0F9FF; --bl:#D9E6EF; --bm:#4A6275; --bt:#0F172A;
+  color-scheme:light;}
+#nori-app, #nori-app *{box-sizing:border-box}
+#nori-app{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 var(--font);-webkit-font-smoothing:antialiased}
+#nori-app button, #nori-app input, #nori-app select, #nori-app textarea{font:inherit;color:inherit}
+#nori-app code, #nori-app .mono{font-family:var(--mono);font-size:12.5px}
+#nori-app code, #nori-app kbd{background:none;padding:0;margin:0;border-radius:0}
+#nori-app input[type=text], #nori-app input[type=search], #nori-app input:not([type]), #nori-app select, #nori-app textarea{border-radius:0;box-shadow:none;min-height:0;line-height:normal;max-width:100%}
+#nori-app select{padding:0 26px 0 10px;background-color:var(--surface)}
+#nori-app input[type=color]{padding:0;border-radius:0;box-shadow:none}
+#nori-app input[type=range]{border:0;box-shadow:none;padding:0;height:auto}
+#nori-app .screen-reader-text{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(1px,1px,1px,1px)}
+#nori-app :focus-visible{outline:2px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 5px var(--volt)}
+#nori-app h1, #nori-app h2, #nori-app h3, #nori-app h4{margin:0;text-wrap:balance}
+#nori-app p{margin:0}
+#nori-app ul, #nori-app ol{margin:0;padding:0}
+#nori-app a{color:inherit}
+body.nori-admin #wpcontent{padding-left:0}
+body.nori-admin #wpbody-content{padding-bottom:0}
+body.nori-admin #wpfooter{display:none}
+body.nori-admin .nori-app-wrap{margin:0}
+#nori-app .app{display:grid;grid-template-rows:auto minmax(0,1fr);min-width:0;height:calc(100vh - var(--wp-admin--admin-bar--height,32px));position:sticky;top:var(--wp-admin--admin-bar--height,32px)}
+#nori-app .top{display:flex;align-items:center;gap:16px;padding:10px 18px;background:var(--surface);border-bottom:1px solid var(--ink);min-width:0;position:relative}
+#nori-app .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;flex:none}
+#nori-app .logo{width:22px;height:30px;background:var(--volt-text);-webkit-mask:var(--mark) center/contain no-repeat;mask:var(--mark) center/contain no-repeat}
+#nori-app .brand b{font-size:16px;font-weight:800;letter-spacing:-.01em}
+#nori-app .ver{font:600 11px/1 var(--mono);background:var(--volt);border:1px solid var(--ink);padding:4px 6px}
+#nori-app .search{position:relative;flex:1 1 380px;max-width:480px;min-width:0}
+#nori-app .search input{width:100%;height:36px;border:1px solid var(--line-2);background:var(--sunken);padding:0 12px 0 34px;border-radius:0}
+#nori-app .search input:focus{background:var(--surface);border-color:var(--ink);outline:none;box-shadow:0 0 0 3px var(--volt)}
+#nori-app .search svg{position:absolute;left:11px;top:10px;width:16px;height:16px;color:var(--muted)}
+#nori-app .search kbd{position:absolute;right:8px;top:8px;font:500 11px var(--mono);border:1px solid var(--line-2);padding:1px 5px;color:var(--muted);background:var(--surface)}
+#nori-app .results{position:absolute;left:0;right:0;top:40px;background:var(--surface);border:1px solid var(--ink);z-index:40;max-height:420px;overflow:auto}
+#nori-app .results button{display:grid;grid-template-columns:90px minmax(0,1fr);gap:10px;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:none;padding:9px 12px;cursor:pointer}
+#nori-app .results button:hover{background:var(--volt-soft)}
+#nori-app .results small{font:600 10.5px var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding-top:2px}
+#nori-app .results strong{font-weight:600}
+#nori-app .results em{display:block;font-style:normal;color:var(--muted);font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#nori-app .top .links{display:flex;gap:4px;flex:none}
+#nori-app .top .r{margin-left:auto;display:flex;align-items:center;gap:10px;flex:none}
+#nori-app .pending{font-size:13px;color:var(--muted);white-space:nowrap;max-width:340px;overflow:hidden;text-overflow:ellipsis}
+#nori-app .pending.has{color:var(--ink);font-weight:600}
+#nori-app .pending.has::before{content:"";display:inline-block;width:8px;height:8px;background:var(--amber);border-radius:50%;margin-right:7px;vertical-align:1px}
+#nori-app .confirm{position:absolute;right:18px;top:calc(100% + 8px);z-index:70;width:min(420px,calc(100vw - 32px));background:var(--surface);border:1px solid var(--ink);box-shadow:5px 5px 0 var(--ink);padding:14px 16px;display:grid;gap:10px}
+#nori-app .confirm[hidden], #nori-app .results[hidden], #nori-app .toast[hidden]{display:none}
+#nori-app .confirm b{font-size:14px}
+#nori-app .confirm p{font-size:13px;color:var(--text-2)}
+#nori-app .confirm ul{list-style:none;font-size:13px;display:grid;gap:3px}
+#nori-app .confirm .row{display:flex;gap:8px;justify-content:flex-end}
+#nori-app .btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:34px;padding:7px 14px;border:1px solid var(--ink);background:var(--surface);font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;text-decoration:none;color:var(--ink)}
+#nori-app .btn:hover{background:var(--sunken)}
+#nori-app .btn:disabled{opacity:.4;cursor:not-allowed}
+#nori-app .btn.primary{background:var(--volt);box-shadow:3px 3px 0 var(--ink)}
+#nori-app .btn.primary:hover:not(:disabled){background:#C8F000}
+#nori-app .btn.primary:active:not(:disabled){transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+#nori-app .btn.primary:disabled{box-shadow:none}
+#nori-app .btn.sm{min-height:28px;padding:4px 10px;font-size:12.5px}
+#nori-app .btn.xs{min-height:24px;padding:2px 8px;font-size:12px;font-weight:600}
+#nori-app .btn.ghost{border-color:transparent;background:none}
+#nori-app .btn.ghost:hover{border-color:var(--ink)}
+#nori-app .btn.danger{color:var(--red);border-color:#E3B3AE}
+#nori-app .btn.danger.on{background:var(--red-soft)}
+#nori-app .btn svg{width:15px;height:15px}
+#nori-app .link{background:none;border:0;padding:0;font-weight:600;font-size:12.5px;text-decoration:underline;text-underline-offset:3px;cursor:pointer;color:var(--ink)}
+#nori-app .link.danger{color:var(--red)}
+#nori-app .link:disabled{opacity:.4;cursor:not-allowed}
+#nori-app .body{display:grid;grid-template-columns:240px minmax(0,1fr);min-height:0}
+#nori-app .side{background:var(--surface);border-right:1px solid var(--line);overflow:auto;padding:12px 10px 24px}
+#nori-app .side h4{margin:16px 10px 6px;font:600 10.5px var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+#nori-app .side h4:first-child{margin-top:4px}
+#nori-app .side a{display:flex;align-items:center;gap:10px;padding:7px 10px;color:var(--ink);text-decoration:none;font-weight:500;border:1px solid transparent}
+#nori-app .side a:hover{border-color:var(--line-2)}
+#nori-app .side a svg{width:18px;height:18px;flex:none;color:var(--text-2)}
+#nori-app .side a .lb{flex:1;min-width:0}
+#nori-app .side a.ext{color:var(--text-2)}
+#nori-app .side a.ext:hover .lb{text-decoration:underline;text-underline-offset:3px}
+#nori-app .side a[aria-current="page"]{background:var(--ink);color:var(--surface)}
+#nori-app .side a[aria-current="page"] svg{color:var(--volt)}
+#nori-app .side a[aria-current="page"] .cnt{color:var(--volt)}
+#nori-app .side a .pd{width:7px;height:7px;border-radius:50%;background:var(--amber);flex:none}
+#nori-app .cnt{font:500 11px var(--mono);color:var(--muted);white-space:nowrap}
+#nori-app .work{overflow:auto;min-width:0;padding:22px 28px 70px}
+#nori-app .nori-wrap{max-width:1500px}
+#nori-app .head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 20px;margin-bottom:18px}
+#nori-app .head>div{min-width:0}
+#nori-app .head h1{font-size:24px;font-weight:800;letter-spacing:-.015em}
+#nori-app .head p{color:var(--text-2);margin-top:4px;max-width:78ch}
+#nori-app .crumb{font:600 10.5px var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+#nori-app .card{max-width:none;padding:0;margin:0;border-radius:0;box-shadow:none;background:var(--surface);border:1px solid var(--line-2);min-width:0}
+#nori-app .card.strong{border-color:var(--ink)}
+#nori-app .card-h{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 12px;padding:12px 16px;border-bottom:1px solid var(--line)}
+#nori-app .card-h h2{font-size:15px;font-weight:700}
+#nori-app .card-h p{flex-basis:100%;color:var(--muted);font-size:13px;margin-top:-4px}
+#nori-app .card-b{padding:14px 16px}
+#nori-app .stack{display:grid;gap:18px}
+#nori-app .pill{display:inline-flex;align-items:center;gap:5px;font:600 10.5px/1 var(--mono);text-transform:uppercase;letter-spacing:.04em;padding:4px 6px;border:1px solid var(--line-2);color:var(--muted);white-space:nowrap;background:var(--surface)}
+#nori-app .pill.live{background:var(--volt);border-color:var(--ink);color:var(--ink)}
+#nori-app .pill.edited{background:var(--amber-soft);border-color:var(--amber-line);color:var(--amber)}
+#nori-app .pill.pro{border-color:var(--ink);color:var(--ink)}
+#nori-app .pill.bad{background:var(--red-soft);border-color:#E3B3AE;color:var(--red)}
+#nori-app .pill.pend{background:var(--amber);border-color:var(--amber);color:#fff}
+#nori-app .chips{display:flex;flex-wrap:wrap;gap:6px}
+#nori-app .chip{border:1px solid var(--line-2);background:var(--surface);padding:5px 10px;font-size:12.5px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:5px}
+#nori-app .chip:hover{border-color:var(--ink)}
+#nori-app .chip[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+#nori-app .chip span{font:500 11px var(--mono);opacity:.7}
+#nori-app .chip.code{font:600 12px var(--mono)}
+#nori-app .chip.static{cursor:default}
+#nori-app .chip.static:hover{border-color:var(--line-2)}
+#nori-app .chip.st-add{border-style:dashed}
+#nori-app .chip.st-pro{color:var(--muted)}
+#nori-app .callout{display:flex;gap:10px;align-items:flex-start;padding:10px 14px;border:1px solid var(--line-2);background:var(--surface);font-size:13px;color:var(--text-2)}
+#nori-app .callout b{color:var(--ink)}
+#nori-app .callout.info{background:var(--blue-soft);border-color:var(--blue-line)}
+#nori-app .callout.warn{background:var(--amber-soft);border-color:var(--amber-line)}
+#nori-app .callout.volt{background:var(--volt-soft);border-color:var(--volt-text)}
+#nori-app .callout svg{width:18px;height:18px;flex:none;margin-top:1px}
+#nori-app .callout .grow{flex:1;min-width:0;display:grid;gap:4px}
+#nori-app .note{font-size:12.5px;color:var(--muted)}
+#nori-app .ok{color:var(--volt-text);font-weight:600}
+#nori-app .warn-t{color:var(--amber);font-weight:600}
+#nori-app .swatch{display:inline-block;width:18px;height:18px;border:1px solid var(--line-2);vertical-align:middle;flex:none}
+#nori-app .sw{position:relative;width:40px;height:22px;border:1.5px solid var(--ink);background:var(--surface);cursor:pointer;flex:none;padding:0}
+#nori-app .sw::after{content:"";position:absolute;top:2px;left:2px;width:15px;height:15px;background:var(--ink);transition:transform .15s}
+#nori-app .sw[aria-checked="true"]{background:var(--volt)}
+#nori-app .sw[aria-checked="true"]::after{transform:translateX(17px)}
+#nori-app .sw.changed{outline:2px dashed var(--amber);outline-offset:2px}
+#nori-app .list{list-style:none}
+#nori-app .list li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 0;border-top:1px solid var(--line)}
+#nori-app .list li:first-child{border-top:0}
+#nori-app .list li>span:last-child{text-align:right}
+#nori-app .dotst{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:8px;background:var(--volt-text)}
+#nori-app .dotst.warn{background:var(--amber)}
+#nori-app .dotst.info{background:#5B8BC5}
+#nori-app .seg{display:inline-flex;border:1px solid var(--ink);justify-self:start;width:max-content;max-width:100%}
+#nori-app .seg button{border:0;background:var(--surface);padding:5px 12px;font-weight:600;font-size:12.5px;cursor:pointer}
+#nori-app .seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+#nori-app textarea.code{width:100%;min-height:180px;font:12px/1.5 var(--mono);border:1px solid var(--line-2);padding:10px;background:var(--sunken);resize:vertical}
+#nori-app .input{height:34px;border:1px solid var(--line-2);padding:0 10px;background:var(--surface);min-width:0}
+#nori-app .input:focus, #nori-app textarea:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px var(--volt)}
+#nori-app .changed-in{border-color:var(--amber)!important;box-shadow:0 0 0 2px var(--amber-soft)}
+#nori-app .home{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(300px,1fr);gap:18px;align-items:start}
+#nori-app .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line-2);background:var(--surface);margin-bottom:18px}
+#nori-app .stats button{padding:14px 16px;border:0;border-left:1px solid var(--line);background:none;text-align:left;cursor:pointer;display:grid;gap:2px}
+#nori-app .stats button:first-child{border-left:0}
+#nori-app .stats button:hover{background:var(--sunken)}
+#nori-app .stats b{font:700 24px/1.1 var(--mono);font-variant-numeric:tabular-nums}
+#nori-app .stats b small{font-size:13px;color:var(--muted)}
+#nori-app .stats span{color:var(--text-2);font-size:12.5px;font-weight:600}
+#nori-app .stats em{font-style:normal;color:var(--muted);font-size:12px}
+#nori-app .ds{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0;border-top:1px solid var(--line)}
+#nori-app .ds>section{padding:14px 16px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:10px;min-width:0}
+#nori-app .ds h3{font-size:13.5px;font-weight:700;display:flex;align-items:center;gap:8px}
+#nori-app .ds h3 svg{width:17px;height:17px}
+#nori-app .ds h3 .cnt{margin-left:auto}
+#nori-app .ds .acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:4px}
+#nori-app .btn.go{background:var(--ink);color:var(--surface);border-color:var(--ink);box-shadow:2px 2px 0 var(--volt-text)}
+#nori-app .btn.go:hover{background:#2A2A2A}
+#nori-app .btn.go::after{content:"→";font-weight:700;color:var(--volt)}
+#nori-app .btn.go.alt{background:var(--surface);color:var(--ink)}
+#nori-app .btn.go.alt::after{color:var(--ink)}
+#nori-app .btn.go.alt:hover{background:var(--volt-soft)}
+#nori-app .palette{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));border:1px solid var(--line-2)}
+#nori-app .palette i{height:22px}
+#nori-app .palette+.palette{border-top:0}
+#nori-app .pal-l{display:flex;justify-content:space-between;font:600 10px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+#nori-app .ladder{display:grid;gap:2px}
+#nori-app .ladder span{line-height:1.1}
+#nori-app .ladder>span{display:grid;grid-template-columns:46px minmax(0,1fr) auto;align-items:baseline;column-gap:6px}
+#nori-app .bars{display:grid;gap:6px}
+#nori-app .bars div{display:grid;grid-template-columns:96px minmax(0,1fr) 42px;gap:8px;align-items:center;font-size:12.5px}
+#nori-app .bars i{display:block;height:8px;background:var(--stage);position:relative}
+#nori-app .bars i b{position:absolute;inset:0 auto 0 0;background:var(--ink)}
+#nori-app .bars i b.e{background:var(--amber)}
+#nori-app .bars em{font:500 11px var(--mono);font-style:normal;color:var(--muted);text-align:right}
+#nori-app .modchips{display:flex;flex-wrap:wrap;gap:4px}
+#nori-app .modchips span{font-size:11.5px;font-weight:600;border:1px solid var(--line-2);padding:2px 6px}
+#nori-app .modchips span.on{background:var(--volt);border-color:var(--ink)}
+#nori-app .foot td, #nori-app .foot th{padding:6px 8px}
+#nori-app .mock-note{display:flex;gap:10px;align-items:center;padding:8px 12px;background:var(--volt-soft);border:1px solid var(--volt-text);font-size:12.5px;color:var(--text-2);margin-bottom:16px}
+#nori-app .mock-note b{font:700 10.5px var(--mono);letter-spacing:.08em;background:var(--ink);color:var(--volt);padding:3px 6px}
+#nori-app .toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:12px}
+#nori-app .toolbar .grp{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+#nori-app .filter{height:32px;border:1px solid var(--line-2);padding:0 10px;min-width:170px;background:var(--surface)}
+#nori-app .cathead{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--surface);border:1px solid var(--line-2);border-bottom:0}
+#nori-app .cathead h2{font-size:15px;font-weight:700}
+#nori-app .cathead p{font-size:13px;color:var(--muted);max-width:80ch}
+#nori-app .cathead .meta{font:500 11.5px var(--mono);color:var(--text-2)}
+#nori-app .bulk{display:flex;flex-wrap:wrap;gap:6px}
+#nori-app .tablewrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line-2)}
+#nori-app table{width:100%;border-collapse:collapse}
+#nori-app th{font:600 10.5px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted);text-align:left;padding:9px 12px;border-bottom:1px solid var(--ink);background:var(--sunken);white-space:nowrap}
+#nori-app td{padding:8px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+#nori-app tr.it{cursor:pointer}
+#nori-app tr.it:hover td{background:var(--sunken)}
+#nori-app tr.it.open td{background:var(--volt-soft);border-bottom-color:transparent}
+#nori-app tr.it.open td:first-child{box-shadow:inset 3px 0 0 var(--ink)}
+#nori-app tr.it.pend td:first-child{box-shadow:inset 3px 0 0 var(--amber)}
+#nori-app td.cbx{width:34px;padding-right:0}
+#nori-app .cb{width:16px;height:16px;accent-color:var(--ink);cursor:pointer}
+#nori-app td.name code{font-weight:600;font-size:13px;white-space:nowrap}
+#nori-app td.spec{color:var(--muted);font-family:var(--mono);font-size:12px;max-width:0;width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#nori-app td.use{white-space:nowrap;font-size:12.5px;color:var(--text-2)}
+#nori-app td.st{white-space:nowrap}
+#nori-app td.acts{white-space:nowrap;text-align:right}
+#nori-app td.acts .link+.link{margin-left:10px}
+#nori-app td.chev{width:30px;text-align:center;color:var(--muted)}
+#nori-app td.chev svg{width:14px;height:14px;transition:transform .15s}
+#nori-app tr.it.open td.chev svg{transform:rotate(180deg)}
+#nori-app .group-row td{background:var(--stage);font:600 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);padding:6px 12px}
+#nori-app tr.detail td{background:var(--surface);padding:0;border-bottom:1px solid var(--ink)}
+#nori-app .dt{display:grid;grid-template-columns:minmax(220px,300px) minmax(0,1fr) minmax(220px,300px);gap:0;box-shadow:inset 3px 0 0 var(--ink)}
+#nori-app .dt>div{padding:14px 16px;border-left:1px solid var(--line);min-width:0;display:grid;gap:10px;align-content:start}
+#nori-app .dt>div:first-child{border-left:0}
+#nori-app .dt h3, #nori-app .sec-h{font:600 10.5px var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+#nori-app .prev{background:var(--stage);border:1px solid var(--line-2);min-height:140px;display:flex;align-items:center;justify-content:center;padding:18px;overflow:hidden}
+#nori-app .bp{width:100%;border-collapse:collapse;font-size:12.5px}
+#nori-app .bp th{background:none;border-bottom:1px solid var(--line-2);padding:5px 6px}
+#nori-app .bp td{padding:6px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;word-break:break-word}
+#nori-app .bp td:first-child{color:var(--text-2);font-family:var(--font);font-size:12.5px}
+#nori-app .bp .dash{color:var(--faint)}
+#nori-app .bp .ed{background:var(--amber-soft)}
+#nori-app .pendlab{font-size:12px;font-weight:600;color:var(--amber);white-space:nowrap}
+#nori-app .pendlab .link{margin-left:6px;font-size:12px}
+#nori-app .foot-note{margin-top:12px;font-size:12.5px;color:var(--muted);max-width:90ch}
+#nori-app .vin{display:flex;align-items:center;gap:8px}
+#nori-app .vin input[type=color]{width:32px;height:26px;border:1px solid var(--ink);padding:0;background:none;cursor:pointer}
+#nori-app .vin code{min-width:64px}
+#nori-app .pv-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;font-weight:600;border:1.5px solid var(--ba);background:var(--ba);color:var(--bo);border-radius:8px}
+#nori-app .pv-btn.dark{background:var(--bp);border-color:var(--bp);color:var(--bb)}
+#nori-app .pv-btn.outline{background:transparent;border-color:var(--bp);color:var(--bp)}
+#nori-app .pv-btn.text{background:transparent;border-color:transparent;padding-inline:0;text-decoration:underline;color:var(--bp)}
+#nori-app .pv-gap{display:flex;align-items:center}
+#nori-app .pv-gap i{width:36px;height:36px;background:var(--bp)}
+#nori-app .pv-gap i:nth-child(2){background:var(--ba)}
+#nori-app .pv-box{background:var(--bb);border:1px dashed var(--bm);width:100%;max-width:260px}
+#nori-app .pv-box i{display:block;background:var(--bs);border:1px solid var(--bl);height:40px}
+#nori-app .pv-type{font-weight:700;color:var(--bp);text-align:center;line-height:1.1}
+#nori-app .mods{display:grid;gap:10px}
+#nori-app .mod{background:var(--surface);border:1px solid var(--line-2)}
+#nori-app .mod.open{border-color:var(--ink)}
+#nori-app .mod-h{display:grid;grid-template-columns:132px minmax(0,1fr) auto;gap:16px;align-items:center;padding:10px 14px 10px 10px;cursor:pointer}
+#nori-app .mod-h:hover{background:var(--sunken)}
+#nori-app .thumb{height:76px;background:var(--stage);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+#nori-app .thumb>*{transform:scale(.62);flex:none}
+#nori-app .mod-t{min-width:0;display:grid;gap:3px}
+#nori-app .mod-t h3{font-size:15px;font-weight:700;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+#nori-app .mod-t p{font-size:13px;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+#nori-app .mod-t .adds{font:500 11.5px var(--mono);color:var(--text-2)}
+#nori-app .mod-r{display:flex;align-items:center;gap:14px}
+#nori-app .mod-r .chevb{border:1px solid var(--line-2);background:none;width:30px;height:30px;display:grid;place-items:center;cursor:pointer}
+#nori-app .mod-r .chevb svg{width:14px;height:14px;transition:transform .15s}
+#nori-app .mod.open .chevb svg{transform:rotate(180deg)}
+#nori-app .mod-b{border-top:1px solid var(--ink)}
+#nori-app .tut{padding:18px;border-bottom:1px solid var(--ink);background:var(--volt-soft);display:grid;gap:12px}
+#nori-app .tut h3{font-size:17px;display:flex;gap:10px;align-items:center}
+#nori-app .tut h3 svg{width:22px;height:22px}
+#nori-app .tut>p{color:var(--text-2);max-width:90ch}
+#nori-app .tut-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;list-style:none}
+#nori-app .tut-steps li{background:var(--surface);border:1px solid var(--ink);padding:12px;display:grid;gap:6px;align-content:start;font-size:13px;color:var(--text-2)}
+#nori-app .tut-steps li>b{color:var(--ink);font-size:14px;display:flex;gap:8px;align-items:center}
+#nori-app .tut-steps li>b span{font:700 12px/24px var(--mono);width:26px;height:26px;text-align:center;background:var(--ink);color:var(--volt);flex:none}
+#nori-app .tut-steps code{background:var(--sunken);border:1px solid var(--line-2);padding:0 4px}
+#nori-app .uses{display:grid;gap:4px;padding:10px 12px;border:1px solid var(--line);background:var(--sunken);font-size:12.5px}
+#nori-app .uses .sec-h{margin-bottom:2px}
+#nori-app .uses div{display:flex;justify-content:space-between;gap:8px}
+#nori-app .uses div b{font:600 12px var(--mono)}
+#nori-app .uses .none{color:var(--volt-text);font-weight:600}
+#nori-app .fcview{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+#nori-app .fc-static{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:100%;max-width:440px}
+#nori-app .fc-static div{background:var(--bs);border:1px solid var(--bl);border-radius:8px;padding:8px;min-height:80px;font-size:12px;font-weight:700;color:var(--bp)}
+#nori-app .frame{margin:0 auto;border:1px solid var(--line-2);background:var(--surface);padding:6px;border-radius:10px}
+#nori-app .dm-top{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between;padding:14px 16px}
+#nori-app .dm-top h2{font-size:16px}
+#nori-app .dm-top p{color:var(--muted);font-size:13px;max-width:80ch}
+#nori-app .dm-top .swl{display:flex;gap:10px;align-items:center;font-weight:700}
+#nori-app .mod-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
+#nori-app .mod-grid>div{padding:16px;min-width:0;display:grid;gap:14px;align-content:start}
+#nori-app .mod-grid>div+div{border-left:1px solid var(--line)}
+#nori-app .stage{background:var(--stage);border:1px solid var(--line-2);min-height:220px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;padding:16px}
+#nori-app .stage-cap{font-size:12px;color:var(--muted)}
+#nori-app .how{display:grid;gap:8px;padding:12px 14px;background:var(--volt-soft);border:1px solid var(--volt-text)}
+#nori-app .how h4{font-size:13px;font-weight:700;display:flex;gap:8px;align-items:center}
+#nori-app .how h4 svg{width:18px;height:18px;flex:none}
+#nori-app .how ol{padding-left:20px;font-size:13px;color:var(--text-2);display:grid;gap:3px}
+#nori-app .how code{background:var(--surface);border:1px solid var(--line-2);padding:0 4px}
+#nori-app .ex{counter-reset:ex;list-style:none;display:grid;gap:8px}
+#nori-app .ex li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:8px;font-size:13px;color:var(--text-2)}
+#nori-app .ex li::before{counter-increment:ex;content:counter(ex);font:600 11px/22px var(--mono);text-align:center;border:1px solid var(--ink);height:22px}
+#nori-app .ex b{color:var(--ink)}
+#nori-app .clsrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;padding:9px 0;border-top:1px solid var(--line)}
+#nori-app .clsrow:first-of-type{border-top:0}
+#nori-app .clsrow code{font-weight:600}
+#nori-app .clsrow p{grid-column:1/-1;font-size:12.5px;color:var(--muted)}
+#nori-app .clsrow .meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+#nori-app .field{display:grid;gap:5px;padding:10px 0;border-top:1px solid var(--line)}
+#nori-app .field:first-of-type{border-top:0}
+#nori-app .field>label, #nori-app .field .lab{font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:10px}
+#nori-app .field output{font:600 12px var(--mono);background:var(--volt-soft);padding:1px 6px;border:1px solid transparent}
+#nori-app .field output.changed{background:var(--amber-soft);border-color:var(--amber-line)}
+#nori-app .field input[type=range]{width:100%;accent-color:var(--ink)}
+#nori-app .field select{height:32px;border:1px solid var(--ink);background:var(--surface);border-radius:0;max-width:100%}
+#nori-app .field .help{font-size:12px;color:var(--muted)}
+#nori-app .field .vh{font:500 11.5px var(--mono);color:var(--volt-text)}
+#nori-app .field .pre{display:flex;gap:6px;flex-wrap:wrap}
+#nori-app .field .colrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+#nori-app .field .colrow input[type=color]{width:32px;height:28px;border:1px solid var(--ink);padding:0;background:none}
+#nori-app .set-h{display:flex;justify-content:space-between;align-items:center}
+#nori-app .pick{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;padding:10px 14px;border:1px solid var(--ink);background:var(--surface);align-items:center}
+#nori-app .pick b{margin-right:6px}
+#nori-app .pick label{display:flex;gap:6px;align-items:center;border:1px solid var(--line-2);padding:5px 10px;cursor:pointer;font-weight:600;font-size:13px}
+#nori-app .pick label:has(input:checked){border-color:var(--ink);background:var(--volt-soft)}
+#nori-app .pick input{accent-color:var(--ink)}
+#nori-app .cat-sec+.cat-sec{margin-top:26px}
+#nori-app .cat-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+#nori-app .cat-top h2{font-size:16px;font-weight:700}
+#nori-app .cat-top p{font-size:13px;color:var(--muted);max-width:80ch;flex-basis:100%}
+@keyframes nori-slideIn{0%,15%{transform:translateY(16px);opacity:0;filter:blur(3px)}45%,100%{transform:none;opacity:1;filter:none}}
+@keyframes nori-efu{0%{transform:translateY(64px);opacity:0}28%{transform:translateY(22px);opacity:1}62%{transform:translateY(-14px);opacity:1}100%{transform:translateY(-70px);opacity:0}}
+@keyframes nori-marq{to{transform:translateX(-50%)}}
+@keyframes nori-hdr{0%,30%{transform:none}45%,70%{transform:translateY(-100%)}85%,100%{transform:none}}
+@keyframes nori-ripple{0%,20%{transform:scale(0)}60%,100%{transform:scale(1.6)}}
+@keyframes nori-glow{0%,100%{box-shadow:0 0 0 0 transparent}50%{box-shadow:0 0 0 2px var(--gl,var(--ba)),0 0 14px 4px var(--gl,var(--ba));border-color:var(--gl,var(--ba))}}
+@keyframes nori-ul{0%,20%{transform:scaleX(0)}55%,100%{transform:scaleX(1)}}
+@keyframes nori-grad{to{background-position:100% 0}}
+@keyframes nori-roll2{0%,40%{transform:translateY(0)}60%,100%{transform:translateY(-50%)}}
+@keyframes nori-roll2d{0%,40%{transform:translateY(-50%)}60%,100%{transform:translateY(0)}}
+@keyframes nori-scrollv{0%{transform:translateY(0)}100%{transform:translateY(-40px)}}
+@keyframes nori-pop{0%,30%{transform:scale(.4);opacity:0}50%,85%{transform:none;opacity:1}100%{opacity:0}}
+#nori-app .m-bars{display:grid;gap:6px;width:160px}
+#nori-app .m-bars i{height:12px;background:var(--bp);animation:nori-slideIn 2.4s ease infinite}
+#nori-app .m-bars i:nth-child(2){animation-delay:.15s;width:80%;background:var(--ba)}
+#nori-app .m-bars i:nth-child(3){animation-delay:.3s;width:60%}
+#nori-app .m-efu{width:170px;height:150px;position:relative;border-block:1px dashed var(--faint);overflow:hidden}
+#nori-app .m-efu i{position:absolute;left:10px;right:10px;top:62px;height:22px;background:var(--bp);animation:nori-efu 4s linear infinite;opacity:0}
+#nori-app .m-efu i:nth-child(2){animation-delay:-1s;background:var(--ba);right:40px}
+#nori-app .m-efu i:nth-child(3){animation-delay:-2s}
+#nori-app .m-efu i:nth-child(4){animation-delay:-3s;right:60px;background:var(--ba)}
+#nori-app .m-efu small{position:absolute;left:0;right:0;font:500 9px var(--mono);color:var(--muted);text-align:center;letter-spacing:.06em;text-transform:uppercase;z-index:2}
+#nori-app .m-efu small.t{top:2px}
+#nori-app .m-efu small.b{bottom:2px}
+#nori-app .m-marq{width:210px;overflow:hidden;border-block:1px solid var(--bp);padding:6px 0;background:var(--bb);color:var(--bp)}
+#nori-app .m-marq div{display:flex;gap:14px;width:max-content;animation:nori-marq 6s linear infinite;font:700 12px var(--mono)}
+#nori-app .m-hdr{width:190px;height:96px;border:1px solid var(--bl);background:var(--bb);overflow:hidden;position:relative}
+#nori-app .m-hdr b{position:absolute;inset:0 0 auto;height:18px;background:var(--bp);animation:nori-hdr 3.2s ease infinite}
+#nori-app .m-hdr i{position:absolute;left:12px;right:12px;top:30px;height:6px;background:var(--bl);box-shadow:0 14px 0 var(--bl),0 28px 0 var(--bl),0 42px 0 var(--bl)}
+#nori-app .m-mm{width:96px;height:150px;border:1px solid var(--bl);border-radius:14px;background:var(--bb);overflow:hidden;position:relative}
+#nori-app .m-mm b{position:absolute;inset:0 0 auto;height:24px;border-bottom:1px solid var(--bl)}
+#nori-app .m-mm b::after{content:'';position:absolute;right:10px;top:8px;width:12px;height:2px;background:var(--bp);box-shadow:0 4px 0 var(--bp),0 8px 0 var(--bp)}
+#nori-app .m-mm span{position:absolute;inset:25px 0 0;display:grid;align-content:start;padding:4px 10px;background:var(--bb);animation:nori-mm 3.2s cubic-bezier(.16,1,.3,1) infinite}
+#nori-app .m-mm span i{position:relative;height:22px;border-bottom:1px solid var(--bl)}
+#nori-app .m-mm span i::after{content:'';position:absolute;right:0;top:9px;width:45%;height:5px;background:var(--bp)}
+@keyframes nori-mm{0%,15%{opacity:0;transform:translateY(-8px)}35%,80%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-8px)}}
+#nori-app .m-btn{position:relative;overflow:hidden;display:inline-block;padding:9px 18px;border:1.5px solid var(--bp);font-weight:700;font-size:13px;background:var(--bb);color:var(--bp);line-height:1.3;border-radius:8px}
+#nori-app .m-btn.rip::before{content:"";position:absolute;inset:-30% 15%;border-radius:50%;background:var(--rip,var(--ba));animation:nori-ripple var(--ripd,2.2s) ease infinite;z-index:0}
+#nori-app .m-btn span{position:relative;display:block}
+#nori-app .m-btn.glow{animation:nori-glow 2s ease infinite;overflow:visible}
+#nori-app .m-btn.solid{background:var(--ba);border-color:var(--ba);color:var(--bo)}
+#nori-app .m-btn.ul{border-color:transparent;background:none;padding-inline:0}
+#nori-app .m-btn.ul::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:var(--ulh,2px);background:currentColor;transform-origin:left;animation:nori-ul 2.2s ease infinite}
+#nori-app .m-btn.gr{background:linear-gradient(90deg,#F4FF7A,#D6FF00,#9BEA3A,#5ED68A,#2FC6B4,#5ED68A,#9BEA3A,#D6FF00,#F4FF7A);background-size:300% 100%;animation:nori-grad 3s linear infinite alternate;border-color:transparent}
+#nori-app .m-btn.rl .rl-in{display:block;height:1.3em;overflow:hidden}
+#nori-app .m-btn.rl .rl-col{display:block;animation:nori-roll2 var(--rld,2.6s) cubic-bezier(.65,0,.35,1) infinite}
+#nori-app .m-btn.rl.down .rl-col{animation-name:nori-roll2d}
+#nori-app .m-btn.rl .rl-col i{display:block;font-style:normal;height:1.3em}
+#nori-app .m-scroll{width:130px;height:80px;border:1px solid var(--bl);overflow:hidden;background:var(--bb)}
+#nori-app .m-scroll div{animation:nori-scrollv 2.4s cubic-bezier(.2,.8,.2,1) infinite alternate;padding:8px}
+#nori-app .m-scroll i{display:block;height:8px;background:var(--bl);margin-bottom:8px}
+#nori-app .m-scroll i:nth-child(2n){width:70%;background:var(--bp)}
+#nori-app .m-lb{width:170px;height:110px;background:rgba(18,18,18,.88);display:flex;align-items:center;justify-content:center;position:relative}
+#nori-app .m-lb i{width:110px;height:70px;background:linear-gradient(135deg,#6b7a3a,#2d3a1a);animation:nori-pop 3s ease infinite;display:block}
+#nori-app .m-lb b{position:absolute;right:6px;top:4px;color:#fff;font-size:14px}
+#nori-app .m-dark{display:flex;border:1px solid var(--ink)}
+#nori-app .m-dark i{width:60px;height:60px;background:var(--surface);display:grid;place-items:center;font-style:normal;font-weight:800}
+#nori-app .m-dark i+i{background:var(--ink);color:var(--volt)}
+#nori-app .m-form{display:grid;gap:5px;width:160px}
+#nori-app .m-form i{height:16px;border:1px solid var(--bl);background:var(--bb)}
+#nori-app .m-form b{height:18px;background:var(--ba);border:1px solid var(--ba);width:60%}
+#nori-app .m-focus{padding:9px 18px;border:1.5px solid var(--ink);font-weight:700;font-size:13px;background:var(--surface);outline:3px solid #000;outline-offset:3px;box-shadow:0 0 0 6px #fff}
+#nori-app .m-fp{display:grid;gap:6px;width:220px;font:500 10px var(--mono);color:var(--muted)}
+#nori-app .m-fp div{display:grid;grid-template-columns:52px minmax(0,1fr);gap:6px;align-items:center}
+#nori-app .m-fp span{display:flex;height:10px}
+#nori-app .m-fp span i{display:block;height:100%}
+#nori-app .m-fp .c{background:var(--line-2)}
+#nori-app .m-fp .d{background:var(--volt-text)}
+#nori-app .car{position:relative;width:100%;max-width:460px;overflow:hidden;padding-block:8px}
+#nori-app .car .track{display:flex;will-change:transform}
+#nori-app .car .sl{flex:none;transition:opacity .45s cubic-bezier(.16,1,.3,1),transform .45s cubic-bezier(.16,1,.3,1);opacity:var(--fade,.5);transform:scale(.96)}
+#nori-app .car .sl.on{opacity:1;transform:none}
+#nori-app .car.faded .sl{background:var(--bs);border:1px solid var(--bl);min-height:96px;padding:8px;display:grid;align-content:start;gap:5px;border-radius:8px;min-width:0}
+#nori-app .car.faded .sl small{font:600 9px var(--mono);color:var(--muted);text-transform:uppercase}
+#nori-app .car.faded .sl b{font-size:12px;line-height:1.2;color:var(--bp);overflow-wrap:break-word;hyphens:auto}
+#nori-app .car.faded[data-n="5"] .sl{padding:6px}
+#nori-app .car.faded[data-n="5"] .sl b{font-size:10px}
+#nori-app .car.faded[data-n="5"] .sl small{font-size:8px}
+#nori-app .car.faded .sl i{display:block;height:5px;background:var(--bl)}
+#nori-app .car.faded .sl i+i{width:70%}
+#nori-app .car.video .sl{aspect-ratio:16/9;border-radius:var(--vr,14px);overflow:hidden;position:relative;opacity:var(--fade,.25);transform:scale(.94);background:linear-gradient(135deg,var(--g,#1F2937),#0B0B0B)}
+#nori-app .car.video .sl.on{opacity:1;transform:none}
+#nori-app .car.video .sl small{position:absolute;left:8px;top:6px;font:600 9px var(--mono);color:#9CA3AF;text-transform:uppercase}
+#nori-app .car.video .sl::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,var(--tint,.15))}
+#nori-app .play{position:absolute;left:50%;top:50%;width:var(--ps,44px);height:var(--ps,44px);margin:calc(var(--ps,44px)/-2) 0 0 calc(var(--ps,44px)/-2);border-radius:50%;border:max(2px,calc(var(--ps,44px)*.045)) solid var(--pc,#fff);display:grid;place-items:center;z-index:2;opacity:0;transition:opacity .3s}
+#nori-app .play.filled{background:var(--pf,#111);border-color:var(--pf,#111)}
+#nori-app .play.icon{border-color:transparent;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))}
+#nori-app .play::before{content:"";width:0;height:0;border-style:solid;border-width:calc(var(--ps,44px)*.16) 0 calc(var(--ps,44px)*.16) calc(var(--ps,44px)*.27);border-color:transparent transparent transparent var(--pc,#fff);margin-left:calc(var(--ps,44px)*.06)}
+#nori-app .sl.on .play{opacity:1}
+#nori-app .arw{position:absolute;top:50%;width:var(--as,34px);height:var(--as,34px);margin-top:calc(var(--as,34px)/-2);border-radius:50%;border:0;background:var(--ab,#fff);color:var(--ai,#111);display:grid;place-items:center;z-index:3;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.18);transition:transform .15s,background .15s,color .15s}
+#nori-app .arw:hover, #nori-app .arw:focus-visible{background:var(--abh,#111);color:var(--aih,#fff);transform:scale(1.08)}
+#nori-app .arw.sq{border-radius:18%}
+#nori-app .arw.min{background:transparent!important;box-shadow:none;color:#fff;filter:drop-shadow(0 1px 3px rgba(0,0,0,.6))}
+#nori-app .arw svg{width:30%;height:42%}
+#nori-app .arw.a-prev{left:8px}
+#nori-app .arw.a-next{right:8px}
+#nori-app .car-pause{display:block;margin:10px auto 0;height:28px;padding:0 14px;border:1.5px solid currentColor;border-radius:999px;background:transparent;font:700 11px var(--font);opacity:.7}
+#nori-app .thumb .car{width:200px}
+#nori-app .thumb .car.faded .sl{height:70px}
+#nori-app .thumb .car.faded .sl small, #nori-app .thumb .car.faded .sl b{display:none}
+@media (prefers-reduced-motion:reduce){
+#nori-app, #nori-app *{animation:none!important;transition:none!important}
+}
+#nori-app .tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+#nori-app .tc{background:var(--surface);border:1px solid var(--line-2);display:flex;flex-direction:column}
+#nori-app .tc:hover{border-color:var(--ink)}
+#nori-app .tc .shot{aspect-ratio:4/5;overflow:hidden;border-bottom:1px solid var(--line);background:#fff}
+#nori-app .tc img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;transition:object-position 4s ease}
+#nori-app .tc:hover img{object-position:bottom}
+#nori-app .tc .tb{padding:12px 14px;display:grid;gap:4px;flex:1;align-content:start}
+#nori-app .tc h3{font-size:15px;font-weight:700}
+#nori-app .tc p{font-size:12.5px;color:var(--muted)}
+#nori-app .tc .tf{padding:0 14px 14px}
+#nori-app .tc .tf .btn{width:100%}
+#nori-app .site-card{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}
+#nori-app .site-card img{display:block;width:100%;border-right:1px solid var(--line)}
+#nori-app .parts{list-style:none;margin:10px 0 0;display:grid;gap:8px}
+#nori-app .parts li{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 12px;border:1px solid var(--line)}
+#nori-app .parts li b{min-width:150px;font-family:var(--mono);font-size:13px}
+#nori-app .looks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+#nori-app .look{align-content:start;gap:6px!important}
+#nori-app .look .lk{display:grid;place-items:center;height:44px;border:1px solid var(--line-2)}
+#nori-app .look .lk i{width:44px;height:10px;border-radius:5px}
+#nori-app .look .note{font-weight:400}
+#nori-app .presets{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+#nori-app .preset{border:1px solid var(--line-2);background:var(--surface);padding:10px;cursor:pointer;text-align:left;display:grid;gap:8px}
+#nori-app .preset:hover{border-color:var(--ink)}
+#nori-app .preset[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink);background:var(--volt-soft)}
+#nori-app .preset .sw4{display:grid;grid-template-columns:repeat(4,1fr) 1.3fr;height:24px;border:1px solid var(--line-2)}
+#nori-app .preset .sw4 i{display:block}
+#nori-app .preset .sw4 i:last-child{display:grid;place-items:center}
+#nori-app .preset .sw4 i:last-child::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--da)}
+#nori-app .preset b{font-size:13px}
+#nori-app .duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+#nori-app .dprev{padding:16px;border:1px solid var(--line-2);display:grid;gap:8px}
+#nori-app .dprev h3{font-size:19px}
+#nori-app .dprev .surf{padding:10px;display:flex;flex-wrap:wrap;gap:8px}
+#nori-app .dprev .b{padding:7px 12px;font-weight:600;font-size:12.5px;border:1.5px solid}
+#nori-app .ctab td{vertical-align:middle}
+#nori-app .ctab td.nm code{font-weight:600}
+#nori-app .ctab td.nm small{display:block;color:var(--muted);font-size:12px}
+#nori-app .ctab .arrow{color:var(--faint);text-align:center;width:30px}
+#nori-app .ctab th.lt, #nori-app .ctab th.dk{width:200px}
+#nori-app .ctab td.dk{background:#1A1A1A;color:#EEE}
+#nori-app .ctab td.dk code{color:#EEE}
+#nori-app .ctab td.dk .vin input[type=color]{border-color:#777}
+#nori-app .ctab td.dk.chg{box-shadow:inset 0 0 0 2px var(--amber)}
+#nori-app .ctab td.lt.chg{box-shadow:inset 0 0 0 2px var(--amber)}
+#nori-app .ctab th.dk{background:#2A2A2A;color:#CCC;border-bottom-color:#000}
+#nori-app .ucol{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+#nori-app .ucol select{height:30px;border:1px solid var(--ink);background:var(--surface);max-width:240px}
+#nori-app details.fold{border:1px solid var(--line-2);background:var(--surface)}
+#nori-app details.fold>summary{padding:10px 16px;font-weight:700;cursor:pointer}
+#nori-app details.fold[open]>summary{border-bottom:1px solid var(--line)}
+#nori-app .kbd-cls{display:grid;gap:6px}
+#nori-app .kbd-cls div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:10px;font-size:13px;color:var(--text-2);align-items:baseline}
+#nori-app .type-wrap{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
+#nori-app .ts-ctl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 24px;align-items:start}
+#nori-app .ts-ctl .field{border-top:0;padding:0}
+#nori-app .trow{display:grid;grid-template-columns:130px 150px minmax(0,1fr);gap:12px;align-items:baseline;padding:10px 14px;border-top:1px solid var(--line)}
+#nori-app .trow:first-child{border-top:0}
+#nori-app .trow code{font-weight:600}
+#nori-app .trow .sz{font:500 12px var(--mono);color:var(--muted)}
+#nori-app .trow .sm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.15;color:var(--bp)}
+#nori-app .bridge{border:1px solid var(--ink);background:var(--surface)}
+#nori-app .bridge-h{display:flex;flex-wrap:wrap;gap:8px 12px;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line)}
+#nori-app .bridge-h b{font-size:14.5px}
+#nori-app .bridge-h small{display:block;font:500 11.5px var(--mono);color:var(--muted)}
+#nori-app .bstep{padding:12px 14px;border-bottom:1px solid var(--line);display:grid;gap:8px}
+#nori-app .bstep h4{font-size:13.5px;display:flex;gap:8px;align-items:center}
+#nori-app .bstep h4 span{font:600 11px/20px var(--mono);width:22px;height:22px;text-align:center;border:1px solid var(--ink);background:var(--volt)}
+#nori-app .copyrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+#nori-app .copyrow code{font-size:14px;font-weight:700;background:var(--sunken);border:1px solid var(--line-2);padding:5px 10px}
+#nori-app .mini{font-size:12.5px}
+#nori-app .mini th{font-size:10px;padding:6px 8px;background:var(--sunken)}
+#nori-app .mini td{padding:6px 8px}
+#nori-app .chk{display:flex;gap:8px;align-items:flex-start;font-size:13px;padding:6px 0}
+#nori-app .chk i{font-style:normal;font-weight:800;width:18px;text-align:center}
+#nori-app .chk.good i{color:var(--volt-text)}
+#nori-app .chk.bad i{color:var(--red)}
+#nori-app .bacts{display:flex;flex-wrap:wrap;gap:8px;padding:12px 14px;background:var(--sunken)}
+#nori-app .fed td input[type=text]{width:100%;height:30px;border:1px solid var(--line-2);padding:0 8px;font:12.5px var(--mono)}
+#nori-app .big{font:700 30px/1 var(--mono)}
+#nori-app .reasons{display:grid;gap:5px}
+#nori-app .reasons div{display:grid;grid-template-columns:minmax(0,1fr) 120px 30px;gap:10px;align-items:center;font-size:13px}
+#nori-app .reasons i{display:block;height:8px;background:var(--stage);position:relative}
+#nori-app .reasons i b{position:absolute;inset:0 auto 0 0;background:var(--ink)}
+#nori-app .reasons em{font:600 12px var(--mono);font-style:normal;text-align:right}
+#nori-app .rel{display:grid;grid-template-columns:110px minmax(0,1fr);gap:14px;padding:14px 16px;border-top:1px solid var(--line)}
+#nori-app .rel:first-child{border-top:0}
+#nori-app .rel h3{font:700 15px var(--mono)}
+#nori-app .rel ul{list-style:none;display:grid;gap:5px;font-size:13.5px}
+#nori-app .tag{font:600 10px/1 var(--mono);text-transform:uppercase;padding:3px 5px;margin-right:6px;border:1px solid var(--ink)}
+#nori-app .tag.new{background:var(--volt)}
+#nori-app .tag.imp{background:var(--blue-soft)}
+#nori-app .tag.fix{background:var(--amber-soft)}
+#nori-app .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);display:flex;gap:10px;align-items:flex-start;background:var(--surface);color:var(--text-2);padding:10px 14px 10px 12px;font-size:13px;font-weight:400;z-index:90;border:1px solid var(--line-2);border-left:4px solid var(--volt-text);border-radius:6px;box-shadow:0 8px 28px rgba(0,0,0,.14);max-width:min(560px,calc(100vw - 32px));pointer-events:none;cursor:default;user-select:none}
+#nori-app .toast svg{width:18px;height:18px;flex:none;color:var(--volt-text);margin-top:1px}
+#nori-app .menu-btn{display:none}
+@media (max-width:1280px){
+#nori-app .looks{grid-template-columns:repeat(2,minmax(0,1fr))}
+#nori-app .home{grid-template-columns:minmax(0,1fr)}
+#nori-app .dt{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+#nori-app .dt>div:last-child{grid-column:1/-1;border-left:0;border-top:1px solid var(--line)}
+#nori-app .top .links{display:none}
+
+}
+@media (max-width:1050px){
+#nori-app .mod-grid{grid-template-columns:minmax(0,1fr)}
+#nori-app .mod-grid>div+div{border-left:0;border-top:1px solid var(--line)}
+#nori-app .pending{display:none}
+
+}
+@media (max-width:900px){
+#nori-app .app{height:auto;position:static}
+#nori-app .body{grid-template-columns:minmax(0,1fr)}
+#nori-app .side{display:none;border-right:0;border-bottom:1px solid var(--ink)}
+#nori-app .side.open{display:block}
+#nori-app .menu-btn{display:inline-flex}
+#nori-app .work{overflow:visible;padding:18px 16px 48px}
+#nori-app .search{order:3;flex-basis:100%;max-width:none}
+#nori-app .top{flex-wrap:wrap;padding:10px 16px}
+#nori-app .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+#nori-app .stats button:nth-child(3){border-left:0}
+#nori-app .stats button:nth-child(n+3){border-top:1px solid var(--line)}
+#nori-app .site-card, #nori-app .type-wrap, #nori-app .duo, #nori-app .ts-ctl{grid-template-columns:minmax(0,1fr)}
+#nori-app .ts-ctl{gap:12px}
+#nori-app .looks{grid-template-columns:repeat(2,minmax(0,1fr))}
+#nori-app .looks{grid-template-columns:minmax(0,1fr)}
+#nori-app .fc-static{grid-template-columns:minmax(0,1fr)}
+#nori-app .site-card img{border-right:0;border-bottom:1px solid var(--line)}
+#nori-app .dt{grid-template-columns:minmax(0,1fr)}
+#nori-app .dt>div{border-left:0;border-top:1px solid var(--line)}
+#nori-app .dt>div:first-child{border-top:0}
+#nori-app .trow{grid-template-columns:minmax(0,1fr) auto}
+#nori-app .trow .sm{grid-column:1 / -1}
+#nori-app .hide-s{display:none}
+#nori-app .filter{min-width:0;flex:1 1 140px}
+#nori-app .mod-h{grid-template-columns:minmax(0,1fr) auto;padding:12px}
+#nori-app .mod-h .thumb{display:none}
+#nori-app .rel{grid-template-columns:minmax(0,1fr)}
+#nori-app .ctab th.lt, #nori-app .ctab th.dk{width:auto}
+#nori-app .kbd-cls div{grid-template-columns:minmax(0,1fr)}
+#nori-app .reasons div{grid-template-columns:minmax(0,1fr) 60px 30px}
+
+}
+
+#nori-app .toast.has-links{pointer-events:auto;user-select:auto}
+#nori-app .toast a{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+#nori-app .toast.is-error{border-left-color:var(--red)}
+#nori-app .toast.is-error svg{color:var(--red)}
+#nori-app blockquote{margin:6px 0 0;padding:8px 12px;border-left:3px solid var(--line-2);color:var(--text-2)}
+#nori-app .hero .card-b{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+#nori-app .hero h2{font-size:17px;margin:0}
+#nori-app .hero p{margin:0;color:var(--text-2);max-width:68ch}
+#nori-app .stylepick{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+#nori-app .stylepick button{display:grid;gap:4px;text-align:left;padding:14px 16px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);cursor:pointer;font:inherit}
+#nori-app .stylepick button b{font-size:15px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+#nori-app .stylepick button span{font-size:13px;color:var(--text-2)}
+#nori-app .stylepick button em{font-style:normal;font-size:12px;color:var(--muted);font-family:var(--mono)}
+#nori-app .stylepick button[aria-checked="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink);background:var(--volt-soft)}
+#nori-app .stylepick button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+#nori-app .m-bgv{position:relative;width:220px;height:130px;overflow:hidden;background:linear-gradient(120deg,#3a3d42,#15171b 45%,#5b5e63 70%,#22252a);background-size:300% 300%;animation:nori-bgv 8s ease-in-out infinite alternate;color:#fff}
+#nori-app .m-bgv i{position:absolute;inset:0;background:var(--t);opacity:var(--s)}
+#nori-app .m-bgv.bottom i{background:linear-gradient(180deg,transparent,var(--t));opacity:calc(var(--s) * 1.7)}
+#nori-app .m-bgv.side i{background:linear-gradient(90deg,var(--t),transparent 85%);opacity:calc(var(--s) * 1.7)}
+#nori-app .m-bgv span{position:absolute;left:12px;bottom:12px;font:700 16px/1.1 var(--font)}
+#nori-app .m-bgv b{position:absolute;right:8px;top:8px;font:600 9px/1 var(--font);padding:5px 8px;border-radius:999px;background:rgba(0,0,0,.45)}
+@keyframes nori-bgv{to{background-position:100% 100%}}
+#nori-app .m-fit{width:200px;display:grid;gap:8px}
+#nori-app .m-fit div{border:1px dashed var(--faint);overflow:hidden}
+#nori-app .m-fit b{display:block;font-weight:800;line-height:.9;letter-spacing:-.02em;color:var(--bp)}
+#nori-app .m-split{max-width:220px;font:600 22px/1.15 var(--font);color:var(--bp)}
+#nori-app .m-split span{display:inline-block;overflow:hidden;vertical-align:top}
+#nori-app .m-split i{display:inline-block;font-style:normal;animation:nori-split 2.7s cubic-bezier(.2,.8,.2,1) infinite}
+@keyframes nori-split{0%{transform:translateY(105%);opacity:0}35%,85%{transform:none;opacity:1}100%{transform:none;opacity:0}}
+#nori-app .m-expand{width:220px;height:130px;display:grid}
+#nori-app .m-expand i{background:linear-gradient(120deg,#3a3d42,#15171b 50%,#5b5e63);animation:nori-expand 3.2s ease-in-out infinite alternate}
+@keyframes nori-expand{from{clip-path:inset(14px var(--in) round var(--r))}to{clip-path:inset(0 0 round 0)}}
+@media (prefers-reduced-motion:reduce){#nori-app .m-bgv,#nori-app .m-split i,#nori-app .m-expand i{animation:none}}
+
+/* Module pairs: how a module behaves next to others. */
+#nori-app .pairs{margin-top:16px}
+#nori-app .pairs ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+#nori-app .pairs li{display:grid;grid-template-columns:104px minmax(0,1fr);gap:10px;align-items:start;font-size:13px;color:var(--text-2);margin:0}
+#nori-app .pairs b{color:var(--ink)}
+#nori-app .pairs .pk{justify-self:start;font:600 10.5px/1 var(--mono);text-transform:uppercase;letter-spacing:.04em;padding:4px 6px;border:1px solid var(--line-2);color:var(--muted);background:var(--surface);white-space:nowrap}
+#nori-app .pairs .pk-pick-one{background:var(--red-soft);border-color:var(--red);color:var(--red)}
+#nori-app .pairs .pk-steps-aside{background:var(--amber-soft);border-color:var(--amber-line);color:var(--amber)}
+#nori-app .pairs .pk-takes-turns{background:var(--blue-soft);border-color:var(--blue-line);color:var(--ink)}
+#nori-app .pairs .pk-teams-up{background:var(--volt-soft);border-color:var(--ink);color:var(--ink)}
+#nori-app .pairs .link{padding:0;font:inherit;font-weight:600}
+@media (max-width:600px){#nori-app .pairs li{grid-template-columns:1fr;gap:4px}}

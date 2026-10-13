@@ -1,0 +1,45 @@
+{
+ "key": "lens-home",
+ "style": "lens",
+ "label": "Home",
+ "order": 10,
+ "description": "A full home page: video hero, services, about, numbers, how it works, a review, questions and a video call to action.",
+ "title": "Home",
+ "sections": [
+  {
+   "key": "hero",
+   "variant": "lens"
+  },
+  {
+   "key": "services",
+   "variant": "lens"
+  },
+  {
+   "key": "about",
+   "variant": "lens"
+  },
+  {
+   "key": "stats",
+   "variant": "lens"
+  },
+  {
+   "key": "steps",
+   "variant": "lens"
+  },
+  {
+   "key": "testimonials",
+   "variant": "lens"
+  },
+  {
+   "key": "faq",
+   "variant": "lens"
+  },
+  {
+   "key": "cta-band",
+   "variant": "lens",
+   "content": {
+    "heading": "Need a plumber today?"
+   }
+  }
+ ]
+}

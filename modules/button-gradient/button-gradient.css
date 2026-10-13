@@ -1,0 +1,71 @@
+/* Nori: Button Gradient Shift. Add .btn-gradient-np (filled) or .btn-gradient-outline-np (outline)
+   to a button container. On hover and keyboard focus the gradient slides across the button.
+   Colors, angle, speed and outline width come from WP Admin > Nori > Modules; the five colors are
+   Elementor variables (btn-gradient-1-np to btn-gradient-5-np, or any color variable you pick). Pressing nudges it down 1px. */
+.btn-gradient-np,
+.btn-gradient-outline-np {
+	/* Five colors, twice, so sliding from one half to the other loops without a seam. */
+	/* The five colors there and back (1 2 3 4 5 4 3 2 1), twice as wide as the button: at rest you see
+	   1 to 5, on hover the gradient slides over to 5 to 1. No seam, and no muddy blend at the edge. */
+	--nori-grad-image: linear-gradient(
+		var(--nori-grad-angle, 135deg),
+		var(--nori-grad-1, #F4FF7A) 0%,
+		var(--nori-grad-2, #D6FF00) 12.5%,
+		var(--nori-grad-3, #9BEA3A) 25%,
+		var(--nori-grad-4, #5ED68A) 37.5%,
+		var(--nori-grad-5, #2FC6B4) 50%,
+		var(--nori-grad-4, #5ED68A) 62.5%,
+		var(--nori-grad-3, #9BEA3A) 75%,
+		var(--nori-grad-2, #D6FF00) 87.5%,
+		var(--nori-grad-1, #F4FF7A) 100%
+	);
+	--nori-grad-move: background-position var(--nori-grad-speed, 700ms) cubic-bezier(0.22, 1, 0.36, 1);
+	position: relative;
+}
+
+/* Filled: the gradient is the background. The text color is yours to set (dark by default). */
+.btn-gradient-np {
+	background-color: var(--nori-grad-1, #F4FF7A) !important;
+	background-image: var(--nori-grad-image) !important;
+	background-size: 200% 100% !important;
+	background-position: 0% 50% !important;
+	/* Measured from the outer edge and drawn once: otherwise the gradient repeats under a
+	   (transparent) border and shows as a thin stroke around the button. */
+	background-origin: border-box !important;
+	background-repeat: no-repeat !important;
+	transition: var(--nori-grad-move), transform 0.2s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+:where(.btn-gradient-np) { color: var(--nori-grad-text, #121212); }
+.btn-gradient-np { border-color: transparent !important; } /* A look class's border would frame the gradient. */
+.btn-gradient-np:is(:hover, :focus-visible) { background-position: 100% 50% !important; }
+.btn-gradient-np:active, .btn-gradient-outline-np:active { transform: translateY(1px); }
+
+/* Outline: a gradient ring that follows the button's corner radius (unlike border-image) and keeps
+   the inside see-through. It slides on hover too. */
+.btn-gradient-outline-np { isolation: isolate; background-color: transparent; }
+/* The ring is the border: a border from a look class would sit next to it. */
+.btn-gradient-outline-np { border-style: none !important; }
+.btn-gradient-outline-np::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: 3;
+	padding: var(--nori-grad-border, 2px);
+	border-radius: inherit;
+	background-image: var(--nori-grad-image);
+	background-size: 200% 100%;
+	background-position: 0% 50%;
+	background-origin: border-box;
+	background-repeat: no-repeat;
+	-webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+	-webkit-mask-composite: xor;
+	mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+	mask-composite: exclude;
+	pointer-events: none;
+	transition: var(--nori-grad-move);
+}
+.btn-gradient-outline-np:is(:hover, :focus-visible)::before { background-position: 100% 50%; }
+
+@media (prefers-reduced-motion: reduce) {
+	.btn-gradient-np, .btn-gradient-outline-np::before { transition: none !important; }
+}

@@ -1,0 +1,41 @@
+{
+ "key": "bento-home",
+ "style": "bento",
+ "label": "Home",
+ "order": 10,
+ "description": "A full home page: hero, services, about, how it works, a review, questions and a call to action.",
+ "title": "Home",
+ "sections": [
+  {
+   "key": "hero",
+   "variant": "bento"
+  },
+  {
+   "key": "services",
+   "variant": "bento"
+  },
+  {
+   "key": "about",
+   "variant": "bento"
+  },
+  {
+   "key": "steps",
+   "variant": "bento"
+  },
+  {
+   "key": "testimonials",
+   "variant": "bento"
+  },
+  {
+   "key": "faq",
+   "variant": "bento"
+  },
+  {
+   "key": "cta-band",
+   "variant": "bento",
+   "content": {
+    "heading": "Need a plumber today?"
+   }
+  }
+ ]
+}

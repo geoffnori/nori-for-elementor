@@ -1,0 +1,26 @@
+/* Nori: Button Sliding Underline. Add .btn-underline-np to a button container and,
+   optionally, .svg-mover-np to an icon inside it.
+   Thickness, speed and arrow nudge come from WP Admin > Nori > Modules. */
+.btn-underline-np { position: relative; }
+.btn-underline-np::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 0;
+	height: var(--underline-thickness-np, var(--nori-underline-thickness, 1.5px));
+	background: currentColor;
+	transition: width var(--underline-speed-np, var(--nori-underline-speed, 250ms)) cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-underline-np:hover::after,
+.btn-underline-np:focus-visible::after { width: 100%; }
+.btn-underline-np .svg-mover-np { transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
+.btn-underline-np:hover .svg-mover-np,
+.btn-underline-np:focus-visible .svg-mover-np { transform: translateX(var(--arrow-shift-np, var(--nori-arrow-shift, 4px))); }
+[dir="rtl"] .btn-underline-np:hover .svg-mover-np,
+[dir="rtl"] .btn-underline-np:focus-visible .svg-mover-np { transform: translateX(calc(var(--arrow-shift-np, var(--nori-arrow-shift, 4px)) * -1)); }
+
+@media (prefers-reduced-motion: reduce) {
+	.btn-underline-np::after,
+	.btn-underline-np .svg-mover-np { transition: none !important; }
+}

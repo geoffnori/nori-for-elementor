@@ -1,0 +1,1732 @@
+{
+  "version": 2,
+  "suffix": "-np",
+  "retired": [
+    "btn-base",
+    "btn-hover-lift",
+    "btn-md",
+    "btn-navigation-primary",
+    "btn-navigation-secondary",
+    "btn-rounded",
+    "btn-surface",
+    "card-border-soft",
+    "container-max-450",
+    "container-max-680",
+    "flex-1",
+    "flex-align-center",
+    "flex-align-end",
+    "flex-align-start",
+    "flex-between",
+    "flex-center",
+    "flex-col",
+    "flex-row",
+    "flex-wrap",
+    "footer-column",
+    "gap-0",
+    "gap-2xl",
+    "no-inline-padding",
+    "section-gutter-wide"
+  ],
+  "renamed": {
+    "btn-arrow": "svg-mover"
+  },
+  "groups": [
+    {
+      "key": "containers",
+      "label": "Container widths",
+      "description": "Centered max-width wrappers from 1600px down to 400px.",
+      "classes": [
+        {
+          "key": "container-max-1600",
+          "label": "container-max-1600-np",
+          "description": "Ultra-wide container max width 1600px centered (panoramic hero displays, wide gallery grids)",
+          "styles": {
+            "desktop": {
+              "max-width": "1600px",
+              "width": "100%",
+              "margin-inline-start": "auto",
+              "margin-inline-end": "auto"
+            },
+            "mobile": {
+              "max-width": "100%"
+            }
+          },
+          "priority": 100
+        },
+        {
+          "key": "container-max-1400",
+          "label": "container-max-1400-np",
+          "description": "Standard site-wide container max width 1400px centered",
+          "styles": {
+            "desktop": {
+              "max-width": "1400px",
+              "width": "100%",
+              "margin-inline-start": "auto",
+              "margin-inline-end": "auto"
+            },
+            "mobile": {
+              "max-width": "100%"
+            }
+          },
+          "priority": 100
+        },
+        {
+          "key": "container-max-1300",
+          "label": "container-max-1300-np",
+          "description": "Comfortable wide container max width 1300px centered",
+          "styles": {
+            "desktop": {
+              "max-width": "1300px",
+              "width": "100%",
+              "margin-inline-start": "auto",
+              "margin-inline-end": "auto"
+            },
+            "mobile": {
+              "max-width": "100%"
+            }
+          },
+          "priority": 100
+        },
+        {
+          "key": "container-max-1200",
+          "label": "container-max-1200-np",
+          "description": "Standard wide container max width 1200px centered",
+          "styles": {
+            "desktop": {
+              "max-width": "1200px",
+              "width": "100%",
+              "margin-inline-start": "auto",
+              "margin-inline-end": "auto"
+            },
+            "mobile": {
+              "max-width": "100%"
+            }
+          },
+          "priority": 100
+        },
+        {
+          "key": "container-max-1000",
+          "label": "container-max-1000-np",
+          "description": "Medium-wide container max width 1000px centered (feature showcases, 2-column cards)",
+          "styles": {
+            "desktop": {
+              "max-width": "1000px",
+              "width": "100%",
+              "margin-inline-start": "auto",
+              "margin-inline-end": "auto"
+            },
+            "mobile": {
+              "max-width": "100%"
+            }
+          },
+          "priority": 100
+        },
+        {
+          "key": "container-max-980",
+          "label": "container-max-980-np",
+          "description": "Medium container max width 980px centered (forms, editorial layouts, blog articles)",
+          "styles": {
+            "desktop": {
+              "max-width": "980px",
+              "width": "100%",
+              "margin-inline-start": "auto",
+              "margin-inline-end": "auto"
+            },
+            "mobile": {
+              "max-width": "100%"
+            }
+          },
+          "priority": 100
+        },
+        {
+          "key": "container-max-800",
+          "label": "container-max-800-np",
+          "description": "Focused reading container max width 800px centered (long-form articles, policy documents)",
+          "styles": {
+            "desktop": {
+              "max-width": "800px",
+              "width": "100%",
+              "margin-inline-start": "auto",
+              "margin-inline-end": "auto"
+            },
+            "mobile": {
+              "max-width": "100%"
+            }
+          },
+          "priority": 100
+        },
+        {
+          "key": "container-max-600",
+          "label": "container-max-600-np",
+          "description": "Narrow container max width 600px centered (newsletter subscription, login forms, modal dialogs)",
+          "styles": {
+            "desktop": {
+              "max-width": "600px",
+              "width": "100%",
+              "margin-inline-start": "auto",
+              "margin-inline-end": "auto"
+            },
+            "mobile": {
+              "max-width": "100%"
+            }
+          },
+          "priority": 100
+        },
+        {
+          "key": "container-max-400",
+          "label": "container-max-400-np",
+          "description": "Compact widget container max width 400px centered",
+          "styles": {
+            "desktop": {
+              "max-width": "400px",
+              "width": "100%",
+              "margin-inline-start": "auto",
+              "margin-inline-end": "auto"
+            },
+            "mobile": {
+              "max-width": "100%"
+            }
+          },
+          "priority": 100
+        }
+      ]
+    },
+    {
+      "key": "section-spacing",
+      "label": "Section spacing",
+      "description": "Responsive side gutters and top/bottom section rhythm.",
+      "classes": [
+        {
+          "key": "section-gutter",
+          "label": "section-gutter-np",
+          "description": "Universal responsive horizontal page gutter applied to section wrappers",
+          "styles": {
+            "desktop": {
+              "padding": {
+                "inline-start": "var(size-gutter)",
+                "inline-end": "var(size-gutter)"
+              }
+            },
+            "tablet": {
+              "padding": {
+                "inline-start": "30px",
+                "inline-end": "30px"
+              }
+            },
+            "mobile": {
+              "padding": {
+                "inline-start": "16px",
+                "inline-end": "16px"
+              }
+            }
+          },
+          "priority": 90
+        },
+        {
+          "key": "section-tb-padding-xl",
+          "label": "section-tb-padding-xl-np",
+          "description": "Extra-large responsive vertical section padding (prominent heroes, major statement sections)",
+          "styles": {
+            "desktop": {
+              "padding": {
+                "block-start": "var(size-section-xl)",
+                "block-end": "var(size-section-xl)"
+              }
+            },
+            "tablet": {
+              "padding": {
+                "block-start": "100px",
+                "block-end": "100px"
+              }
+            },
+            "mobile": {
+              "padding": {
+                "block-start": "80px",
+                "block-end": "80px"
+              }
+            }
+          },
+          "priority": 90
+        },
+        {
+          "key": "section-tb-padding-l",
+          "label": "section-tb-padding-l-np",
+          "description": "Large responsive vertical section padding (standard heroes, prominent breaks)",
+          "styles": {
+            "desktop": {
+              "padding": {
+                "block-start": "var(size-section-l)",
+                "block-end": "var(size-section-l)"
+              }
+            },
+            "tablet": {
+              "padding": {
+                "block-start": "90px",
+                "block-end": "90px"
+              }
+            },
+            "mobile": {
+              "padding": {
+                "block-start": "70px",
+                "block-end": "70px"
+              }
+            }
+          },
+          "priority": 90
+        },
+        {
+          "key": "section-tb-padding-m",
+          "label": "section-tb-padding-m-np",
+          "description": "Medium responsive vertical section padding (standard content sections)",
+          "styles": {
+            "desktop": {
+              "padding": {
+                "block-start": "var(size-section-m)",
+                "block-end": "var(size-section-m)"
+              }
+            },
+            "tablet": {
+              "padding": {
+                "block-start": "60px",
+                "block-end": "60px"
+              }
+            },
+            "mobile": {
+              "padding": {
+                "block-start": "40px",
+                "block-end": "40px"
+              }
+            }
+          },
+          "priority": 90
+        },
+        {
+          "key": "section-tb-padding-s",
+          "label": "section-tb-padding-s-np",
+          "description": "Compact vertical section padding (sub-headers, stat bars, trust strips)",
+          "styles": {
+            "desktop": {
+              "padding": {
+                "block-start": "var(size-section-s)",
+                "block-end": "var(size-section-s)"
+              }
+            },
+            "tablet": {
+              "padding": {
+                "block-start": "30px",
+                "block-end": "30px"
+              }
+            },
+            "mobile": {
+              "padding": {
+                "block-start": "24px",
+                "block-end": "24px"
+              }
+            }
+          },
+          "priority": 90
+        },
+        {
+          "key": "section-tb-padding-xs",
+          "label": "section-tb-padding-xs-np",
+          "description": "Extra-compact vertical section padding (micro banners, announcement strips)",
+          "styles": {
+            "desktop": {
+              "padding": {
+                "block-start": "var(size-section-xs)",
+                "block-end": "var(size-section-xs)"
+              }
+            },
+            "tablet": {
+              "padding": {
+                "block-start": "20px",
+                "block-end": "20px"
+              }
+            },
+            "mobile": {
+              "padding": {
+                "block-start": "16px",
+                "block-end": "16px"
+              }
+            }
+          },
+          "priority": 90
+        }
+      ]
+    },
+    {
+      "key": "padding",
+      "label": "Padding",
+      "description": "Inner padding scale plus zero-padding overrides.",
+      "classes": [
+        {
+          "key": "no-padding",
+          "label": "no-padding-np",
+          "description": "Zeroes out container padding cleanly",
+          "styles": {
+            "desktop": {
+              "padding": "0px"
+            },
+            "mobile": {
+              "padding": "0px"
+            }
+          },
+          "priority": 45
+        },
+        {
+          "key": "padding-xs",
+          "label": "padding-xs-np",
+          "description": "Compact internal padding (badges, pills, tight callouts)",
+          "styles": {
+            "desktop": {
+              "padding": "var(size-pad-xs)"
+            },
+            "mobile": {
+              "padding": "8px"
+            }
+          },
+          "priority": 80
+        },
+        {
+          "key": "padding-s",
+          "label": "padding-s-np",
+          "description": "Small internal padding (cards, list items, small modals)",
+          "styles": {
+            "desktop": {
+              "padding": "var(size-pad-s)"
+            },
+            "tablet": {
+              "padding": "18px"
+            },
+            "mobile": {
+              "padding": "14px"
+            }
+          },
+          "priority": 80
+        },
+        {
+          "key": "padding-m",
+          "label": "padding-m-np",
+          "description": "Medium internal padding (standard feature cards, testimonial panels)",
+          "styles": {
+            "desktop": {
+              "padding": "var(size-pad-m)"
+            },
+            "tablet": {
+              "padding": "26px"
+            },
+            "mobile": {
+              "padding": "20px"
+            }
+          },
+          "priority": 80
+        },
+        {
+          "key": "padding-l",
+          "label": "padding-l-np",
+          "description": "Large internal padding (highlight banners, framed callouts, hero cards)",
+          "styles": {
+            "desktop": {
+              "padding": "var(size-pad-l)"
+            },
+            "tablet": {
+              "padding": "36px"
+            },
+            "mobile": {
+              "padding": "24px"
+            }
+          },
+          "priority": 80
+        },
+        {
+          "key": "padding-xl",
+          "label": "padding-xl-np",
+          "description": "Extra large internal padding (spacious section cards, major banner callouts)",
+          "styles": {
+            "desktop": {
+              "padding": "var(size-pad-xl)"
+            },
+            "tablet": {
+              "padding": "48px"
+            },
+            "mobile": {
+              "padding": "32px"
+            }
+          },
+          "priority": 80
+        },
+        {
+          "key": "no-top-padding",
+          "label": "no-top-padding-np",
+          "description": "Removes block-start padding cleanly",
+          "styles": {
+            "desktop": {
+              "padding": {
+                "block-start": "0px"
+              }
+            },
+            "mobile": {
+              "padding": {
+                "block-start": "0px"
+              }
+            }
+          },
+          "priority": 45
+        },
+        {
+          "key": "no-bottom-padding",
+          "label": "no-bottom-padding-np",
+          "description": "Removes block-end padding cleanly",
+          "styles": {
+            "desktop": {
+              "padding": {
+                "block-end": "0px"
+              }
+            },
+            "mobile": {
+              "padding": {
+                "block-end": "0px"
+              }
+            }
+          },
+          "priority": 45
+        }
+      ]
+    },
+    {
+      "key": "gaps",
+      "label": "Gaps",
+      "description": "Flex and grid gap scale, from extra small to extra large.",
+      "classes": [
+        {
+          "key": "gap-xs",
+          "label": "gap-xs-np",
+          "description": "Extra small gap (8px desktop / 6px mobile)",
+          "styles": {
+            "desktop": {
+              "gap": "var(size-gap-xs)"
+            },
+            "mobile": {
+              "gap": "6px"
+            }
+          },
+          "priority": 70
+        },
+        {
+          "key": "gap-s",
+          "label": "gap-s-np",
+          "description": "Small gap (14px desktop / 10px mobile)",
+          "styles": {
+            "desktop": {
+              "gap": "var(size-gap-s)"
+            },
+            "tablet": {
+              "gap": "12px"
+            },
+            "mobile": {
+              "gap": "10px"
+            }
+          },
+          "priority": 70
+        },
+        {
+          "key": "gap-m",
+          "label": "gap-m-np",
+          "description": "Medium gap (24px desktop / 16px mobile)",
+          "styles": {
+            "desktop": {
+              "gap": "var(size-gap-m)"
+            },
+            "tablet": {
+              "gap": "20px"
+            },
+            "mobile": {
+              "gap": "16px"
+            }
+          },
+          "priority": 70
+        },
+        {
+          "key": "gap-l",
+          "label": "gap-l-np",
+          "description": "Large gap (40px desktop / 24px mobile)",
+          "styles": {
+            "desktop": {
+              "gap": "var(size-gap-l)"
+            },
+            "tablet": {
+              "gap": "30px"
+            },
+            "mobile": {
+              "gap": "24px"
+            }
+          },
+          "priority": 70
+        },
+        {
+          "key": "gap-xl",
+          "label": "gap-xl-np",
+          "description": "Extra large gap (80px desktop / 40px mobile)",
+          "styles": {
+            "desktop": {
+              "gap": "var(size-gap-xl)"
+            },
+            "tablet": {
+              "gap": "60px"
+            },
+            "mobile": {
+              "gap": "40px"
+            }
+          },
+          "priority": 70
+        }
+      ]
+    },
+    {
+      "key": "borders",
+      "label": "Borders & radius",
+      "description": "Card radius, hairline borders and pill shapes.",
+      "classes": [
+        {
+          "key": "card-border-radius",
+          "label": "card-border-radius-np",
+          "description": "Applies standard medium border radius with overflow clipping",
+          "styles": {
+            "desktop": {
+              "border-radius": "var(border-radius-m)",
+              "overflow": "hidden"
+            },
+            "mobile": {
+              "border-radius": "18px"
+            }
+          },
+          "priority": 50
+        },
+        {
+          "key": "border-bottom",
+          "label": "border-bottom-np",
+          "description": "Subtle 1px bottom border divider",
+          "styles": {
+            "desktop": {
+              "border-width": {
+                "block-start": "0px",
+                "inline-end": "0px",
+                "block-end": "1px",
+                "inline-start": "0px"
+              },
+              "border-style": "solid",
+              "border-color": "var(line)"
+            }
+          },
+          "priority": 50
+        },
+        {
+          "key": "border-top",
+          "label": "border-top-np",
+          "description": "Subtle 1px top border divider",
+          "styles": {
+            "desktop": {
+              "border-width": {
+                "block-start": "1px",
+                "inline-end": "0px",
+                "block-end": "0px",
+                "inline-start": "0px"
+              },
+              "border-style": "solid",
+              "border-color": "var(line)"
+            }
+          },
+          "priority": 50
+        },
+        {
+          "key": "border-radius-pill",
+          "label": "border-radius-pill-np",
+          "description": "Full pill border radius (9999px) for buttons, badges, chips",
+          "styles": {
+            "desktop": {
+              "border-radius": "var(border-radius-pill)"
+            }
+          },
+          "priority": 50
+        }
+      ]
+    },
+    {
+      "key": "buttons",
+      "label": "Buttons",
+      "description": "Add one look class to a button container: btn-primary-np, btn-secondary-np, btn-outline-np or btn-text-np. Optionally add btn-sm-np or btn-lg-np for size, and btn-pill-np (fully round) or btn-sharp-np (square) for the corners; soft corners are the default. Hover and press animations are the Button effects above; fx-hover-lift-np adds a lift.",
+      "classes": [
+        {
+          "key": "btn-primary",
+          "label": "btn-primary-np",
+          "description": "Primary button: accent fill with dark text, dark on hover, and a press state. Medium size built in.",
+          "styles": {
+            "desktop": {
+              "display": "inline-flex",
+              "align-items": "center",
+              "justify-content": "center",
+              "gap": "8px",
+              "padding": {
+                "block-start": "12px",
+                "block-end": "12px",
+                "inline-start": "22px",
+                "inline-end": "22px"
+              },
+              "font-size": "15px",
+              "font-weight": "600",
+              "line-height": "1.2em",
+              "border-width": "1.5px",
+              "border-style": "solid",
+              "border-radius": "var(border-radius-soft)",
+              "cursor": "pointer",
+              "transition": [
+                {
+                  "selection": {
+                    "key": "All properties",
+                    "value": "all"
+                  },
+                  "size": "200ms"
+                }
+              ],
+              "background": "var(accent)",
+              "color": "var(on-accent)",
+              "border-color": "var(accent)"
+            },
+            "desktop:hover": {
+              "background": "var(primary)",
+              "color": "var(background)",
+              "border-color": "var(primary)"
+            },
+            "desktop:active": {
+              "background": "var(primary)",
+              "color": "var(background)",
+              "border-color": "var(primary)",
+              "transform": {
+                "transform-functions": [
+                  {
+                    "x": "0px",
+                    "y": "1px",
+                    "z": "0px"
+                  }
+                ]
+              }
+            }
+          },
+          "priority": 60
+        },
+        {
+          "key": "btn-secondary",
+          "label": "btn-secondary-np",
+          "description": "Secondary button: dark fill with light text.",
+          "styles": {
+            "desktop": {
+              "display": "inline-flex",
+              "align-items": "center",
+              "justify-content": "center",
+              "gap": "8px",
+              "padding": {
+                "block-start": "12px",
+                "block-end": "12px",
+                "inline-start": "22px",
+                "inline-end": "22px"
+              },
+              "font-size": "15px",
+              "font-weight": "600",
+              "line-height": "1.2em",
+              "border-width": "1.5px",
+              "border-style": "solid",
+              "border-radius": "var(border-radius-soft)",
+              "cursor": "pointer",
+              "transition": [
+                {
+                  "selection": {
+                    "key": "All properties",
+                    "value": "all"
+                  },
+                  "size": "200ms"
+                }
+              ],
+              "background": "var(primary)",
+              "color": "var(background)",
+              "border-color": "var(primary)"
+            },
+            "desktop:hover": {
+              "background": "var(secondary)",
+              "border-color": "var(secondary)"
+            },
+            "desktop:active": {
+              "background": "var(secondary)",
+              "border-color": "var(secondary)",
+              "transform": {
+                "transform-functions": [
+                  {
+                    "x": "0px",
+                    "y": "1px",
+                    "z": "0px"
+                  }
+                ]
+              }
+            }
+          },
+          "priority": 60
+        },
+        {
+          "key": "btn-outline",
+          "label": "btn-outline-np",
+          "description": "Outline button: transparent with a border that fills on hover.",
+          "styles": {
+            "desktop": {
+              "display": "inline-flex",
+              "align-items": "center",
+              "justify-content": "center",
+              "gap": "8px",
+              "padding": {
+                "block-start": "12px",
+                "block-end": "12px",
+                "inline-start": "22px",
+                "inline-end": "22px"
+              },
+              "font-size": "15px",
+              "font-weight": "600",
+              "line-height": "1.2em",
+              "border-width": "1.5px",
+              "border-style": "solid",
+              "border-radius": "var(border-radius-soft)",
+              "cursor": "pointer",
+              "transition": [
+                {
+                  "selection": {
+                    "key": "All properties",
+                    "value": "all"
+                  },
+                  "size": "200ms"
+                }
+              ],
+              "background": "transparent",
+              "color": "var(primary)",
+              "border-color": "var(primary)"
+            },
+            "desktop:hover": {
+              "background": "var(primary)",
+              "color": "var(background)"
+            },
+            "desktop:active": {
+              "background": "var(primary)",
+              "color": "var(background)",
+              "transform": {
+                "transform-functions": [
+                  {
+                    "x": "0px",
+                    "y": "1px",
+                    "z": "0px"
+                  }
+                ]
+              }
+            }
+          },
+          "priority": 60
+        },
+        {
+          "key": "btn-text",
+          "label": "btn-text-np",
+          "description": "Text button: no fill or border, just the label (pairs well with the Sliding Underline module).",
+          "styles": {
+            "desktop": {
+              "display": "inline-flex",
+              "align-items": "center",
+              "justify-content": "center",
+              "gap": "8px",
+              "padding": {
+                "block-start": "6px",
+                "block-end": "6px",
+                "inline-start": "0px",
+                "inline-end": "0px"
+              },
+              "font-size": "15px",
+              "font-weight": "600",
+              "line-height": "1.2em",
+              "border-width": "1.5px",
+              "border-style": "solid",
+              "border-radius": "var(border-radius-soft)",
+              "cursor": "pointer",
+              "transition": [
+                {
+                  "selection": {
+                    "key": "All properties",
+                    "value": "all"
+                  },
+                  "size": "200ms"
+                }
+              ],
+              "background": "transparent",
+              "color": "var(primary)",
+              "border-color": "transparent"
+            },
+            "desktop:hover": {
+              "color": "var(secondary)"
+            },
+            "desktop:active": {
+              "color": "var(secondary)",
+              "transform": {
+                "transform-functions": [
+                  {
+                    "x": "0px",
+                    "y": "1px",
+                    "z": "0px"
+                  }
+                ]
+              }
+            }
+          },
+          "priority": 60
+        },
+        {
+          "key": "btn-sm",
+          "label": "btn-sm-np",
+          "description": "Small button size. Add alongside a button look.",
+          "styles": {
+            "desktop": {
+              "padding": {
+                "block-start": "8px",
+                "block-end": "8px",
+                "inline-start": "14px",
+                "inline-end": "14px"
+              },
+              "font-size": "13px"
+            }
+          },
+          "priority": 30
+        },
+        {
+          "key": "btn-lg",
+          "label": "btn-lg-np",
+          "description": "Large button size. Add alongside a button look.",
+          "styles": {
+            "desktop": {
+              "padding": {
+                "block-start": "16px",
+                "block-end": "16px",
+                "inline-start": "30px",
+                "inline-end": "30px"
+              },
+              "font-size": "17px"
+            },
+            "mobile": {
+              "padding": {
+                "block-start": "14px",
+                "block-end": "14px",
+                "inline-start": "24px",
+                "inline-end": "24px"
+              },
+              "font-size": "16px"
+            }
+          },
+          "priority": 30
+        },
+        {
+          "key": "btn-pill",
+          "label": "btn-pill-np",
+          "description": "Fully round button corners. Add alongside a button look.",
+          "styles": {
+            "desktop": {
+              "border-radius": "var(border-radius-pill)"
+            }
+          },
+          "priority": 30
+        },
+        {
+          "key": "btn-sharp",
+          "label": "btn-sharp-np",
+          "description": "Square button corners. Add alongside a button look.",
+          "styles": {
+            "desktop": {
+              "border-radius": "var(border-radius-sharp)"
+            }
+          },
+          "priority": 30
+        }
+      ]
+    },
+    {
+      "key": "effects",
+      "label": "Hover effects",
+      "description": "Lift and shadow effects for cards, buttons and anything else.",
+      "classes": [
+        {
+          "key": "fx-card-hover",
+          "label": "fx-card-hover-np",
+          "description": "Smooth 200ms 3px upward lift with subtle drop shadow depth on hover",
+          "styles": {
+            "desktop": {
+              "transition": [
+                {
+                  "selection": {
+                    "key": "All properties",
+                    "value": "all"
+                  },
+                  "size": "200ms"
+                }
+              ]
+            },
+            "desktop:hover": {
+              "box-shadow": [
+                {
+                  "hOffset": "0px",
+                  "vOffset": "12px",
+                  "blur": "24px",
+                  "spread": "0px",
+                  "color": "rgba(0, 0, 0, 0.08)",
+                  "position": null
+                }
+              ],
+              "transform": {
+                "transform-functions": [
+                  {
+                    "x": "0px",
+                    "y": "-4px",
+                    "z": "0px"
+                  }
+                ]
+              }
+            }
+          },
+          "priority": 20
+        },
+        {
+          "key": "fx-shadow-hover",
+          "label": "fx-shadow-hover-np",
+          "description": "Elevated 6px lift with deeper elevation shadow",
+          "styles": {
+            "desktop": {
+              "transition": [
+                {
+                  "selection": {
+                    "key": "All properties",
+                    "value": "all"
+                  },
+                  "size": "200ms"
+                }
+              ]
+            },
+            "desktop:hover": {
+              "box-shadow": [
+                {
+                  "hOffset": "0px",
+                  "vOffset": "16px",
+                  "blur": "32px",
+                  "spread": "0px",
+                  "color": "rgba(0, 0, 0, 0.16)",
+                  "position": null
+                }
+              ],
+              "transform": {
+                "transform-functions": [
+                  {
+                    "x": "0px",
+                    "y": "-6px",
+                    "z": "0px"
+                  }
+                ]
+              }
+            }
+          },
+          "priority": 20
+        },
+        {
+          "key": "fx-hover-lift",
+          "label": "fx-hover-lift-np",
+          "description": "Lifts 2px on hover with a smooth 200ms ease. No shadow, so it works on buttons, cards and icons.",
+          "styles": {
+            "desktop": {
+              "transition": [
+                {
+                  "selection": {
+                    "key": "All properties",
+                    "value": "all"
+                  },
+                  "size": "200ms"
+                }
+              ]
+            },
+            "desktop:hover": {
+              "transform": {
+                "transform-functions": [
+                  {
+                    "x": "0px",
+                    "y": "-2px",
+                    "z": "0px"
+                  }
+                ]
+              }
+            }
+          },
+          "priority": 20
+        }
+      ]
+    },
+    {
+      "key": "type",
+      "label": "Type scale",
+      "description": "Headings, subtitle, lead, body, small print, caption, overline and label on one scale. Font sizes shrink on tablet and mobile. Set the base size and ratio on this tab; the font family comes from your Elementor site settings.",
+      "classes": [
+        {
+          "key": "type-display",
+          "label": "type-display-np",
+          "description": "Display: an outsized headline for heroes, bigger than H1.",
+          "styles": {
+            "desktop": {
+              "font-size": "85px",
+              "line-height": "1.05em",
+              "font-weight": "700",
+              "letter-spacing": "-0.03em"
+            },
+            "tablet": {
+              "font-size": "63px"
+            },
+            "mobile": {
+              "font-size": "46px"
+            }
+          },
+          "priority": 42
+        },
+        {
+          "key": "type-h1",
+          "label": "type-h1-np",
+          "description": "Heading 1.",
+          "styles": {
+            "desktop": {
+              "font-size": "61px",
+              "line-height": "1.1em",
+              "font-weight": "700",
+              "letter-spacing": "-0.02em"
+            },
+            "tablet": {
+              "font-size": "48px"
+            },
+            "mobile": {
+              "font-size": "37px"
+            }
+          },
+          "priority": 42
+        },
+        {
+          "key": "type-h2",
+          "label": "type-h2-np",
+          "description": "Heading 2.",
+          "styles": {
+            "desktop": {
+              "font-size": "49px",
+              "line-height": "1.15em",
+              "font-weight": "700",
+              "letter-spacing": "-0.015em"
+            },
+            "tablet": {
+              "font-size": "40px"
+            },
+            "mobile": {
+              "font-size": "32px"
+            }
+          },
+          "priority": 42
+        },
+        {
+          "key": "type-h3",
+          "label": "type-h3-np",
+          "description": "Heading 3.",
+          "styles": {
+            "desktop": {
+              "font-size": "39px",
+              "line-height": "1.2em",
+              "font-weight": "700",
+              "letter-spacing": "-0.01em"
+            },
+            "tablet": {
+              "font-size": "33px"
+            },
+            "mobile": {
+              "font-size": "28px"
+            }
+          },
+          "priority": 42
+        },
+        {
+          "key": "type-h4",
+          "label": "type-h4-np",
+          "description": "Heading 4.",
+          "styles": {
+            "desktop": {
+              "font-size": "31px",
+              "line-height": "1.25em",
+              "font-weight": "700",
+              "letter-spacing": "-0.005em"
+            },
+            "tablet": {
+              "font-size": "28px"
+            },
+            "mobile": {
+              "font-size": "24px"
+            }
+          },
+          "priority": 42
+        },
+        {
+          "key": "type-h5",
+          "label": "type-h5-np",
+          "description": "Heading 5.",
+          "styles": {
+            "desktop": {
+              "font-size": "25px",
+              "line-height": "1.3em",
+              "font-weight": "700"
+            },
+            "tablet": {
+              "font-size": "23px"
+            },
+            "mobile": {
+              "font-size": "21px"
+            }
+          },
+          "priority": 42
+        },
+        {
+          "key": "type-h6",
+          "label": "type-h6-np",
+          "description": "Heading 6.",
+          "styles": {
+            "desktop": {
+              "font-size": "20px",
+              "line-height": "1.35em",
+              "font-weight": "700"
+            },
+            "tablet": {
+              "font-size": "19px"
+            },
+            "mobile": {
+              "font-size": "18px"
+            }
+          },
+          "priority": 42
+        },
+        {
+          "key": "type-subtitle",
+          "label": "type-subtitle-np",
+          "description": "Subtitle: the line under a heading, larger and lighter than body text.",
+          "styles": {
+            "desktop": {
+              "font-size": "22px",
+              "line-height": "1.4em",
+              "font-weight": "400",
+              "letter-spacing": "-0.005em"
+            },
+            "tablet": {
+              "font-size": "21px"
+            },
+            "mobile": {
+              "font-size": "20px"
+            }
+          },
+          "priority": 42
+        },
+        {
+          "key": "type-lead",
+          "label": "type-lead-np",
+          "description": "Lead: an intro paragraph, a step up from body text.",
+          "styles": {
+            "desktop": {
+              "font-size": "20px",
+              "line-height": "1.6em",
+              "font-weight": "400"
+            },
+            "tablet": {
+              "font-size": "19px"
+            },
+            "mobile": {
+              "font-size": "18px"
+            }
+          },
+          "priority": 42
+        },
+        {
+          "key": "type-body",
+          "label": "type-body-np",
+          "description": "Body text.",
+          "styles": {
+            "desktop": {
+              "font-size": "16px",
+              "line-height": "1.6em",
+              "font-weight": "400"
+            }
+          },
+          "priority": 42
+        },
+        {
+          "key": "type-small",
+          "label": "type-small-np",
+          "description": "Small print: notes and secondary text.",
+          "styles": {
+            "desktop": {
+              "font-size": "13px",
+              "line-height": "1.5em",
+              "font-weight": "400"
+            }
+          },
+          "priority": 42
+        },
+        {
+          "key": "type-caption",
+          "label": "type-caption-np",
+          "description": "Caption: under images, in tables and charts. Never smaller than 12px.",
+          "styles": {
+            "desktop": {
+              "font-size": "12px",
+              "line-height": "1.45em",
+              "font-weight": "400",
+              "letter-spacing": "0.01em"
+            }
+          },
+          "priority": 42
+        },
+        {
+          "key": "type-overline",
+          "label": "type-overline-np",
+          "description": "Overline (eyebrow): the short all-caps label above a heading.",
+          "styles": {
+            "desktop": {
+              "font-size": "13px",
+              "line-height": "1.3em",
+              "font-weight": "700",
+              "letter-spacing": "0.12em",
+              "text-transform": "uppercase"
+            }
+          },
+          "priority": 42
+        },
+        {
+          "key": "type-label",
+          "label": "type-label-np",
+          "description": "Label: form labels, tags and small UI text.",
+          "styles": {
+            "desktop": {
+              "font-size": "14px",
+              "line-height": "1.3em",
+              "font-weight": "600",
+              "letter-spacing": "0.01em"
+            }
+          },
+          "priority": 42
+        }
+      ]
+    },
+    {
+      "key": "typography",
+      "label": "Text & accessibility",
+      "description": "Alignment, casing and the screen-reader-only helper.",
+      "classes": [
+        {
+          "key": "text-center",
+          "label": "text-center-np",
+          "description": "Centers text alignment cleanly across viewports",
+          "styles": {
+            "desktop": {
+              "text-align": "center"
+            }
+          },
+          "priority": 40
+        },
+        {
+          "key": "text-left",
+          "label": "text-left-np",
+          "description": "Left aligns text across viewports",
+          "styles": {
+            "desktop": {
+              "text-align": "start"
+            }
+          },
+          "priority": 40
+        },
+        {
+          "key": "text-right",
+          "label": "text-right-np",
+          "description": "Right aligns text across viewports",
+          "styles": {
+            "desktop": {
+              "text-align": "end"
+            }
+          },
+          "priority": 40
+        },
+        {
+          "key": "all-caps",
+          "label": "all-caps-np",
+          "description": "Forces uppercase styling on headings, badges, or buttons",
+          "styles": {
+            "desktop": {
+              "text-transform": "uppercase"
+            }
+          },
+          "priority": 40
+        },
+        {
+          "key": "sr-only",
+          "label": "sr-only-np",
+          "description": "Hides elements visually while keeping them readable to screen readers (WCAG AAA)",
+          "styles": {
+            "desktop": {
+              "position": "absolute",
+              "width": "1px",
+              "height": "1px",
+              "padding": "0px",
+              "margin": "-1px",
+              "overflow": "hidden",
+              "clip": "rect(0, 0, 0, 0)",
+              "white-space": "nowrap",
+              "border-width": "0px"
+            }
+          },
+          "priority": 40
+        },
+        {
+          "key": "headline-poster",
+          "label": "headline-poster-np",
+          "description": "Poster headings: extra bold, all caps and tight, for big Billboard-style type. Put it next to a type class (like type-display-np), which keeps setting the size.",
+          "styles": {
+            "desktop": {
+              "text-transform": "uppercase",
+              "font-weight": "800",
+              "letter-spacing": "-0.03em",
+              "line-height": "0.9em"
+            }
+          },
+          "priority": 40
+        },
+        {
+          "key": "headline-refined",
+          "label": "headline-refined-np",
+          "description": "Refined headings: a lighter weight with tighter letter spacing, as in the Lens style. Put it next to a type class (like type-h1-np), which keeps setting the size.",
+          "styles": {
+            "desktop": {
+              "font-weight": "500",
+              "letter-spacing": "-0.035em"
+            }
+          },
+          "priority": 40
+        }
+      ]
+    },
+    {
+      "key": "behaviors",
+      "label": "Module classes",
+      "description": "Imported automatically when their module is switched on. Managed on the Modules tab.",
+      "classes": [
+        {
+          "key": "btn-overlay-fx",
+          "label": "btn-overlay-fx-np",
+          "description": "Activates circular ripple hover overlay expansion on any button",
+          "styles": {
+            "desktop:hover": {
+              "color": "var(ripple-text)"
+            }
+          },
+          "priority": 10,
+          "module": "button-ripple",
+          "role": "Put this on the button container. On hover or keyboard focus, a circle of the ripple color fills the button. The text color over the ripple is this class's Hover color, so you can change it per class in Elementor."
+        },
+        {
+          "key": "open-lightbox",
+          "label": "open-lightbox-np",
+          "description": "Designates an element as a trigger for the universal high-performance lightbox",
+          "styles": {
+            "desktop": {
+              "cursor": "pointer"
+            }
+          },
+          "priority": 10,
+          "module": "lightbox",
+          "role": "Put this on a button, image or container that links to an image, MP4, YouTube or Vimeo URL. Clicking it opens that media in the overlay instead of leaving the page."
+        },
+        {
+          "key": "main-header",
+          "label": "main-header-np",
+          "description": "Target class for directional hide-on-scroll and admin-bar-aware sticky header",
+          "styles": {},
+          "priority": 10,
+          "module": "smart-header",
+          "role": "Put this on your header container (in Theme Builder or on the page). It becomes fixed to the top and hides or shows as visitors scroll."
+        },
+        {
+          "key": "custom-marquee",
+          "label": "custom-marquee-np",
+          "description": "Accessible infinite ticker marquee container class",
+          "styles": {},
+          "priority": 10,
+          "module": "marquee",
+          "role": "Put this on a flexbox. Its children scroll sideways in an endless loop. Add as many logos, words or cards inside as you like."
+        },
+        {
+          "key": "slide-fade-blur",
+          "label": "slide-fade-blur-np",
+          "description": "Cascade entrance animation: Staggers child widgets on entering viewport (use independently of exit-fade-up)",
+          "styles": {},
+          "priority": 10,
+          "module": "slide-fade-blur",
+          "role": "Put this on the parent container. When it scrolls into view, each direct child animates in, one after another."
+        },
+        {
+          "key": "exit-fade-up",
+          "label": "exit-fade-up-np",
+          "description": "Continuous scroll parallax: Fades/shifts element at viewport top and bottom edges (use independently of slide-fade-blur)",
+          "styles": {},
+          "priority": 10,
+          "module": "exit-fade-up",
+          "role": "Put this on any element (a heading, a card, a whole section). Its opacity and position follow the scroll: it fades in near the bottom of the screen and fades out near the top."
+        },
+        {
+          "key": "btn-underline",
+          "label": "btn-underline-np",
+          "description": "Minimal text action with animated sliding underline and directional chevron",
+          "styles": {
+            "desktop": {
+              "background": "transparent"
+            }
+          },
+          "priority": 10,
+          "module": "button-underline",
+          "role": "Put this on the button container. It becomes a text-style button, and an underline slides in beneath it on hover or focus."
+        },
+        {
+          "key": "btn-hover-glow",
+          "label": "btn-hover-glow-np",
+          "description": "Clean button highlight border glow on hover",
+          "styles": {
+            "desktop": {
+              "transition": [
+                {
+                  "selection": {
+                    "key": "All properties",
+                    "value": "all"
+                  },
+                  "size": "200ms"
+                }
+              ]
+            },
+            "desktop:hover": {
+              "border-color": "var(glow-color)",
+              "box-shadow": [
+                {
+                  "hOffset": "0px",
+                  "vOffset": "0px",
+                  "blur": "12px",
+                  "spread": "0px",
+                  "color": "var(glow-color)",
+                  "position": null
+                }
+              ]
+            }
+          },
+          "priority": 10,
+          "module": "button-glow",
+          "role": "Put this on the button container. On hover or keyboard focus the border and a soft glow take on the glow color. The border color, glow size and timing live in this class's Hover state, so you can fine-tune them in Elementor."
+        },
+        {
+          "key": "cascade-item",
+          "label": "cascade-item-np",
+          "description": "Cascade stagger child marker for slide-fade-blur animation container",
+          "styles": {},
+          "priority": 10,
+          "module": "slide-fade-blur",
+          "role": "Optional. Put this on specific elements deeper inside the container to animate only those, in page order, instead of the direct children."
+        },
+        {
+          "key": "svg-mover",
+          "label": "svg-mover-np",
+          "description": "Put on an icon (SVG) inside a .btn-underline-np button: it nudges forward on hover. Called btn-arrow-np before 0.10.0.",
+          "styles": {},
+          "priority": 10,
+          "module": "button-underline",
+          "role": "Optional. Put this on an icon (SVG) inside a btn-underline-np button. It nudges forward on hover."
+        },
+        {
+          "key": "cascade-ignore",
+          "label": "cascade-ignore-np",
+          "description": "Put on a child of a .slide-fade-blur-np container to keep it out of the entrance animation.",
+          "styles": {},
+          "priority": 10,
+          "module": "slide-fade-blur",
+          "role": "Optional. Put this on a direct child to leave it out of the animation (for example a background shape)."
+        },
+        {
+          "key": "theme-toggle",
+          "label": "theme-toggle-np",
+          "description": "Put on a button or icon: it switches the site between light and dark mode.",
+          "styles": {},
+          "priority": 10,
+          "module": "dark-mode",
+          "role": "Put this on a button, link or icon. Clicking it (or pressing Enter or Space) switches between light and dark. It gets aria-pressed, and an icon-only toggle gets a name for screen readers."
+        },
+        {
+          "key": "hide-in-dark",
+          "label": "hide-in-dark-np",
+          "description": "Hidden in dark mode (for example a dark logo).",
+          "styles": {},
+          "priority": 10,
+          "module": "dark-mode",
+          "role": "Optional. Put this on anything that should only show in light mode, like a dark logo or a moon icon inside the toggle."
+        },
+        {
+          "key": "hide-in-light",
+          "label": "hide-in-light-np",
+          "description": "Hidden in light mode (for example a light logo).",
+          "styles": {},
+          "priority": 10,
+          "module": "dark-mode",
+          "role": "Optional. Put this on anything that should only show in dark mode, like a light logo or a sun icon inside the toggle."
+        },
+        {
+          "key": "btn-gradient",
+          "label": "btn-gradient-np",
+          "description": "Put on a button container: a five-color gradient fill that slides across on hover and focus.",
+          "styles": {
+            "desktop": {
+              "color": "var(btn-gradient-text)"
+            },
+            "desktop:hover": {
+              "color": "var(btn-gradient-text)"
+            },
+            "desktop:active": {
+              "color": "var(btn-gradient-text)"
+            }
+          },
+          "priority": 10,
+          "module": "button-gradient",
+          "role": "Put this on the button container. Its background becomes the gradient, which slides across on hover or keyboard focus. Use it instead of a look class like btn-primary-np. The text is dark by default; set another color on the class or the button in Elementor."
+        },
+        {
+          "key": "btn-gradient-outline",
+          "label": "btn-gradient-outline-np",
+          "description": "Put on a button container: a gradient outline that follows the corner radius and slides on hover and focus.",
+          "styles": {},
+          "priority": 10,
+          "module": "button-gradient",
+          "role": "Put this on the button container for a gradient outline with a see-through inside. It follows the button's corner radius and slides on hover too. Set the text color on the class or the button in Elementor."
+        },
+        {
+          "key": "btn-roll",
+          "label": "btn-roll-np",
+          "description": "Put on a button container: its text and icon roll up on hover and focus while copies roll in.",
+          "styles": {},
+          "priority": 10,
+          "module": "button-roll",
+          "role": "Put this on the button container. Its text and icon roll up on hover or keyboard focus while copies roll in. The copies take the button's hover text color, so an outline button that fills on hover shows the new color as it rolls in."
+        },
+        {
+          "key": "faded-carousel",
+          "label": "faded-carousel-np",
+          "description": "Put on a flexbox: its children become an endless faded carousel on every screen size.",
+          "styles": {},
+          "priority": 10,
+          "module": "faded-carousel",
+          "role": "Put this on a flexbox. Each child (a card, an image, a testimonial) becomes a slide in an endless carousel on every screen size: the center slides in full, faded ones peeking in at the sides."
+        },
+        {
+          "key": "faded-carousel-mobile",
+          "label": "faded-carousel-mobile-np",
+          "description": "Put on a flexbox: its children become an endless faded carousel on tablet and mobile only.",
+          "styles": {},
+          "priority": 10,
+          "module": "faded-carousel",
+          "role": "Use this instead for a carousel on tablet and mobile only (up to 1024px wide). On desktop the flexbox keeps the layout you built, for example cards in a row or a grid."
+        },
+        {
+          "key": "video-carousel",
+          "label": "video-carousel-np",
+          "description": "Put on a flexbox whose children each hold a video: an endless video carousel with arrows and a play button.",
+          "styles": {},
+          "priority": 10,
+          "module": "video-carousel",
+          "role": "Put this on a flexbox. Each child should hold one video (self-hosted, YouTube or Vimeo). Nori adds the arrows, the play button and the endless loop; a click on a faded video brings it to the center."
+        },
+        {
+          "key": "menu-toggle",
+          "label": "menu-toggle-np",
+          "description": "Put on a container holding a menu icon and a close icon: the Mobile Menu's button.",
+          "styles": {},
+          "priority": 10,
+          "module": "mobile-menu",
+          "role": "Put this on a small container holding two icons: the menu icon first, then the close icon. It becomes the menu button (a real button for keyboards and screen readers) and swaps its icons when the menu opens."
+        },
+        {
+          "key": "mobile-menu",
+          "label": "mobile-menu-np",
+          "description": "Put on the container with the phone menu's links: the Mobile Menu opens it below the header.",
+          "styles": {},
+          "priority": 10,
+          "module": "mobile-menu",
+          "role": "Put this on the container with the phone menu's links. It is hidden until the button opens it, then fills the screen below the header."
+        },
+        {
+          "key": "menu-links",
+          "label": "menu-links-np",
+          "description": "Put on the desktop menu: hidden where the Mobile Menu's button takes over.",
+          "styles": {},
+          "priority": 10,
+          "module": "mobile-menu",
+          "role": "Put this on the desktop menu (and anything else in the header bar that the phone menu already has, like its button). It is hidden where the menu button takes over."
+        },
+        {
+          "key": "bg-video",
+          "label": "bg-video-np",
+          "description": "Put on Elementor's Background Video element: a tint for readable text, tidy play and pause buttons, and playback that pauses off screen and respects reduced motion.",
+          "styles": {
+            "desktop": {
+              "justify-content": "flex-end",
+              "background": "var(band)"
+            }
+          },
+          "priority": 10,
+          "module": "background-video",
+          "role": "Put this on Elementor's Background Video element. Nori adds the tint, styles the play and pause buttons, pauses the video when it scrolls off screen and holds it still for visitors who prefer less motion."
+        },
+        {
+          "key": "video-text",
+          "label": "video-text-np",
+          "description": "Put on a Background Video element holding only a heading: the video plays inside the letters.",
+          "styles": {
+            "desktop": {
+              "background": "var(background)"
+            }
+          },
+          "priority": 10,
+          "module": "background-video",
+          "role": "Put this on a Background Video element that holds only a heading. The video plays inside the letters and the rest shows the element's own background. Without JavaScript and in the editor the heading shows as normal text over the video."
+        },
+        {
+          "key": "fit-text",
+          "label": "fit-text-np",
+          "description": "Put on a heading: it is sized to fill its container's width on one line.",
+          "styles": {},
+          "priority": 10,
+          "module": "fit-text",
+          "role": "Put this on a heading. Its size is set so the words fill the container's width exactly, on one line. In the editor it keeps its own size."
+        },
+        {
+          "key": "split-reveal",
+          "label": "split-reveal-np",
+          "description": "Put on a heading or short paragraph: its words rise into place one after another.",
+          "styles": {},
+          "priority": 10,
+          "module": "split-reveal",
+          "role": "Put this on a heading or short paragraph. Each word rises out of a mask in turn when it comes into view. The text stays readable without JavaScript, in the editor and for reduced motion."
+        },
+        {
+          "key": "scroll-expand",
+          "label": "scroll-expand-np",
+          "description": "Put on a full-width block: it starts framed and rounded and opens to the full width as it scrolls up.",
+          "styles": {},
+          "priority": 10,
+          "module": "scroll-expand",
+          "role": "Put this on a full-width block. It starts inset from the sides with rounded corners and opens to the full width as it scrolls toward the top of the screen."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+/* Nori: Button Border Glow. The look lives in the .btn-hover-glow-np class itself (Hover and Focus
+   states: border color and box shadow, both using the glow color picked in Nori: accent-np by default), so it is editable in
+   Elementor. This file only keeps motion off for visitors who prefer reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+	.btn-hover-glow-np { transition: none !important; }
+}

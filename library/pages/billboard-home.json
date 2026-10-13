@@ -1,0 +1,45 @@
+{
+ "key": "billboard-home",
+ "style": "billboard",
+ "label": "Home",
+ "order": 10,
+ "description": "A full home page: video hero, services, about, numbers, how it works, a review, questions and a video call to action.",
+ "title": "Home",
+ "sections": [
+  {
+   "key": "hero",
+   "variant": "billboard"
+  },
+  {
+   "key": "services",
+   "variant": "billboard"
+  },
+  {
+   "key": "about",
+   "variant": "billboard"
+  },
+  {
+   "key": "stats",
+   "variant": "billboard"
+  },
+  {
+   "key": "steps",
+   "variant": "billboard"
+  },
+  {
+   "key": "testimonials",
+   "variant": "billboard"
+  },
+  {
+   "key": "faq",
+   "variant": "billboard"
+  },
+  {
+   "key": "cta-band",
+   "variant": "billboard",
+   "content": {
+    "heading": "Need a plumber today?"
+   }
+  }
+ ]
+}

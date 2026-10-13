@@ -1,0 +1,9 @@
+/* Nori: shared button states, loaded with any Button module.
+   Press feedback and a disabled state for every Nori button look. */
+:is(.btn-primary-np, .btn-secondary-np, .btn-outline-np, .btn-text-np, .btn-gradient-np, .btn-gradient-outline-np):is(:disabled, .disabled, [aria-disabled="true"]) {
+	opacity: 0.45;
+	cursor: not-allowed;
+	pointer-events: none;
+	transform: none !important;
+	box-shadow: none !important;
+}

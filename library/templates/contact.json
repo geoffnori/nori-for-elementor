@@ -1,0 +1,1289 @@
+{
+ "key": "contact",
+ "label": "Contact & hours",
+ "group": "page",
+ "order": 95,
+ "anchor": "contact",
+ "description": "Phone, email, address and opening hours, with buttons to call and get directions, next to a map image.",
+ "slots": {
+  "eyebrow": {
+   "label": "Eyebrow",
+   "type": "text",
+   "sample": "Get in touch"
+  },
+  "heading": {
+   "label": "Heading",
+   "type": "text",
+   "required": true,
+   "sample": "Call, email or stop by"
+  },
+  "phone": {
+   "label": "Phone",
+   "type": "text",
+   "required": true,
+   "sample": "(555) 010-0148"
+  },
+  "email": {
+   "label": "Email",
+   "type": "text",
+   "sample": "hello@example.com"
+  },
+  "address": {
+   "label": "Address",
+   "type": "text",
+   "sample": "123 Main Street, Your Town"
+  },
+  "hours": {
+   "label": "Hours",
+   "type": "list",
+   "max": 7,
+   "fields": {
+    "days": {
+     "type": "text"
+    },
+    "time": {
+     "type": "text"
+    }
+   },
+   "sample": [
+    {
+     "days": "Mon – Fri",
+     "time": "7:00 am – 6:00 pm"
+    },
+    {
+     "days": "Saturday",
+     "time": "8:00 am – 2:00 pm"
+    },
+    {
+     "days": "Sunday",
+     "time": "Closed"
+    }
+   ]
+  },
+  "map_link": {
+   "label": "Directions link",
+   "type": "url",
+   "help": "A Google Maps or Apple Maps link to your address."
+  },
+  "map_image": {
+   "label": "Map image",
+   "type": "image",
+   "help": "A screenshot of your location on a map."
+  }
+ },
+ "variants": {
+  "studio": {
+   "label": "Studio: details, hours and a map",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "Contact",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Inner",
+       "children": [
+        {
+         "el": "e-grid",
+         "label": "Columns",
+         "children": [
+          {
+           "el": "e-flexbox",
+           "label": "Details",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "{eyebrow}",
+             "classes": [
+              "type-overline"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(muted)",
+               "margin": "0px"
+              }
+             },
+             "if": "eyebrow"
+            },
+            {
+             "el": "e-heading",
+             "text": "{heading}",
+             "classes": [
+              "type-h2"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(primary)"
+              }
+             },
+             "tag": "h2"
+            },
+            {
+             "el": "e-flexbox",
+             "label": "Lines",
+             "children": [
+              {
+               "el": "e-paragraph",
+               "text": "{phone}",
+               "classes": [
+                "type-h4"
+               ],
+               "css": {
+                "desktop": {
+                 "color": "var(primary)",
+                 "margin": "0px",
+                 "letter-spacing": "-0.02em"
+                }
+               },
+               "link": "{phone|tel}"
+              },
+              {
+               "el": "e-paragraph",
+               "text": "{email}",
+               "classes": [
+                "type-lead"
+               ],
+               "css": {
+                "desktop": {
+                 "color": "var(text)",
+                 "margin": "0px"
+                }
+               },
+               "link": "{email|mailto}",
+               "if": "email"
+              },
+              {
+               "el": "e-paragraph",
+               "text": "{address}",
+               "classes": [
+                "type-lead"
+               ],
+               "css": {
+                "desktop": {
+                 "color": "var(muted)",
+                 "margin": "0px"
+                }
+               },
+               "if": "address"
+              }
+             ],
+             "css": {
+              "desktop": {
+               "padding": "0px",
+               "flex-direction": "column",
+               "align-items": "flex-start"
+              }
+             },
+             "classes": [
+              "gap-xs"
+             ]
+            },
+            {
+             "el": "e-grid",
+             "label": "Hours",
+             "children": [
+              {
+               "each": "hours",
+               "as": "item",
+               "node": {
+                "el": "e-flexbox",
+                "label": "Row",
+                "children": [
+                 {
+                  "el": "e-paragraph",
+                  "text": "{item.days}",
+                  "classes": [
+                   "type-body"
+                  ],
+                  "css": {
+                   "desktop": {
+                    "color": "var(text)",
+                    "margin": "0px"
+                   }
+                  }
+                 },
+                 {
+                  "el": "e-paragraph",
+                  "text": "{item.time}",
+                  "classes": [
+                   "type-body"
+                  ],
+                  "css": {
+                   "desktop": {
+                    "color": "var(muted)",
+                    "margin": "0px"
+                   }
+                  }
+                 }
+                ],
+                "css": {
+                 "desktop": {
+                  "padding": {
+                   "block-start": "12px",
+                   "block-end": "12px",
+                   "inline-start": "0px",
+                   "inline-end": "0px"
+                  },
+                  "flex-direction": "row",
+                  "justify-content": "space-between"
+                 }
+                },
+                "classes": [
+                 "border-bottom",
+                 "gap-s"
+                ]
+               }
+              }
+             ],
+             "css": {
+              "desktop": {
+               "padding": "0px",
+               "grid-template-rows": "auto",
+               "grid-template-columns": "minmax(0, 1fr)",
+               "gap": "0px"
+              }
+             },
+             "if": "hours"
+            },
+            {
+             "el": "e-flexbox",
+             "label": "Buttons",
+             "children": [
+              {
+               "el": "button",
+               "link": {
+                "label": "Call us",
+                "url": "{phone|tel}"
+               },
+               "classes": [
+                "btn-secondary"
+               ],
+               "label": "Call"
+              },
+              {
+               "el": "button",
+               "link": {
+                "label": "Get directions",
+                "url": "{map_link}"
+               },
+               "classes": [
+                "btn-outline"
+               ],
+               "label": "Directions",
+               "if": "map_link"
+              }
+             ],
+             "css": {
+              "desktop": {
+               "padding": "0px",
+               "flex-direction": "row",
+               "flex-wrap": "wrap"
+              }
+             },
+             "classes": [
+              "gap-s"
+             ]
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column",
+             "align-items": "stretch"
+            }
+           },
+           "classes": [
+            "gap-m"
+           ]
+          },
+          {
+           "el": "e-image",
+           "image": "{map_image}",
+           "label": "Map image",
+           "css": {
+            "desktop": {
+             "width": "100%",
+             "object-fit": "cover",
+             "height": "100%",
+             "min-height": "480px"
+            },
+            "mobile": {
+             "min-height": "260px"
+            }
+           },
+           "classes": [
+            "card-border-radius"
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "grid-template-rows": "auto",
+           "grid-template-columns": "minmax(0, 1fr) minmax(0, 1.1fr)",
+           "align-items": "stretch"
+          },
+          "mobile": {
+           "grid-template-columns": "minmax(0, 1fr)"
+          }
+         },
+         "classes": [
+          "gap-xl"
+         ]
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "flex-direction": "column",
+         "align-items": "stretch"
+        }
+       },
+       "classes": [
+        "container-max-1200",
+        "gap-l",
+        "scroll-anim"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(background)"
+      }
+     },
+     "classes": [
+      "section-gutter",
+      "section-tb-padding-l"
+     ],
+     "tag": "section"
+    }
+   ]
+  },
+  "bento": {
+   "label": "Bento: details, hours and map tiles",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "Contact",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Inner",
+       "children": [
+        {
+         "el": "e-flexbox",
+         "label": "Top",
+         "children": [
+          {
+           "el": "e-flexbox",
+           "label": "Heading",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "{eyebrow}",
+             "classes": [
+              "type-overline"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(muted)",
+               "margin": "0px"
+              }
+             },
+             "if": "eyebrow"
+            },
+            {
+             "el": "e-heading",
+             "text": "{heading}",
+             "classes": [
+              "type-h2"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(primary)"
+              }
+             },
+             "tag": "h2"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column",
+             "align-items": "flex-start"
+            }
+           },
+           "classes": [
+            "gap-xs"
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": {
+            "block-start": "40px",
+            "block-end": "10px",
+            "inline-start": "0px",
+            "inline-end": "0px"
+           },
+           "flex-direction": "row",
+           "justify-content": "space-between",
+           "align-items": "flex-end",
+           "flex-wrap": "wrap"
+          },
+          "mobile": {
+           "padding": {
+            "block-start": "24px",
+            "block-end": "4px",
+            "inline-start": "0px",
+            "inline-end": "0px"
+           }
+          }
+         },
+         "classes": [
+          "gap-m"
+         ]
+        },
+        {
+         "el": "e-grid",
+         "label": "Tiles",
+         "children": [
+          {
+           "el": "e-flexbox",
+           "label": "Details",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "{phone}",
+             "classes": [
+              "type-h3"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(primary)",
+               "margin": "0px",
+               "letter-spacing": "-0.02em"
+              }
+             },
+             "link": "{phone|tel}"
+            },
+            {
+             "el": "e-paragraph",
+             "text": "{email}",
+             "classes": [
+              "type-lead"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(text)",
+               "margin": "0px"
+              }
+             },
+             "link": "{email|mailto}",
+             "if": "email"
+            },
+            {
+             "el": "e-paragraph",
+             "text": "{address}",
+             "classes": [
+              "type-lead"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(muted)",
+               "margin": "0px"
+              }
+             },
+             "if": "address"
+            },
+            {
+             "el": "e-flexbox",
+             "label": "Buttons",
+             "children": [
+              {
+               "el": "button",
+               "link": {
+                "label": "Call us",
+                "url": "{phone|tel}"
+               },
+               "classes": [
+                "btn-primary",
+                "btn-pill"
+               ],
+               "label": "Call"
+              },
+              {
+               "el": "button",
+               "link": {
+                "label": "Get directions",
+                "url": "{map_link}"
+               },
+               "classes": [
+                "btn-outline",
+                "btn-pill"
+               ],
+               "label": "Directions",
+               "if": "map_link"
+              }
+             ],
+             "css": {
+              "desktop": {
+               "padding": "0px",
+               "flex-direction": "row",
+               "flex-wrap": "wrap"
+              }
+             },
+             "classes": [
+              "gap-s"
+             ]
+            }
+           ],
+           "css": {
+            "desktop": {
+             "flex-direction": "column",
+             "background": "var(background)",
+             "align-items": "flex-start",
+             "grid-column": "span 5"
+            },
+            "mobile": {
+             "padding": "22px",
+             "border-radius": "18px",
+             "grid-column": "1 / -1"
+            }
+           },
+           "classes": [
+            "card-border-radius",
+            "gap-s",
+            "padding-m"
+           ]
+          },
+          {
+           "el": "e-flexbox",
+           "label": "Hours",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "Hours",
+             "classes": [
+              "type-overline"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(on-accent)",
+               "margin": "0px"
+              }
+             }
+            },
+            {
+             "each": "hours",
+             "as": "item",
+             "node": {
+              "el": "e-flexbox",
+              "label": "Row",
+              "children": [
+               {
+                "el": "e-paragraph",
+                "text": "{item.days}",
+                "classes": [
+                 "type-label"
+                ],
+                "css": {
+                 "desktop": {
+                  "color": "var(on-accent)",
+                  "margin": "0px"
+                 }
+                }
+               },
+               {
+                "el": "e-paragraph",
+                "text": "{item.time}",
+                "classes": [
+                 "type-body"
+                ],
+                "css": {
+                 "desktop": {
+                  "color": "var(on-accent)",
+                  "margin": "0px"
+                 }
+                }
+               }
+              ],
+              "css": {
+               "desktop": {
+                "padding": "0px",
+                "flex-direction": "row",
+                "justify-content": "space-between"
+               }
+              },
+              "classes": [
+               "gap-s"
+              ]
+             }
+            }
+           ],
+           "css": {
+            "desktop": {
+             "flex-direction": "column",
+             "background": "var(accent)",
+             "align-items": "flex-start",
+             "grid-column": "span 3"
+            },
+            "mobile": {
+             "padding": "22px",
+             "border-radius": "18px",
+             "grid-column": "1 / -1"
+            }
+           },
+           "if": "hours",
+           "classes": [
+            "card-border-radius",
+            "gap-s",
+            "padding-m"
+           ]
+          },
+          {
+           "el": "e-flexbox",
+           "label": "Map",
+           "children": [
+            {
+             "el": "e-image",
+             "image": "{map_image}",
+             "label": "Map image",
+             "css": {
+              "desktop": {
+               "width": "100%",
+               "object-fit": "cover",
+               "height": "100%",
+               "min-height": "340px"
+              },
+              "mobile": {
+               "min-height": "220px"
+              }
+             }
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column",
+             "grid-column": "span 4"
+            },
+            "mobile": {
+             "grid-column": "1 / -1",
+             "border-radius": "18px"
+            }
+           },
+           "classes": [
+            "card-border-radius"
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "grid-template-rows": "auto",
+           "grid-template-columns": "repeat(12, minmax(0, 1fr))",
+           "align-items": "stretch"
+          },
+          "mobile": {
+           "grid-template-columns": "minmax(0, 1fr)"
+          }
+         },
+         "classes": [
+          "gap-s"
+         ]
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "flex-direction": "column",
+         "align-items": "stretch"
+        }
+       },
+       "classes": [
+        "container-max-1200",
+        "gap-s",
+        "scroll-anim"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(surface)"
+      }
+     },
+     "classes": [
+      "section-gutter",
+      "section-tb-padding-s"
+     ],
+     "tag": "section"
+    }
+   ]
+  },
+  "billboard": {
+   "label": "Billboard: a huge phone number and a map",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "Contact",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Inner",
+       "children": [
+        {
+         "el": "e-grid",
+         "label": "Columns",
+         "children": [
+          {
+           "el": "e-flexbox",
+           "label": "Details",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "{eyebrow}",
+             "classes": [
+              "type-overline"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(muted)",
+               "margin": "0px"
+              }
+             },
+             "if": "eyebrow"
+            },
+            {
+             "el": "e-heading",
+             "text": "{heading}",
+             "classes": [
+              "type-h2",
+              "all-caps"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(primary)"
+              }
+             },
+             "tag": "h2"
+            },
+            {
+             "el": "e-paragraph",
+             "text": "{phone}",
+             "classes": [
+              "type-display",
+              "fit-text",
+              "headline-poster"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(primary)",
+               "margin": "0px",
+               "font-size": "6vw"
+              },
+              "mobile": {
+               "font-size": "40px"
+              }
+             },
+             "link": "{phone|tel}"
+            },
+            {
+             "el": "e-paragraph",
+             "text": "{email}",
+             "classes": [
+              "type-lead"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(text)",
+               "margin": "0px"
+              }
+             },
+             "link": "{email|mailto}",
+             "if": "email"
+            },
+            {
+             "el": "e-paragraph",
+             "text": "{address}",
+             "classes": [
+              "type-lead"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(muted)",
+               "margin": "0px"
+              }
+             },
+             "if": "address"
+            },
+            {
+             "el": "e-flexbox",
+             "label": "Hours",
+             "children": [
+              {
+               "each": "hours",
+               "as": "item",
+               "node": {
+                "el": "e-flexbox",
+                "label": "Row",
+                "children": [
+                 {
+                  "el": "e-paragraph",
+                  "text": "{item.days}",
+                  "classes": [
+                   "type-label",
+                   "all-caps"
+                  ],
+                  "css": {
+                   "desktop": {
+                    "color": "var(text)",
+                    "margin": "0px"
+                   }
+                  }
+                 },
+                 {
+                  "el": "e-paragraph",
+                  "text": "{item.time}",
+                  "classes": [
+                   "type-body"
+                  ],
+                  "css": {
+                   "desktop": {
+                    "color": "var(muted)",
+                    "margin": "0px"
+                   }
+                  }
+                 }
+                ],
+                "css": {
+                 "desktop": {
+                  "padding": {
+                   "block-start": "12px",
+                   "block-end": "12px",
+                   "inline-start": "0px",
+                   "inline-end": "0px"
+                  },
+                  "flex-direction": "row",
+                  "justify-content": "space-between"
+                 }
+                },
+                "classes": [
+                 "border-bottom",
+                 "gap-s"
+                ]
+               }
+              }
+             ],
+             "css": {
+              "desktop": {
+               "padding": "0px",
+               "flex-direction": "column",
+               "align-items": "stretch"
+              }
+             },
+             "if": "hours"
+            },
+            {
+             "el": "e-flexbox",
+             "label": "Buttons",
+             "children": [
+              {
+               "el": "button",
+               "link": {
+                "label": "Call us",
+                "url": "{phone|tel}"
+               },
+               "classes": [
+                "btn-primary",
+                "btn-lg",
+                "btn-sharp"
+               ],
+               "label": "Call"
+              },
+              {
+               "el": "button",
+               "link": {
+                "label": "Get directions",
+                "url": "{map_link}"
+               },
+               "classes": [
+                "btn-outline",
+                "btn-lg",
+                "btn-sharp"
+               ],
+               "label": "Directions",
+               "if": "map_link"
+              }
+             ],
+             "css": {
+              "desktop": {
+               "padding": "0px",
+               "flex-direction": "row",
+               "flex-wrap": "wrap"
+              }
+             },
+             "classes": [
+              "gap-s"
+             ]
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column",
+             "align-items": "stretch"
+            }
+           },
+           "classes": [
+            "gap-m"
+           ]
+          },
+          {
+           "el": "e-image",
+           "image": "{map_image}",
+           "label": "Map image",
+           "css": {
+            "desktop": {
+             "width": "100%",
+             "object-fit": "cover",
+             "height": "100%",
+             "min-height": "560px"
+            },
+            "mobile": {
+             "min-height": "260px"
+            }
+           }
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "grid-template-rows": "auto",
+           "grid-template-columns": "minmax(0, 1fr) minmax(0, 1fr)",
+           "align-items": "stretch"
+          },
+          "mobile": {
+           "grid-template-columns": "minmax(0, 1fr)"
+          }
+         },
+         "classes": [
+          "gap-xl"
+         ]
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "flex-direction": "column",
+         "align-items": "stretch"
+        }
+       },
+       "classes": [
+        "container-max-1600",
+        "gap-l",
+        "scroll-anim"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(background)"
+      }
+     },
+     "classes": [
+      "section-gutter",
+      "section-tb-padding-l"
+     ],
+     "tag": "section"
+    }
+   ]
+  },
+  "lens": {
+   "label": "Lens: a details card and a map",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "Contact",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Inner",
+       "children": [
+        {
+         "el": "e-grid",
+         "label": "Columns",
+         "children": [
+          {
+           "el": "e-flexbox",
+           "label": "Details",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "{eyebrow}",
+             "classes": [
+              "type-overline"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(muted)",
+               "margin": "0px"
+              }
+             },
+             "if": "eyebrow"
+            },
+            {
+             "el": "e-heading",
+             "text": "{heading}",
+             "classes": [
+              "type-h2",
+              "headline-refined"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(primary)"
+              }
+             },
+             "tag": "h2"
+            },
+            {
+             "el": "e-paragraph",
+             "text": "{phone}",
+             "classes": [
+              "type-h3",
+              "headline-refined"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(primary)",
+               "margin": "0px"
+              }
+             },
+             "link": "{phone|tel}"
+            },
+            {
+             "el": "e-paragraph",
+             "text": "{email}",
+             "classes": [
+              "type-lead"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(text)",
+               "margin": "0px"
+              }
+             },
+             "link": "{email|mailto}",
+             "if": "email"
+            },
+            {
+             "el": "e-paragraph",
+             "text": "{address}",
+             "classes": [
+              "type-lead"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(muted)",
+               "margin": "0px"
+              }
+             },
+             "if": "address"
+            },
+            {
+             "el": "e-flexbox",
+             "label": "Hours",
+             "children": [
+              {
+               "each": "hours",
+               "as": "item",
+               "node": {
+                "el": "e-flexbox",
+                "label": "Row",
+                "children": [
+                 {
+                  "el": "e-paragraph",
+                  "text": "{item.days}",
+                  "classes": [
+                   "type-body"
+                  ],
+                  "css": {
+                   "desktop": {
+                    "color": "var(text)",
+                    "margin": "0px"
+                   }
+                  }
+                 },
+                 {
+                  "el": "e-paragraph",
+                  "text": "{item.time}",
+                  "classes": [
+                   "type-body"
+                  ],
+                  "css": {
+                   "desktop": {
+                    "color": "var(muted)",
+                    "margin": "0px"
+                   }
+                  }
+                 }
+                ],
+                "css": {
+                 "desktop": {
+                  "padding": {
+                   "block-start": "12px",
+                   "block-end": "12px",
+                   "inline-start": "0px",
+                   "inline-end": "0px"
+                  },
+                  "flex-direction": "row",
+                  "justify-content": "space-between"
+                 }
+                },
+                "classes": [
+                 "border-bottom",
+                 "gap-s"
+                ]
+               }
+              }
+             ],
+             "css": {
+              "desktop": {
+               "padding": "0px",
+               "flex-direction": "column",
+               "align-items": "stretch"
+              }
+             },
+             "if": "hours"
+            },
+            {
+             "el": "e-flexbox",
+             "label": "Buttons",
+             "children": [
+              {
+               "el": "button",
+               "link": {
+                "label": "Call us",
+                "url": "{phone|tel}"
+               },
+               "classes": [
+                "btn-primary",
+                "btn-lg",
+                "btn-pill"
+               ],
+               "label": "Call"
+              },
+              {
+               "el": "button",
+               "link": {
+                "label": "Get directions",
+                "url": "{map_link}"
+               },
+               "classes": [
+                "btn-outline",
+                "btn-lg",
+                "btn-pill"
+               ],
+               "label": "Directions",
+               "if": "map_link"
+              }
+             ],
+             "css": {
+              "desktop": {
+               "padding": "0px",
+               "flex-direction": "row",
+               "flex-wrap": "wrap"
+              }
+             },
+             "classes": [
+              "gap-s"
+             ]
+            }
+           ],
+           "css": {
+            "desktop": {
+             "flex-direction": "column",
+             "align-items": "stretch",
+             "background": "var(surface)"
+            },
+            "mobile": {
+             "padding": "26px",
+             "border-radius": "22px"
+            }
+           },
+           "classes": [
+            "gap-m",
+            "card-border-radius",
+            "padding-l"
+           ]
+          },
+          {
+           "el": "e-image",
+           "image": "{map_image}",
+           "label": "Map image",
+           "css": {
+            "desktop": {
+             "width": "100%",
+             "object-fit": "cover",
+             "height": "100%",
+             "min-height": "520px"
+            },
+            "mobile": {
+             "min-height": "260px",
+             "border-radius": "22px"
+            }
+           },
+           "classes": [
+            "card-border-radius"
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "grid-template-rows": "auto",
+           "grid-template-columns": "minmax(0, 1fr) minmax(0, 1.1fr)",
+           "align-items": "stretch"
+          },
+          "mobile": {
+           "grid-template-columns": "minmax(0, 1fr)"
+          }
+         },
+         "classes": [
+          "gap-s"
+         ]
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "flex-direction": "column",
+         "align-items": "stretch"
+        }
+       },
+       "classes": [
+        "container-max-1400",
+        "gap-xl",
+        "scroll-anim"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(background)"
+      }
+     },
+     "classes": [
+      "section-gutter",
+      "section-tb-padding-l"
+     ],
+     "tag": "section"
+    }
+   ]
+  }
+ }
+}

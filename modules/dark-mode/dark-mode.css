@@ -1,0 +1,6 @@
+/* Nori: Dark Mode. The color switch itself is printed in <head> (see module.php); this file holds
+   the helper classes. They only act once the page has a theme, so in the Elementor editor every
+   element stays visible and editable. */
+html[data-nori-theme="dark"] .hide-in-dark-np,
+html[data-nori-theme="light"] .hide-in-light-np { display: none !important; }
+.theme-toggle-np { cursor: pointer; }

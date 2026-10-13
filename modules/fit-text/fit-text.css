@@ -1,0 +1,6 @@
+/* Nori: Fit Text. Put .fit-text-np on a heading: the JS sizes it to fill the width on one line.
+   Until then (and in the editor) the heading keeps its own font size. */
+.fit-text-np.nori-fit-ready { overflow: visible; }
+/* Never wider than the space it sits in. In a column that hugs its content (align-items: flex-start)
+   the one-line text would otherwise widen the heading itself, so it never shrinks to fit. */
+.fit-text-np { max-width: 100%; }

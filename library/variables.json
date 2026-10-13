@@ -1,0 +1,265 @@
+{
+  "version": 1,
+  "suffix": "-np",
+  "groups": [
+    {
+      "key": "colors",
+      "label": "Starter colors",
+      "description": "Eleven color tokens to start a site from. Colors & dark mode sets them all at once from a brand preset, with their dark versions.",
+      "variables": [
+        {
+          "key": "primary",
+          "label": "primary-np",
+          "type": "global-color-variable",
+          "value": "#111827",
+          "description": "Primary brand color"
+        },
+        {
+          "key": "secondary",
+          "label": "secondary-np",
+          "type": "global-color-variable",
+          "value": "#4B5563",
+          "description": "Secondary brand / supporting neutral color"
+        },
+        {
+          "key": "text",
+          "label": "text-np",
+          "type": "global-color-variable",
+          "value": "#111827",
+          "description": "Primary readable text color"
+        },
+        {
+          "key": "accent",
+          "label": "accent-np",
+          "type": "global-color-variable",
+          "value": "#D6FF00",
+          "description": "Vibrant accent color for highlights, badges, and interactive hovers"
+        },
+        {
+          "key": "on-accent",
+          "label": "on-accent-np",
+          "type": "global-color-variable",
+          "value": "#111827",
+          "description": "Text and icons on the accent color (the primary button's label). Stays readable in dark mode, where text turns light."
+        },
+        {
+          "key": "background",
+          "label": "background-np",
+          "type": "global-color-variable",
+          "value": "#FFFFFF",
+          "description": "Primary page background canvas color"
+        },
+        {
+          "key": "surface",
+          "label": "surface-np",
+          "type": "global-color-variable",
+          "value": "#F8F9FA",
+          "description": "Elevated card and container surface color"
+        },
+        {
+          "key": "line",
+          "label": "line-np",
+          "type": "global-color-variable",
+          "value": "#E2E3E5",
+          "description": "Divider and border lines. A faint version of your text color, so lines show on light and dark backgrounds."
+        },
+        {
+          "key": "muted",
+          "label": "muted-np",
+          "type": "global-color-variable",
+          "value": "#5D626C",
+          "description": "Quieter text for intros, captions and details. Still readable on the background and surface colors."
+        },
+        {
+          "key": "band",
+          "label": "band-np",
+          "type": "global-color-variable",
+          "value": "#111827",
+          "description": "The dark block behind footers, calls to action and dark tiles. Your primary color on a light site, a lifted dark shade on a dark one, so it never turns into a light slab."
+        },
+        {
+          "key": "on-band",
+          "label": "on-band-np",
+          "type": "global-color-variable",
+          "value": "#FFFFFF",
+          "description": "Text and icons on the band color."
+        }
+      ]
+    },
+    {
+      "key": "radius",
+      "label": "Border radius",
+      "description": "Seven radius tokens from sharp to pill. Button, card and pill classes use them.",
+      "variables": [
+        {
+          "key": "border-radius-sharp",
+          "label": "border-radius-sharp-np",
+          "type": "global-size-variable",
+          "value": "0px",
+          "description": "Sharp architectural 0px border radius (minimalist, editorial, modern Swiss)"
+        },
+        {
+          "key": "border-radius-xs",
+          "label": "border-radius-xs-np",
+          "type": "global-size-variable",
+          "value": "6px",
+          "description": "Extra small border radius (compact inputs, subtle chips)"
+        },
+        {
+          "key": "border-radius-soft",
+          "label": "border-radius-soft-np",
+          "type": "global-size-variable",
+          "value": "8px",
+          "description": "Soft rounded border radius (standard modern SaaS buttons and cards)"
+        },
+        {
+          "key": "border-radius-s",
+          "label": "border-radius-s-np",
+          "type": "global-size-variable",
+          "value": "14px",
+          "description": "Small component border radius (tags, chips, subtle badges)"
+        },
+        {
+          "key": "border-radius-m",
+          "label": "border-radius-m-np",
+          "type": "global-size-variable",
+          "value": "24px",
+          "description": "Medium component border radius (cards, dialogs, inputs, standard containers)"
+        },
+        {
+          "key": "border-radius-l",
+          "label": "border-radius-l-np",
+          "type": "global-size-variable",
+          "value": "45px",
+          "description": "Large container border radius (prominent hero boxes, feature callouts)"
+        },
+        {
+          "key": "border-radius-pill",
+          "label": "border-radius-pill-np",
+          "type": "global-size-variable",
+          "value": "9999px",
+          "description": "Full pill border radius (buttons, pill navigation links, circular icons)"
+        }
+      ]
+    },
+    {
+      "key": "spacing",
+      "label": "Spacing",
+      "description": "Gap, padding and section sizes. The spacing classes use them on desktop and keep their own tablet and mobile values.",
+      "variables": [
+        {
+          "key": "size-gap-xs",
+          "label": "size-gap-xs-np",
+          "type": "global-size-variable",
+          "value": "8px",
+          "description": "Extra small gap"
+        },
+        {
+          "key": "size-gap-s",
+          "label": "size-gap-s-np",
+          "type": "global-size-variable",
+          "value": "14px",
+          "description": "Small gap"
+        },
+        {
+          "key": "size-gap-m",
+          "label": "size-gap-m-np",
+          "type": "global-size-variable",
+          "value": "24px",
+          "description": "Medium gap"
+        },
+        {
+          "key": "size-gap-l",
+          "label": "size-gap-l-np",
+          "type": "global-size-variable",
+          "value": "40px",
+          "description": "Large gap"
+        },
+        {
+          "key": "size-gap-xl",
+          "label": "size-gap-xl-np",
+          "type": "global-size-variable",
+          "value": "80px",
+          "description": "Extra large gap"
+        },
+        {
+          "key": "size-pad-xs",
+          "label": "size-pad-xs-np",
+          "type": "global-size-variable",
+          "value": "12px",
+          "description": "Extra small padding"
+        },
+        {
+          "key": "size-pad-s",
+          "label": "size-pad-s-np",
+          "type": "global-size-variable",
+          "value": "20px",
+          "description": "Small padding"
+        },
+        {
+          "key": "size-pad-m",
+          "label": "size-pad-m-np",
+          "type": "global-size-variable",
+          "value": "32px",
+          "description": "Medium padding"
+        },
+        {
+          "key": "size-pad-l",
+          "label": "size-pad-l-np",
+          "type": "global-size-variable",
+          "value": "48px",
+          "description": "Large padding"
+        },
+        {
+          "key": "size-pad-xl",
+          "label": "size-pad-xl-np",
+          "type": "global-size-variable",
+          "value": "64px",
+          "description": "Extra large padding"
+        },
+        {
+          "key": "size-section-xs",
+          "label": "size-section-xs-np",
+          "type": "global-size-variable",
+          "value": "24px",
+          "description": "Extra small section spacing"
+        },
+        {
+          "key": "size-section-s",
+          "label": "size-section-s-np",
+          "type": "global-size-variable",
+          "value": "40px",
+          "description": "Small section spacing"
+        },
+        {
+          "key": "size-section-m",
+          "label": "size-section-m-np",
+          "type": "global-size-variable",
+          "value": "90px",
+          "description": "Medium section spacing"
+        },
+        {
+          "key": "size-section-l",
+          "label": "size-section-l-np",
+          "type": "global-size-variable",
+          "value": "120px",
+          "description": "Large section spacing"
+        },
+        {
+          "key": "size-section-xl",
+          "label": "size-section-xl-np",
+          "type": "global-size-variable",
+          "value": "140px",
+          "description": "Extra large section spacing"
+        },
+        {
+          "key": "size-gutter",
+          "label": "size-gutter-np",
+          "type": "global-size-variable",
+          "value": "40px",
+          "description": "Page side gutter"
+        }
+      ]
+    }
+  ]
+}

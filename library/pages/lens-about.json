@@ -1,0 +1,44 @@
+{
+ "key": "lens-about",
+ "style": "lens",
+ "label": "About",
+ "order": 30,
+ "description": "Your story, your team and a few numbers.",
+ "title": "About",
+ "sections": [
+  {
+   "key": "hero",
+   "variant": "lens-page",
+   "content": {
+    "eyebrow": "About us",
+    "headline": "A local business, run by people you'll meet",
+    "subhead": "Here's who we are, how we started and what we care about.",
+    "cta_primary": {
+     "label": "Contact us",
+     "url": "/contact/"
+    },
+    "cta_secondary": null,
+    "image": null
+   }
+  },
+  {
+   "key": "about",
+   "variant": "lens",
+   "content": {
+    "cta": null
+   }
+  },
+  {
+   "key": "stats",
+   "variant": "lens"
+  },
+  {
+   "key": "team",
+   "variant": "lens"
+  },
+  {
+   "key": "cta-band",
+   "variant": "lens"
+  }
+ ]
+}

@@ -1,0 +1,54 @@
+/* Nori: Marquee. Add .custom-marquee-np to a flexbox; its children scroll in a seamless loop.
+   Speed: --marquee-speed (default 35s, set in WP Admin > Nori > Modules). Gap between items: --marquee-gap (default 20px). */
+html.nori-js .custom-marquee-np.nori-marquee-ready {
+	display: flex !important;
+	flex-direction: row !important;
+	flex-wrap: nowrap !important;
+	overflow: hidden !important;
+	position: relative;
+	gap: 0 !important;
+}
+.nori-marquee-track {
+	display: flex;
+	flex-shrink: 0;
+	align-items: center;
+	gap: var(--marquee-gap, 20px);
+	padding-inline-end: var(--marquee-gap, 20px); /* Matches the gap so the loop is seamless. */
+	animation: nori-marquee var(--marquee-speed, var(--marquee-speed-np, var(--nori-marquee-speed, 35s))) linear infinite;
+	will-change: transform;
+}
+.custom-marquee-np[data-marquee-direction="right"] .nori-marquee-track { animation-direction: reverse; }
+.custom-marquee-np:not(.no-hover-pause-np):hover .nori-marquee-track,
+.custom-marquee-np:focus-within .nori-marquee-track,
+.custom-marquee-np.is-paused-np .nori-marquee-track { animation-play-state: paused; }
+
+@keyframes nori-marquee {
+	from { transform: translateX(0); }
+	to { transform: translateX(-100%); }
+}
+
+/* Pause/play control (WCAG 2.2.2): small, shown on hover and keyboard focus. */
+.nori-marquee-toggle {
+	position: absolute;
+	inset-block-start: 4px;
+	inset-inline-end: 4px;
+	z-index: 2;
+	width: 28px;
+	height: 28px;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: rgba(0, 0, 0, 0.6);
+	color: #fff;
+	font: 12px/28px sans-serif;
+	cursor: pointer;
+	opacity: 0;
+	transition: opacity 0.2s;
+}
+.custom-marquee-np:hover .nori-marquee-toggle,
+.nori-marquee-toggle:focus-visible { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+	.nori-marquee-track { animation: none !important; }
+	.nori-marquee-toggle { display: none; }
+}

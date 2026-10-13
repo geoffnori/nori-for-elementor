@@ -1,0 +1,751 @@
+{
+ "key": "cta-band",
+ "label": "Call to action",
+ "group": "page",
+ "order": 88,
+ "description": "A short push near the end of a page: one line and one or two buttons.",
+ "slots": {
+  "heading": {
+   "label": "Heading",
+   "type": "text",
+   "required": true,
+   "sample": "Got a leak right now?"
+  },
+  "text": {
+   "label": "Text",
+   "type": "text",
+   "sample": "We usually have someone free today."
+  },
+  "cta_primary": {
+   "label": "Main button",
+   "type": "link",
+   "required": true,
+   "sample": {
+    "label": "Book a visit",
+    "url": "/contact/"
+   }
+  },
+  "cta_secondary": {
+   "label": "Second button",
+   "type": "link",
+   "sample": {
+    "label": "Call us",
+    "url": "/contact/"
+   }
+  },
+  "video": {
+   "label": "Video",
+   "type": "video",
+   "sample": "sample",
+   "help": "Billboard and Lens: a short looping video (MP4, no sound needed). Studio and Bento don't use it."
+  }
+ },
+ "variants": {
+  "studio": {
+   "label": "Studio: full-width band with large type",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "Call to action",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Inner",
+       "children": [
+        {
+         "el": "e-grid",
+         "label": "Row",
+         "children": [
+          {
+           "el": "e-heading",
+           "text": "{heading}",
+           "classes": [
+            "type-display"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(on-band)",
+             "letter-spacing": "-0.04em",
+             "max-width": "900px"
+            }
+           },
+           "tag": "h2"
+          },
+          {
+           "el": "e-flexbox",
+           "label": "Buttons",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "{text}",
+             "classes": [
+              "type-lead"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(on-band)",
+               "margin": "0px",
+               "opacity": "75%"
+              }
+             },
+             "if": "text"
+            },
+            {
+             "el": "e-flexbox",
+             "label": "Buttons row",
+             "children": [
+              {
+               "el": "button",
+               "link": "{cta_primary}",
+               "classes": [
+                "btn-primary",
+                "btn-lg"
+               ],
+               "label": "Main button",
+               "icon": "arrow-right"
+              },
+              {
+               "el": "button",
+               "link": "{cta_secondary}",
+               "classes": [
+                "btn-outline",
+                "btn-lg"
+               ],
+               "label": "Second button",
+               "css": {
+                "desktop": {
+                 "border-color": "var(on-band)",
+                 "color": "var(on-band)"
+                }
+               },
+               "if": "cta_secondary"
+              }
+             ],
+             "css": {
+              "desktop": {
+               "padding": "0px",
+               "flex-direction": "row",
+               "flex-wrap": "wrap"
+              }
+             },
+             "classes": [
+              "gap-s"
+             ]
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column",
+             "align-items": "flex-start"
+            }
+           },
+           "classes": [
+            "gap-m"
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "grid-template-rows": "auto",
+           "grid-template-columns": "minmax(0, 1.4fr) minmax(0, 1fr)",
+           "align-items": "end"
+          },
+          "mobile": {
+           "grid-template-columns": "minmax(0, 1fr)"
+          }
+         },
+         "classes": [
+          "gap-xl"
+         ]
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "flex-direction": "column",
+         "align-items": "stretch"
+        }
+       },
+       "classes": [
+        "container-max-1200",
+        "scroll-anim"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(band)"
+      }
+     },
+     "classes": [
+      "section-gutter",
+      "section-tb-padding-xl"
+     ],
+     "tag": "section"
+    }
+   ]
+  },
+  "bento": {
+   "label": "Bento: a band tile",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "Call to action",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Inner",
+       "children": [
+        {
+         "el": "e-flexbox",
+         "label": "Band",
+         "children": [
+          {
+           "el": "e-flexbox",
+           "label": "Text",
+           "children": [
+            {
+             "el": "e-heading",
+             "text": "{heading}",
+             "classes": [
+              "type-h2"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(on-band)"
+              }
+             },
+             "tag": "h2"
+            },
+            {
+             "el": "e-paragraph",
+             "text": "{text}",
+             "classes": [
+              "type-lead"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(on-band)",
+               "margin": "0px",
+               "opacity": "75%"
+              }
+             },
+             "if": "text"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column",
+             "align-items": "flex-start",
+             "max-width": "640px"
+            }
+           },
+           "classes": [
+            "gap-xs"
+           ]
+          },
+          {
+           "el": "e-flexbox",
+           "label": "Buttons",
+           "children": [
+            {
+             "el": "button",
+             "link": "{cta_primary}",
+             "classes": [
+              "btn-primary",
+              "btn-lg",
+              "btn-pill"
+             ],
+             "label": "Main button",
+             "icon": "arrow-right"
+            },
+            {
+             "el": "button",
+             "link": "{cta_secondary}",
+             "classes": [
+              "btn-outline",
+              "btn-lg",
+              "btn-pill"
+             ],
+             "label": "Second button",
+             "css": {
+              "desktop": {
+               "border-color": "var(on-band)",
+               "color": "var(on-band)"
+              }
+             },
+             "if": "cta_secondary"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "row",
+             "flex-wrap": "wrap",
+             "align-items": "center"
+            }
+           },
+           "classes": [
+            "gap-s"
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "flex-direction": "row",
+           "background": "var(band)",
+           "align-items": "center",
+           "flex-wrap": "wrap",
+           "justify-content": "space-between"
+          },
+          "mobile": {
+           "padding": "26px",
+           "border-radius": "18px"
+          }
+         },
+         "classes": [
+          "card-border-radius",
+          "gap-m",
+          "padding-l"
+         ]
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "flex-direction": "column",
+         "align-items": "stretch"
+        }
+       },
+       "classes": [
+        "container-max-1200",
+        "gap-s",
+        "scroll-anim"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(surface)"
+      }
+     },
+     "classes": [
+      "section-gutter",
+      "section-tb-padding-s"
+     ],
+     "tag": "section"
+    }
+   ]
+  },
+  "billboard": {
+   "label": "Billboard: full-width video with huge type",
+   "tree": [
+    {
+     "el": "e-background-video",
+     "label": "Call to action",
+     "video": "{video}",
+     "classes": [
+      "bg-video",
+      "section-gutter",
+      "section-tb-padding-xl"
+     ],
+     "css": {
+      "desktop": {
+       "min-height": "620px"
+      },
+      "mobile": {
+       "min-height": "460px"
+      }
+     },
+     "children": [
+      {
+       "el": "e-background-video-content",
+       "label": "Content",
+       "children": [
+        {
+         "el": "e-flexbox",
+         "label": "Inner",
+         "children": [
+          {
+           "el": "e-heading",
+           "text": "{heading}",
+           "classes": [
+            "type-display",
+            "headline-poster"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(on-band)",
+             "font-size": "8vw",
+             "max-width": "1500px"
+            },
+            "mobile": {
+             "font-size": "48px"
+            }
+           },
+           "tag": "h2"
+          },
+          {
+           "el": "e-flexbox",
+           "label": "Row",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "{text}",
+             "classes": [
+              "type-lead"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(on-band)",
+               "margin": "0px",
+               "max-width": "520px"
+              }
+             },
+             "if": "text"
+            },
+            {
+             "el": "e-flexbox",
+             "label": "Buttons",
+             "children": [
+              {
+               "el": "button",
+               "link": "{cta_primary}",
+               "classes": [
+                "btn-primary",
+                "btn-lg",
+                "btn-sharp"
+               ],
+               "label": "Main button",
+               "icon": "arrow-right"
+              },
+              {
+               "el": "button",
+               "link": "{cta_secondary}",
+               "classes": [
+                "btn-outline",
+                "btn-lg",
+                "btn-sharp"
+               ],
+               "label": "Second button",
+               "css": {
+                "desktop": {
+                 "border-color": "var(on-band)",
+                 "color": "var(on-band)"
+                }
+               },
+               "if": "cta_secondary"
+              }
+             ],
+             "css": {
+              "desktop": {
+               "padding": "0px",
+               "flex-direction": "row",
+               "flex-wrap": "wrap",
+               "align-items": "center",
+               "justify-content": "flex-end"
+              },
+              "mobile": {
+               "justify-content": "flex-start"
+              }
+             },
+             "classes": [
+              "gap-s"
+             ]
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "row",
+             "flex-wrap": "wrap",
+             "justify-content": "space-between",
+             "align-items": "flex-end"
+            }
+           },
+           "classes": [
+            "gap-m"
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "column",
+           "align-items": "stretch"
+          }
+         },
+         "classes": [
+          "container-max-1600",
+          "gap-l",
+          "scroll-anim"
+         ]
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "justify-content": "flex-end"
+        }
+       }
+      },
+      {
+       "el": "e-background-video-controls",
+       "label": "Controls",
+       "children": [
+        {
+         "el": "e-background-video-play",
+         "label": "Play button",
+         "children": [
+          {
+           "el": "e-paragraph",
+           "text": "Play",
+           "tag": "span"
+          }
+         ]
+        },
+        {
+         "el": "e-background-video-pause",
+         "label": "Pause button",
+         "children": [
+          {
+           "el": "e-paragraph",
+           "text": "Pause",
+           "tag": "span"
+          }
+         ]
+        }
+       ],
+       "css": {
+        "desktop": {
+         "inset-block-start": "20px",
+         "inset-block-end": "auto"
+        }
+       }
+      }
+     ],
+     "tag": "section"
+    }
+   ]
+  },
+  "lens": {
+   "label": "Lens: a rounded video panel",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "Call to action",
+     "children": [
+      {
+       "el": "e-background-video",
+       "label": "Video",
+       "video": "{video}",
+       "classes": [
+        "bg-video",
+        "card-border-radius",
+        "padding-xl"
+       ],
+       "css": {
+        "desktop": {
+         "min-height": "560px"
+        },
+        "mobile": {
+         "min-height": "440px",
+         "border-radius": "22px",
+         "padding": "26px"
+        }
+       },
+       "children": [
+        {
+         "el": "e-background-video-content",
+         "label": "Content",
+         "children": [
+          {
+           "el": "e-flexbox",
+           "label": "Row",
+           "children": [
+            {
+             "el": "e-flexbox",
+             "label": "Text",
+             "children": [
+              {
+               "el": "e-heading",
+               "text": "{heading}",
+               "classes": [
+                "type-h1",
+                "split-reveal",
+                "headline-refined"
+               ],
+               "css": {
+                "desktop": {
+                 "color": "var(on-band)"
+                }
+               },
+               "tag": "h2"
+              },
+              {
+               "el": "e-paragraph",
+               "text": "{text}",
+               "classes": [
+                "type-lead"
+               ],
+               "css": {
+                "desktop": {
+                 "color": "var(on-band)",
+                 "margin": "0px",
+                 "opacity": "80%"
+                }
+               },
+               "if": "text"
+              }
+             ],
+             "css": {
+              "desktop": {
+               "padding": "0px",
+               "flex-direction": "column",
+               "align-items": "flex-start",
+               "max-width": "760px"
+              }
+             },
+             "classes": [
+              "gap-s"
+             ]
+            },
+            {
+             "el": "e-flexbox",
+             "label": "Buttons",
+             "children": [
+              {
+               "el": "button",
+               "link": "{cta_primary}",
+               "classes": [
+                "btn-primary",
+                "btn-lg",
+                "btn-pill"
+               ],
+               "label": "Main button",
+               "icon": "arrow-right"
+              },
+              {
+               "el": "button",
+               "link": "{cta_secondary}",
+               "classes": [
+                "btn-outline",
+                "btn-lg",
+                "btn-pill"
+               ],
+               "label": "Second button",
+               "css": {
+                "desktop": {
+                 "border-color": "var(on-band)",
+                 "color": "var(on-band)"
+                }
+               },
+               "if": "cta_secondary"
+              }
+             ],
+             "css": {
+              "desktop": {
+               "padding": "0px",
+               "flex-direction": "row",
+               "flex-wrap": "wrap",
+               "align-items": "center",
+               "justify-content": "flex-start"
+              }
+             },
+             "classes": [
+              "gap-s"
+             ]
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "row",
+             "flex-wrap": "wrap",
+             "justify-content": "space-between",
+             "align-items": "flex-end"
+            }
+           },
+           "classes": [
+            "gap-l"
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "justify-content": "flex-end"
+          }
+         }
+        },
+        {
+         "el": "e-background-video-controls",
+         "label": "Controls",
+         "children": [
+          {
+           "el": "e-background-video-play",
+           "label": "Play button",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "Play",
+             "tag": "span"
+            }
+           ]
+          },
+          {
+           "el": "e-background-video-pause",
+           "label": "Pause button",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "Pause",
+             "tag": "span"
+            }
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "inset-block-start": "20px",
+           "inset-block-end": "auto"
+          }
+         }
+        }
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(background)",
+       "padding": {
+        "block-start": "24px",
+        "block-end": "40px",
+        "inline-start": "40px",
+        "inline-end": "40px"
+       }
+      },
+      "mobile": {
+       "padding": {
+        "block-start": "12px",
+        "block-end": "18px",
+        "inline-start": "12px",
+        "inline-end": "12px"
+       }
+      }
+     },
+     "classes": [
+      "section-gutter"
+     ],
+     "tag": "section"
+    }
+   ]
+  }
+ }
+}

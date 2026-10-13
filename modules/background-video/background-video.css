@@ -1,0 +1,64 @@
+/* Nori: Background Video. Builds on Elementor's own Background Video element (e-background-video).
+   .bg-video-np: a tint over the video so text on top stays readable, tidy play/pause buttons, and
+   playback that pauses off screen and respects reduced motion (the JS).
+   .video-text-np: the video plays only inside the text (the JS draws the text as a mask). */
+
+/* Tint: sits above the video (z-index 0, later in the stacking order) and below the content (1). */
+.bg-video-np { isolation: isolate; }
+.bg-video-np::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	pointer-events: none;
+	background: var(--nori-bgv-tint, #000);
+	opacity: var(--nori-bgv-strength, 0.45);
+}
+.bg-video-np.nori-bgv--bottom::after {
+	background: linear-gradient(180deg, transparent 0%, var(--nori-bgv-tint, #000) 100%);
+	opacity: calc(var(--nori-bgv-strength, 0.45) * 1.7);
+}
+.bg-video-np.nori-bgv--side::after {
+	background: linear-gradient(90deg, var(--nori-bgv-tint, #000) 0%, transparent 85%);
+	opacity: calc(var(--nori-bgv-strength, 0.45) * 1.7);
+}
+
+/* Play and pause: a small frosted pill. Elementor keeps only the one that applies visible. */
+.nori-bgv.nori-bgv .e-background-video__play,
+.nori-bgv.nori-bgv .e-background-video__pause {
+	background: rgba(0, 0, 0, 0.45);
+	color: #fff;
+	border-radius: 999px;
+	padding: 8px 14px;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1;
+	letter-spacing: 0.04em;
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
+	transition: background-color 0.2s ease;
+}
+.nori-bgv.nori-bgv .e-background-video__play:hover,
+.nori-bgv.nori-bgv .e-background-video__pause:hover { background: rgba(0, 0, 0, 0.7); }
+.nori-bgv .e-background-video__play:focus-visible,
+.nori-bgv .e-background-video__pause:focus-visible { outline: 2px solid #fff; outline-offset: 2px; box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.6); }
+.nori-bgv .e-background-video__play > *,
+.nori-bgv .e-background-video__pause > * { color: inherit; font: inherit; margin: 0; }
+
+/* Video switched off (phones setting, or the visitor's data saver): no buttons for a still picture. */
+.nori-bgv-off .e-background-video__controls { display: none !important; }
+
+/* Video text: once the mask is drawn the letters are see-through, so the video shows in their shape.
+   Without JavaScript, or in the editor, the text stays a normal solid color on top of the video. */
+.video-text-np.nori-vt-ready .e-background-video__content * { color: transparent !important; -webkit-text-stroke: 0 !important; }
+.video-text-np.nori-vt-ready .e-background-video__media {
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	-webkit-mask-size: 100% 100%;
+	mask-size: 100% 100%;
+}
+
+/* In video text the buttons would sit on the letters: they show on hover and keyboard focus only. */
+.video-text-np.nori-vt-ready .e-background-video__controls { opacity: 0; transition: opacity 0.2s ease; }
+.video-text-np.nori-vt-ready:hover .e-background-video__controls,
+.video-text-np.nori-vt-ready .e-background-video__controls:focus-within { opacity: 1; }

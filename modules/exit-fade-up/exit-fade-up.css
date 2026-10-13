@@ -1,0 +1,7 @@
+/* Nori: Exit-Fade-Up. Add .exit-fade-up-np to an element: it fades in from below as it enters
+   and fades up and out as it leaves the top of the viewport. Don't combine with .slide-fade-blur-np. */
+.exit-fade-up-np { will-change: opacity, transform; }
+body.elementor-editor-active .exit-fade-up-np { opacity: 1 !important; transform: none !important; }
+@media (prefers-reduced-motion: reduce) {
+	.exit-fade-up-np { opacity: 1 !important; transform: none !important; }
+}

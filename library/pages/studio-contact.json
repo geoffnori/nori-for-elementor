@@ -1,0 +1,37 @@
+{
+ "key": "studio-contact",
+ "style": "studio",
+ "label": "Contact",
+ "order": 50,
+ "description": "How to reach you, opening hours, a map and answers to common questions.",
+ "title": "Contact",
+ "sections": [
+  {
+   "key": "hero",
+   "variant": "studio-page",
+   "content": {
+    "eyebrow": "Contact",
+    "headline": "Call, email or stop by",
+    "subhead": "We answer the phone during opening hours, and reply to email within a day.",
+    "cta_primary": {
+     "label": "Call (541) 555-0148",
+     "url": "tel:+15415550148"
+    },
+    "cta_secondary": null,
+    "image": null
+   }
+  },
+  {
+   "key": "contact",
+   "variant": "studio",
+   "content": {
+    "eyebrow": "",
+    "heading": "Find us"
+   }
+  },
+  {
+   "key": "faq",
+   "variant": "studio"
+  }
+ ]
+}

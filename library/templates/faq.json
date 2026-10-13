@@ -1,0 +1,1214 @@
+{
+ "key": "faq",
+ "label": "FAQ",
+ "group": "page",
+ "order": 85,
+ "anchor": "faq",
+ "description": "Questions customers ask, as an accordion. Also tells search engines about them (FAQ structured data).",
+ "slots": {
+  "eyebrow": {
+   "label": "Eyebrow",
+   "type": "text",
+   "sample": "Questions"
+  },
+  "heading": {
+   "label": "Heading",
+   "type": "text",
+   "required": true,
+   "sample": "Before you call"
+  },
+  "intro": {
+   "label": "Intro",
+   "type": "textarea",
+   "sample": "Still not sure? Call and ask. A real person answers."
+  },
+  "items": {
+   "label": "Questions",
+   "type": "list",
+   "min": 2,
+   "max": 10,
+   "required": true,
+   "fields": {
+    "question": {
+     "type": "text"
+    },
+    "answer": {
+     "type": "textarea"
+    }
+   },
+   "sample": [
+    {
+     "question": "Do you charge to come out?",
+     "answer": "There's a small visit fee, which goes toward the repair if you go ahead with it."
+    },
+    {
+     "question": "Will I know the price before you start?",
+     "answer": "Yes. You get a written price for the job, and we don't start until you approve it."
+    },
+    {
+     "question": "Which areas do you serve?",
+     "answer": "List the towns and neighborhoods you cover here."
+    },
+    {
+     "question": "Do you work nights and weekends?",
+     "answer": "Say when you're available, and how to reach you in an emergency."
+    }
+   ]
+  },
+  "cta": {
+   "label": "Button",
+   "type": "link",
+   "sample": {
+    "label": "Contact us",
+    "url": "/contact/"
+   }
+  }
+ },
+ "variants": {
+  "studio": {
+   "label": "Studio: heading and questions side by side",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "FAQ",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Inner",
+       "children": [
+        {
+         "el": "e-grid",
+         "label": "Columns",
+         "children": [
+          {
+           "el": "e-flexbox",
+           "label": "Heading",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "{eyebrow}",
+             "classes": [
+              "type-overline"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(muted)",
+               "margin": "0px"
+              }
+             },
+             "if": "eyebrow"
+            },
+            {
+             "el": "e-heading",
+             "text": "{heading}",
+             "classes": [
+              "type-h2"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(primary)"
+              }
+             },
+             "tag": "h2"
+            },
+            {
+             "el": "e-paragraph",
+             "text": "{intro}",
+             "classes": [
+              "type-lead"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(muted)",
+               "margin": "0px"
+              }
+             },
+             "if": "intro"
+            },
+            {
+             "el": "button",
+             "link": "{cta}",
+             "classes": [
+              "btn-outline"
+             ],
+             "label": "Button",
+             "if": "cta"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column",
+             "align-items": "flex-start",
+             "position": "sticky",
+             "inset-block-start": "32px",
+             "align-self": "start"
+            },
+            "mobile": {
+             "position": "relative",
+             "inset-block-start": "0px"
+            }
+           },
+           "classes": [
+            "gap-m"
+           ]
+          },
+          {
+           "el": "e-accordion",
+           "label": "Questions",
+           "settings": {
+            "faq_schema": true
+           },
+           "css": {
+            "desktop": {
+             "width": "100%",
+             "padding": "0px"
+            }
+           },
+           "children": [
+            {
+             "each": "items",
+             "as": "item",
+             "node": {
+              "el": "e-accordion-item",
+              "label": "{item.question}",
+              "classes": [
+               "border-bottom"
+              ],
+              "css": {
+               "desktop": {
+                "padding": "0px"
+               }
+              },
+              "children": [
+               {
+                "el": "e-accordion-item-header",
+                "settings": {
+                 "show_icon": true
+                },
+                "label": "Header",
+                "css": {
+                 "desktop": {
+                  "padding": {
+                   "block-start": "22px",
+                   "block-end": "22px",
+                   "inline-start": "0px",
+                   "inline-end": "0px"
+                  },
+                  "cursor": "pointer"
+                 }
+                },
+                "children": [
+                 {
+                  "el": "e-accordion-item-title",
+                  "label": "Title",
+                  "css": {
+                   "desktop": {
+                    "width": "100%",
+                    "padding": "0px"
+                   }
+                  },
+                  "children": [
+                   {
+                    "el": "e-paragraph",
+                    "text": "{item.question}",
+                    "classes": [
+                     "type-h6"
+                    ],
+                    "css": {
+                     "desktop": {
+                      "color": "var(primary)",
+                      "margin": "0px"
+                     }
+                    },
+                    "tag": "span"
+                   }
+                  ]
+                 },
+                 {
+                  "el": "e-accordion-item-icon",
+                  "label": "Icon",
+                  "children": [
+                   {
+                    "el": "e-svg",
+                    "icon": "plus",
+                    "css": {
+                     "desktop": {
+                      "width": "22px",
+                      "height": "22px",
+                      "color": "var(primary)"
+                     }
+                    }
+                   }
+                  ]
+                 }
+                ]
+               },
+               {
+                "el": "e-accordion-item-content",
+                "label": "Content",
+                "css": {
+                 "desktop": {
+                  "padding": {
+                   "block-start": "0px",
+                   "block-end": "22px",
+                   "inline-start": "0px",
+                   "inline-end": "0px"
+                  }
+                 }
+                },
+                "children": [
+                 {
+                  "el": "e-paragraph",
+                  "text": "{item.answer}",
+                  "classes": [
+                   "type-body"
+                  ],
+                  "css": {
+                   "desktop": {
+                    "color": "var(muted)",
+                    "margin": "0px",
+                    "max-width": "640px"
+                   }
+                  }
+                 }
+                ]
+               }
+              ]
+             }
+            }
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "grid-template-rows": "auto",
+           "grid-template-columns": "minmax(0, 0.9fr) minmax(0, 1.3fr)",
+           "align-items": "start"
+          },
+          "mobile": {
+           "grid-template-columns": "minmax(0, 1fr)"
+          }
+         },
+         "classes": [
+          "gap-xl"
+         ]
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "flex-direction": "column",
+         "align-items": "stretch"
+        }
+       },
+       "classes": [
+        "container-max-1200",
+        "gap-l",
+        "scroll-anim"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(background)"
+      }
+     },
+     "classes": [
+      "section-gutter",
+      "section-tb-padding-xl"
+     ],
+     "tag": "section"
+    }
+   ]
+  },
+  "bento": {
+   "label": "Bento: questions tile and a help tile",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "FAQ",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Inner",
+       "children": [
+        {
+         "el": "e-grid",
+         "label": "Tiles",
+         "children": [
+          {
+           "el": "e-flexbox",
+           "label": "Questions",
+           "children": [
+            {
+             "el": "e-heading",
+             "text": "{heading}",
+             "classes": [
+              "type-h3"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(primary)",
+               "padding": {
+                "block-start": "8px",
+                "block-end": "6px",
+                "inline-start": "0px",
+                "inline-end": "0px"
+               }
+              }
+             },
+             "tag": "h2"
+            },
+            {
+             "el": "e-accordion",
+             "label": "Questions",
+             "settings": {
+              "faq_schema": true
+             },
+             "css": {
+              "desktop": {
+               "width": "100%",
+               "padding": "0px"
+              }
+             },
+             "children": [
+              {
+               "each": "items",
+               "as": "item",
+               "node": {
+                "el": "e-accordion-item",
+                "label": "{item.question}",
+                "classes": [
+                 "border-bottom"
+                ],
+                "css": {
+                 "desktop": {
+                  "padding": "0px"
+                 }
+                },
+                "children": [
+                 {
+                  "el": "e-accordion-item-header",
+                  "settings": {
+                   "show_icon": true
+                  },
+                  "label": "Header",
+                  "css": {
+                   "desktop": {
+                    "padding": {
+                     "block-start": "22px",
+                     "block-end": "22px",
+                     "inline-start": "0px",
+                     "inline-end": "0px"
+                    },
+                    "cursor": "pointer"
+                   }
+                  },
+                  "children": [
+                   {
+                    "el": "e-accordion-item-title",
+                    "label": "Title",
+                    "css": {
+                     "desktop": {
+                      "width": "100%",
+                      "padding": "0px"
+                     }
+                    },
+                    "children": [
+                     {
+                      "el": "e-paragraph",
+                      "text": "{item.question}",
+                      "classes": [
+                       "type-h6"
+                      ],
+                      "css": {
+                       "desktop": {
+                        "color": "var(primary)",
+                        "margin": "0px"
+                       }
+                      },
+                      "tag": "span"
+                     }
+                    ]
+                   },
+                   {
+                    "el": "e-accordion-item-icon",
+                    "label": "Icon",
+                    "children": [
+                     {
+                      "el": "e-svg",
+                      "icon": "plus",
+                      "css": {
+                       "desktop": {
+                        "width": "22px",
+                        "height": "22px",
+                        "color": "var(primary)"
+                       }
+                      }
+                     }
+                    ]
+                   }
+                  ]
+                 },
+                 {
+                  "el": "e-accordion-item-content",
+                  "label": "Content",
+                  "css": {
+                   "desktop": {
+                    "padding": {
+                     "block-start": "0px",
+                     "block-end": "22px",
+                     "inline-start": "0px",
+                     "inline-end": "0px"
+                    }
+                   }
+                  },
+                  "children": [
+                   {
+                    "el": "e-paragraph",
+                    "text": "{item.answer}",
+                    "classes": [
+                     "type-body"
+                    ],
+                    "css": {
+                     "desktop": {
+                      "color": "var(muted)",
+                      "margin": "0px",
+                      "max-width": "640px"
+                     }
+                    }
+                   }
+                  ]
+                 }
+                ]
+               }
+              }
+             ]
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": {
+              "block-start": "28px",
+              "block-end": "12px",
+              "inline-start": "36px",
+              "inline-end": "36px"
+             },
+             "flex-direction": "column",
+             "background": "var(background)",
+             "align-items": "flex-start",
+             "grid-column": "span 8"
+            },
+            "mobile": {
+             "padding": {
+              "block-start": "20px",
+              "block-end": "6px",
+              "inline-start": "22px",
+              "inline-end": "22px"
+             },
+             "border-radius": "18px",
+             "grid-column": "1 / -1"
+            }
+           },
+           "classes": [
+            "card-border-radius",
+            "gap-s"
+           ]
+          },
+          {
+           "el": "e-flexbox",
+           "label": "Help",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "{eyebrow}",
+             "classes": [
+              "type-overline"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(on-band)",
+               "margin": "0px",
+               "opacity": "60%"
+              }
+             },
+             "if": "eyebrow"
+            },
+            {
+             "el": "e-paragraph",
+             "text": "{intro}",
+             "classes": [
+              "type-h5"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(on-band)",
+               "margin": "0px"
+              }
+             },
+             "if": "intro"
+            },
+            {
+             "el": "button",
+             "link": "{cta}",
+             "classes": [
+              "btn-primary",
+              "btn-pill"
+             ],
+             "label": "Button",
+             "icon": "arrow-right",
+             "if": "cta"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "flex-direction": "column",
+             "background": "var(band)",
+             "align-items": "flex-start",
+             "grid-column": "span 4",
+             "justify-content": "space-between",
+             "min-height": "320px"
+            },
+            "mobile": {
+             "padding": "22px",
+             "border-radius": "18px",
+             "grid-column": "1 / -1",
+             "min-height": "0px"
+            }
+           },
+           "classes": [
+            "card-border-radius",
+            "gap-m",
+            "padding-m"
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "grid-template-rows": "auto",
+           "grid-template-columns": "repeat(12, minmax(0, 1fr))",
+           "align-items": "stretch"
+          },
+          "mobile": {
+           "grid-template-columns": "minmax(0, 1fr)"
+          }
+         },
+         "classes": [
+          "gap-s"
+         ]
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "flex-direction": "column",
+         "align-items": "stretch"
+        }
+       },
+       "classes": [
+        "container-max-1200",
+        "gap-s",
+        "scroll-anim"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(surface)"
+      }
+     },
+     "classes": [
+      "section-gutter",
+      "section-tb-padding-s"
+     ],
+     "tag": "section"
+    }
+   ]
+  },
+  "billboard": {
+   "label": "Billboard: big heading beside the questions",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "FAQ",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Inner",
+       "children": [
+        {
+         "el": "e-grid",
+         "label": "Columns",
+         "children": [
+          {
+           "el": "e-flexbox",
+           "label": "Heading",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "{eyebrow}",
+             "classes": [
+              "type-overline"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(muted)",
+               "margin": "0px"
+              }
+             },
+             "if": "eyebrow"
+            },
+            {
+             "el": "e-heading",
+             "text": "{heading}",
+             "classes": [
+              "type-h1",
+              "headline-poster"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(primary)"
+              }
+             },
+             "tag": "h2"
+            },
+            {
+             "el": "e-paragraph",
+             "text": "{intro}",
+             "classes": [
+              "type-lead"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(muted)",
+               "margin": "0px"
+              }
+             },
+             "if": "intro"
+            },
+            {
+             "el": "button",
+             "link": "{cta}",
+             "classes": [
+              "btn-outline",
+              "btn-lg",
+              "btn-sharp"
+             ],
+             "label": "Button",
+             "if": "cta"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column",
+             "align-items": "flex-start",
+             "position": "sticky",
+             "inset-block-start": "32px",
+             "align-self": "start"
+            },
+            "mobile": {
+             "position": "relative",
+             "inset-block-start": "0px"
+            }
+           },
+           "classes": [
+            "gap-m"
+           ]
+          },
+          {
+           "el": "e-flexbox",
+           "label": "List",
+           "children": [
+            {
+             "el": "e-accordion",
+             "label": "Questions",
+             "settings": {
+              "faq_schema": true
+             },
+             "css": {
+              "desktop": {
+               "width": "100%",
+               "padding": "0px"
+              }
+             },
+             "children": [
+              {
+               "each": "items",
+               "as": "item",
+               "node": {
+                "el": "e-accordion-item",
+                "label": "{item.question}",
+                "classes": [
+                 "border-bottom"
+                ],
+                "css": {
+                 "desktop": {
+                  "padding": "0px"
+                 }
+                },
+                "children": [
+                 {
+                  "el": "e-accordion-item-header",
+                  "settings": {
+                   "show_icon": true
+                  },
+                  "label": "Header",
+                  "css": {
+                   "desktop": {
+                    "padding": {
+                     "block-start": "22px",
+                     "block-end": "22px",
+                     "inline-start": "0px",
+                     "inline-end": "0px"
+                    },
+                    "cursor": "pointer"
+                   }
+                  },
+                  "children": [
+                   {
+                    "el": "e-accordion-item-title",
+                    "label": "Title",
+                    "css": {
+                     "desktop": {
+                      "width": "100%",
+                      "padding": "0px"
+                     }
+                    },
+                    "children": [
+                     {
+                      "el": "e-paragraph",
+                      "text": "{item.question}",
+                      "classes": [
+                       "type-h6"
+                      ],
+                      "css": {
+                       "desktop": {
+                        "color": "var(primary)",
+                        "margin": "0px"
+                       }
+                      },
+                      "tag": "span"
+                     }
+                    ]
+                   },
+                   {
+                    "el": "e-accordion-item-icon",
+                    "label": "Icon",
+                    "children": [
+                     {
+                      "el": "e-svg",
+                      "icon": "plus",
+                      "css": {
+                       "desktop": {
+                        "width": "22px",
+                        "height": "22px",
+                        "color": "var(primary)"
+                       }
+                      }
+                     }
+                    ]
+                   }
+                  ]
+                 },
+                 {
+                  "el": "e-accordion-item-content",
+                  "label": "Content",
+                  "css": {
+                   "desktop": {
+                    "padding": {
+                     "block-start": "0px",
+                     "block-end": "22px",
+                     "inline-start": "0px",
+                     "inline-end": "0px"
+                    }
+                   }
+                  },
+                  "children": [
+                   {
+                    "el": "e-paragraph",
+                    "text": "{item.answer}",
+                    "classes": [
+                     "type-body"
+                    ],
+                    "css": {
+                     "desktop": {
+                      "color": "var(muted)",
+                      "margin": "0px",
+                      "max-width": "640px"
+                     }
+                    }
+                   }
+                  ]
+                 }
+                ]
+               }
+              }
+             ]
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column",
+             "align-items": "stretch"
+            }
+           },
+           "classes": [
+            "border-top"
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "grid-template-rows": "auto",
+           "grid-template-columns": "minmax(0, 1fr) minmax(0, 1.2fr)",
+           "align-items": "start"
+          },
+          "mobile": {
+           "grid-template-columns": "minmax(0, 1fr)"
+          }
+         },
+         "classes": [
+          "gap-xl"
+         ]
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "flex-direction": "column",
+         "align-items": "stretch"
+        }
+       },
+       "classes": [
+        "container-max-1600",
+        "gap-l",
+        "scroll-anim"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(background)"
+      }
+     },
+     "classes": [
+      "section-gutter",
+      "section-tb-padding-xl"
+     ],
+     "tag": "section"
+    }
+   ]
+  },
+  "lens": {
+   "label": "Lens: centered questions",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "FAQ",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Inner",
+       "children": [
+        {
+         "el": "e-flexbox",
+         "label": "Top",
+         "children": [
+          {
+           "el": "e-flexbox",
+           "label": "Heading",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "{eyebrow}",
+             "classes": [
+              "type-overline"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(muted)",
+               "margin": "0px"
+              }
+             },
+             "if": "eyebrow"
+            },
+            {
+             "el": "e-heading",
+             "text": "{heading}",
+             "classes": [
+              "type-h1",
+              "headline-refined"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(primary)",
+               "max-width": "880px"
+              }
+             },
+             "tag": "h2"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column",
+             "align-items": "center",
+             "text-align": "center",
+             "flex": {
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "flexBasis": "420px"
+             }
+            }
+           },
+           "classes": [
+            "gap-s"
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "row",
+           "justify-content": "center",
+           "align-items": "flex-end",
+           "flex-wrap": "wrap"
+          }
+         },
+         "classes": [
+          "gap-m"
+         ]
+        },
+        {
+         "el": "e-flexbox",
+         "label": "Questions",
+         "children": [
+          {
+           "el": "e-accordion",
+           "label": "Questions",
+           "settings": {
+            "faq_schema": true
+           },
+           "css": {
+            "desktop": {
+             "width": "100%",
+             "padding": "0px"
+            }
+           },
+           "children": [
+            {
+             "each": "items",
+             "as": "item",
+             "node": {
+              "el": "e-accordion-item",
+              "label": "{item.question}",
+              "classes": [
+               "border-bottom"
+              ],
+              "css": {
+               "desktop": {
+                "padding": "0px"
+               }
+              },
+              "children": [
+               {
+                "el": "e-accordion-item-header",
+                "settings": {
+                 "show_icon": true
+                },
+                "label": "Header",
+                "css": {
+                 "desktop": {
+                  "padding": {
+                   "block-start": "22px",
+                   "block-end": "22px",
+                   "inline-start": "0px",
+                   "inline-end": "0px"
+                  },
+                  "cursor": "pointer"
+                 }
+                },
+                "children": [
+                 {
+                  "el": "e-accordion-item-title",
+                  "label": "Title",
+                  "css": {
+                   "desktop": {
+                    "width": "100%",
+                    "padding": "0px"
+                   }
+                  },
+                  "children": [
+                   {
+                    "el": "e-paragraph",
+                    "text": "{item.question}",
+                    "classes": [
+                     "type-h6"
+                    ],
+                    "css": {
+                     "desktop": {
+                      "color": "var(primary)",
+                      "margin": "0px"
+                     }
+                    },
+                    "tag": "span"
+                   }
+                  ]
+                 },
+                 {
+                  "el": "e-accordion-item-icon",
+                  "label": "Icon",
+                  "children": [
+                   {
+                    "el": "e-svg",
+                    "icon": "plus",
+                    "css": {
+                     "desktop": {
+                      "width": "22px",
+                      "height": "22px",
+                      "color": "var(primary)"
+                     }
+                    }
+                   }
+                  ]
+                 }
+                ]
+               },
+               {
+                "el": "e-accordion-item-content",
+                "label": "Content",
+                "css": {
+                 "desktop": {
+                  "padding": {
+                   "block-start": "0px",
+                   "block-end": "22px",
+                   "inline-start": "0px",
+                   "inline-end": "0px"
+                  }
+                 }
+                },
+                "children": [
+                 {
+                  "el": "e-paragraph",
+                  "text": "{item.answer}",
+                  "classes": [
+                   "type-body"
+                  ],
+                  "css": {
+                   "desktop": {
+                    "color": "var(muted)",
+                    "margin": "0px",
+                    "max-width": "640px"
+                   }
+                  }
+                 }
+                ]
+               }
+              ]
+             }
+            }
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "column",
+           "align-items": "stretch",
+           "max-width": "860px",
+           "width": "100%",
+           "margin": {
+            "block-start": "0px",
+            "block-end": "0px",
+            "inline-start": "auto",
+            "inline-end": "auto"
+           }
+          }
+         },
+         "classes": [
+          "border-top"
+         ]
+        },
+        {
+         "el": "e-flexbox",
+         "label": "Help",
+         "children": [
+          {
+           "el": "e-paragraph",
+           "text": "{intro}",
+           "classes": [
+            "type-body"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(muted)",
+             "margin": "0px",
+             "text-align": "center",
+             "max-width": "520px"
+            }
+           },
+           "if": "intro"
+          },
+          {
+           "el": "button",
+           "link": "{cta}",
+           "classes": [
+            "btn-outline",
+            "btn-lg",
+            "btn-pill"
+           ],
+           "label": "Button",
+           "if": "cta"
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "column",
+           "align-items": "center"
+          }
+         },
+         "classes": [
+          "gap-s"
+         ]
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "flex-direction": "column",
+         "align-items": "stretch"
+        }
+       },
+       "classes": [
+        "container-max-1400",
+        "gap-l",
+        "scroll-anim"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(background)"
+      }
+     },
+     "classes": [
+      "section-gutter",
+      "section-tb-padding-xl"
+     ],
+     "tag": "section"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,143 @@
+/* Nori: Video Carousel. Add .video-carousel-np to a flexbox whose children each hold a video
+   (self-hosted, Elementor's YouTube widget, or a YouTube or Vimeo embed). One video sits in the
+   center, the others fade at the sides. Arrows and a play button are added for you.
+
+   Styling: WP Admin > Nori > Modules > Video Carousel. Each color there is an Elementor variable: one you
+   picked (primary-np, background-np or any of yours) or a custom color's own (vc-play-color-np and so on).
+   The --nori-vc-* colors follow it, so a change in the Elementor editor shows up here. To style one carousel differently, set the --nori-vc-* properties on its parent in custom CSS. */
+.nori-vc-wrap {
+	--nori-vc-a-bg: var(--nori-vc-arrow-bg, #fff);
+	--nori-vc-a-icon: var(--nori-vc-arrow, #111);
+	--nori-vc-a-hover-bg: var(--nori-vc-arrow-hover-bg, #111);
+	--nori-vc-a-hover-icon: var(--nori-vc-arrow-hover, #fff);
+	--nori-vc-p-color: var(--nori-vc-play-color, #fff);
+	--nori-vc-p-fill: var(--nori-vc-play-fill, #111);
+	--nori-vc-a-size: var(--nori-vc-arrow-size, 56px);
+	--nori-vc-p-size: var(--nori-vc-play-size, 88px);
+	position: relative;
+	width: 100%;
+}
+
+html.nori-js .video-carousel-np.nori-carousel-ready {
+	--nori-carousel-fade: var(--nori-vc-fade, 0.25);
+	--nori-carousel-scale: 0.94;
+	--nori-carousel-slide: min(var(--nori-vc-width, 680px), 80%);
+	align-items: center !important;
+	padding-block: 24px !important;
+}
+@media (max-width: 1024px) {
+	html.nori-js .video-carousel-np.nori-carousel-ready { --nori-carousel-slide: 74%; }
+}
+@media (max-width: 767px) {
+	html.nori-js .video-carousel-np.nori-carousel-ready { --nori-carousel-slide: 80%; }
+	.nori-vc-wrap { --nori-vc-a-size: max(40px, calc(var(--nori-vc-arrow-size, 56px) * 0.78)); --nori-vc-p-size: max(52px, calc(var(--nori-vc-play-size, 88px) * 0.72)); }
+}
+html.nori-js .video-carousel-np.nori-carousel-ready > * {
+	position: relative;
+	margin: 0 !important;
+	aspect-ratio: var(--nori-vc-ratio, 16 / 9);
+	border-radius: var(--nori-vc-radius, 24px);
+	overflow: hidden;
+	background: #000;
+	cursor: pointer;
+}
+html.nori-js .video-carousel-np.nori-carousel-ready > .is-active-np { cursor: default; }
+html.nori-js .video-carousel-np.nori-carousel-ready video,
+html.nori-js .video-carousel-np.nori-carousel-ready > * > [data-nori-e-type] {
+	display: block;
+	width: 100% !important;
+	height: 100% !important;
+	object-fit: cover;
+}
+
+/* YouTube and Vimeo: the thumbnail until play, then the player. */
+.nori-vc-embed { position: absolute; inset: 0; background: #000; }
+.nori-vc-poster, .nori-vc-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover; }
+.nori-vc-frame { z-index: 1; }
+.is-embed-np:not(.is-playing-np) .nori-vc-frame { visibility: hidden; }
+
+/* Only the center video can be played; a click on a faded one brings it to the center. */
+html.nori-js .video-carousel-np.nori-carousel-ready > :not(.is-active-np) video,
+html.nori-js .video-carousel-np.nori-carousel-ready > :not(.is-active-np) iframe,
+html.nori-js .video-carousel-np.nori-carousel-ready > :not(.is-active-np) .nori-vc-play { pointer-events: none; }
+
+/* Play button over each video; hidden while it plays (a self-hosted video brings it back on hover). */
+.nori-vc-play {
+	position: absolute;
+	inset: 0;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: rgba(0, 0, 0, var(--nori-vc-tint, 0.15));
+	cursor: pointer;
+	transition: opacity 0.25s ease;
+}
+.nori-vc-play__ring {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: var(--nori-vc-p-size);
+	height: var(--nori-vc-p-size);
+	box-sizing: border-box;
+	border: max(2px, calc(var(--nori-vc-p-size) * 0.045)) solid var(--nori-vc-p-color);
+	border-radius: 50%;
+	background: transparent;
+	color: var(--nori-vc-p-color);
+	transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+}
+.nori-vc--play-filled .nori-vc-play__ring { border-color: var(--nori-vc-p-fill); background: var(--nori-vc-p-fill); }
+.nori-vc--play-icon .nori-vc-play__ring { border-color: transparent; }
+.nori-vc--play-icon .nori-vc-play svg { filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35)); }
+.nori-vc-play:hover .nori-vc-play__ring,
+.nori-vc-play:focus-visible .nori-vc-play__ring { transform: scale(1.08); }
+.nori-vc-play:focus-visible { outline: 3px solid var(--nori-vc-p-color); outline-offset: -6px; }
+.nori-vc-play svg { width: 32%; height: 32%; fill: currentColor; }
+.nori-vc--play-icon .nori-vc-play svg { width: 44%; height: 44%; }
+.nori-vc-play .nori-vc-icon-play { margin-left: 6%; }
+.nori-vc-play .nori-vc-icon-pause { display: none; }
+.is-playing-np .nori-vc-play { opacity: 0; pointer-events: none; }
+.is-playing-np .nori-vc-play .nori-vc-icon-play { display: none; }
+.is-playing-np .nori-vc-play .nori-vc-icon-pause { display: block; }
+.is-embed-np.is-playing-np .nori-vc-play { display: none; }
+
+/* Previous / next arrows: circle (default), square or minimal (just the chevron). */
+.nori-vc-arrow {
+	position: absolute;
+	top: 50%;
+	z-index: 3;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: var(--nori-vc-a-size);
+	height: var(--nori-vc-a-size);
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: var(--nori-vc-a-bg);
+	color: var(--nori-vc-a-icon);
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+	cursor: pointer;
+	transform: translateY(-50%);
+	transition: transform 0.25s ease, background-color 0.2s ease, color 0.2s ease;
+}
+.nori-vc--arrows-square .nori-vc-arrow { border-radius: calc(var(--nori-vc-a-size) * 0.18); }
+.nori-vc--arrows-minimal .nori-vc-arrow { background: transparent; box-shadow: none; }
+.nori-vc-arrow:hover,
+.nori-vc-arrow:focus-visible { background: var(--nori-vc-a-hover-bg); color: var(--nori-vc-a-hover-icon); transform: translateY(-50%) scale(1.08); }
+.nori-vc--arrows-minimal .nori-vc-arrow:hover,
+.nori-vc--arrows-minimal .nori-vc-arrow:focus-visible { background: transparent; color: var(--nori-vc-a-icon); }
+.nori-vc-arrow:focus-visible { outline: 3px solid var(--nori-vc-a-icon); outline-offset: 3px; }
+.nori-vc-arrow:active { transform: translateY(-50%) scale(0.96); }
+.nori-vc-arrow svg { width: auto; height: 30%; fill: none; stroke: currentColor; stroke-width: 2.75; stroke-linecap: round; stroke-linejoin: round; }
+.nori-vc--arrows-minimal .nori-vc-arrow svg { height: 42%; stroke-width: 2.25; filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3)); }
+.nori-vc-prev { left: 18px; }
+.nori-vc-next { right: 18px; }
+@media (max-width: 767px) {
+	.nori-vc-prev { left: 8px; }
+	.nori-vc-next { right: 8px; }
+}

@@ -1,0 +1,97 @@
+/* Nori: Mobile Menu. The header keeps .menu-toggle-np and .mobile-menu-np hidden (display: none). Below the
+   breakpoint, where the script runs and not in the Elementor editor, they take over from .menu-links-np. */
+@media (max-width: 767px) {
+	html.nori-js body:not(.elementor-editor-active) .menu-links-np { display: none !important; }
+	html.nori-js body:not(.elementor-editor-active) .menu-toggle-np,
+	html.nori-js body:not(.elementor-editor-active) .mobile-menu-np { display: flex !important; }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+	html.nori-js body.nori-menu-tablet:not(.elementor-editor-active) .menu-links-np { display: none !important; }
+	html.nori-js body.nori-menu-tablet:not(.elementor-editor-active) .menu-toggle-np,
+	html.nori-js body.nori-menu-tablet:not(.elementor-editor-active) .mobile-menu-np { display: flex !important; }
+}
+
+/* The button: the menu icon turns away as the close icon turns in. */
+.menu-toggle-np {
+	position: relative;
+	flex-shrink: 0;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+}
+.menu-toggle-np > * {
+	transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
+}
+.menu-toggle-np > :nth-child(2) {
+	position: absolute;
+	opacity: 0;
+	transform: rotate(-90deg) scale(0.8);
+}
+.menu-toggle-np.is-open-np > :nth-child(1) {
+	opacity: 0;
+	transform: rotate(90deg) scale(0.8);
+}
+.menu-toggle-np.is-open-np > :nth-child(2) {
+	opacity: 1;
+	transform: none;
+}
+.menu-toggle-np:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+	border-radius: 10px;
+}
+
+/* The panel: fills the screen below the header (the script measures where that is). Doubled class to
+   outrank Elementor's .e-con rules for width and position. */
+.mobile-menu-np.mobile-menu-np {
+	position: fixed !important;
+	top: var(--nori-menu-top, 64px);
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: auto !important;
+	max-width: none !important;
+	margin: 0 !important;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	z-index: 9998;
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	transform: translateY(-15px);
+	transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0.4s;
+}
+.mobile-menu-np.mobile-menu-np.is-open-np {
+	opacity: 1;
+	visibility: visible;
+	pointer-events: auto;
+	transform: none;
+	transition-delay: 0s;
+}
+
+/* Under a rounded header bar: a rounded card floating below it, as tall as its links (and scrolling
+   if the screen is short), instead of a full-screen sheet. The script copies the bar's edges, corners
+   and border into these variables. */
+.mobile-menu-np.mobile-menu-np.is-floating-np {
+	right: var(--nori-menu-right, 12px);
+	bottom: auto;
+	left: var(--nori-menu-left, 12px);
+	max-height: calc(100vh - var(--nori-menu-top, 64px) - 12px);
+	max-height: calc(100dvh - var(--nori-menu-top, 64px) - 12px);
+	border: var(--nori-menu-border, 0 none);
+	border-radius: var(--nori-menu-radius, 22px);
+	box-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.28);
+	transform: translateY(-8px) scale(0.98);
+	transform-origin: top center;
+}
+.mobile-menu-np.mobile-menu-np.is-floating-np.is-open-np { transform: none; }
+
+/* While it's open the page stays put, and a Smart Header stays in place (a transform would move the panel). */
+html.nori-menu-open,
+html.nori-menu-open body { overflow: hidden !important; }
+html.nori-menu-open .main-header-np { transform: none !important; will-change: auto !important; }
+
+@media (prefers-reduced-motion: reduce) {
+	.menu-toggle-np > *,
+	.mobile-menu-np.mobile-menu-np { transition-duration: 0.01s !important; transform: none !important; }
+	.menu-toggle-np > :nth-child(2) { transform: none; }
+}

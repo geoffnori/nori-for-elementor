@@ -1,0 +1,11 @@
+/* Nori: Scroll Expand. Put .scroll-expand-np on a full-width block (a Background Video, an image, a
+   flexbox): it starts as a framed, rounded panel and opens to the full width as it scrolls up the
+   screen. Without JavaScript, in the editor and with reduced motion it stays framed. */
+.scroll-expand-np {
+	--nori-se-p: 0;
+	clip-path: inset(0 calc((1 - var(--nori-se-p)) * var(--nori-se-inset, 40px)) round calc((1 - var(--nori-se-p)) * var(--nori-se-radius, 24px)));
+	will-change: clip-path;
+}
+@media (max-width: 767px) {
+	.scroll-expand-np { --nori-se-inset: 12px; }
+}

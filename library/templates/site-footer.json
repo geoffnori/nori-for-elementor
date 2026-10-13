@@ -1,0 +1,1340 @@
+{
+ "key": "site-footer",
+ "label": "Footer",
+ "group": "site",
+ "order": 90,
+ "description": "Business name, a short line, menu, contact details, hours and the legal line..",
+ "slots": {
+  "business_name": {
+   "label": "Business name",
+   "type": "text",
+   "required": true,
+   "sample": "Alder Creek Plumbing"
+  },
+  "tagline": {
+   "label": "Short description",
+   "type": "text",
+   "sample": "Family-run plumbing for Central Oregon since 2009."
+  },
+  "menu": {
+   "label": "Menu links",
+   "type": "list",
+   "max": 7,
+   "fields": {
+    "label": {
+     "type": "text"
+    },
+    "url": {
+     "type": "url"
+    }
+   },
+   "sample": [
+    {
+     "label": "Home",
+     "url": "/"
+    },
+    {
+     "label": "Services",
+     "url": "/services/"
+    },
+    {
+     "label": "About",
+     "url": "/about/"
+    },
+    {
+     "label": "Contact",
+     "url": "/contact/"
+    }
+   ]
+  },
+  "phone": {
+   "label": "Phone",
+   "type": "text",
+   "sample": "(541) 555-0148"
+  },
+  "email": {
+   "label": "Email",
+   "type": "text",
+   "sample": "hello@example.com"
+  },
+  "address": {
+   "label": "Address",
+   "type": "text",
+   "sample": "412 NE Pine Ave, Bend, OR"
+  },
+  "hours": {
+   "label": "Hours",
+   "type": "list",
+   "max": 7,
+   "fields": {
+    "days": {
+     "type": "text"
+    },
+    "time": {
+     "type": "text"
+    }
+   },
+   "sample": [
+    {
+     "days": "Mon–Fri",
+     "time": "7am–6pm"
+    },
+    {
+     "days": "Sat",
+     "time": "8am–2pm"
+    },
+    {
+     "days": "Sun",
+     "time": "Emergencies only"
+    }
+   ]
+  },
+  "legal_line": {
+   "label": "Legal line",
+   "type": "text",
+   "required": true,
+   "sample": "© 2026 Alder Creek Plumbing LLC"
+  }
+ },
+ "variants": {
+  "studio": {
+   "label": "Studio: band with a large wordmark",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "Footer",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Inner",
+       "children": [
+        {
+         "el": "e-grid",
+         "label": "Columns",
+         "children": [
+          {
+           "el": "e-flexbox",
+           "label": "About",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "{business_name}",
+             "classes": [
+              "type-h5"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(on-band)",
+               "margin": "0px",
+               "letter-spacing": "-0.02em"
+              }
+             }
+            },
+            {
+             "el": "e-paragraph",
+             "text": "{tagline}",
+             "classes": [
+              "type-small"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(on-band)",
+               "margin": "0px",
+               "opacity": "70%",
+               "max-width": "320px"
+              }
+             },
+             "if": "tagline"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column"
+            }
+           },
+           "classes": [
+            "gap-s"
+           ]
+          },
+          {
+           "el": "e-flexbox",
+           "label": "Menu",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "Menu",
+             "classes": [
+              "type-overline"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(on-band)",
+               "margin": "0px",
+               "opacity": "60%"
+              }
+             }
+            },
+            {
+             "each": "menu",
+             "as": "item",
+             "node": {
+              "el": "e-paragraph",
+              "text": "{item.label}",
+              "classes": [
+               "type-small"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(on-band)",
+                "margin": "0px"
+               }
+              },
+              "link": "{item.url}"
+             }
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column",
+             "align-items": "flex-start"
+            }
+           },
+           "classes": [
+            "gap-s"
+           ],
+           "if": "menu"
+          },
+          {
+           "el": "e-flexbox",
+           "label": "Contact",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "Contact",
+             "classes": [
+              "type-overline"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(on-band)",
+               "margin": "0px",
+               "opacity": "60%"
+              }
+             }
+            },
+            {
+             "el": "e-paragraph",
+             "text": "{phone}",
+             "classes": [
+              "type-small"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(on-band)",
+               "margin": "0px"
+              }
+             },
+             "link": "{phone|tel}",
+             "if": "phone"
+            },
+            {
+             "el": "e-paragraph",
+             "text": "{email}",
+             "classes": [
+              "type-small"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(on-band)",
+               "margin": "0px"
+              }
+             },
+             "link": "{email|mailto}",
+             "if": "email"
+            },
+            {
+             "el": "e-paragraph",
+             "text": "{address}",
+             "classes": [
+              "type-small"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(on-band)",
+               "margin": "0px"
+              }
+             },
+             "if": "address"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column",
+             "align-items": "flex-start"
+            },
+            "mobile": {
+             "grid-column": "1 / -1"
+            }
+           },
+           "classes": [
+            "gap-s"
+           ]
+          },
+          {
+           "el": "e-flexbox",
+           "label": "Hours",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "Hours",
+             "classes": [
+              "type-overline"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(on-band)",
+               "margin": "0px",
+               "opacity": "60%"
+              }
+             }
+            },
+            {
+             "each": "hours",
+             "as": "item",
+             "node": {
+              "el": "e-paragraph",
+              "text": "{item.days} {item.time}",
+              "classes": [
+               "type-small"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(on-band)",
+                "margin": "0px"
+               }
+              }
+             }
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column",
+             "align-items": "flex-start"
+            }
+           },
+           "classes": [
+            "gap-s"
+           ],
+           "if": "hours"
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": {
+            "block-start": "0px",
+            "block-end": "48px",
+            "inline-start": "0px",
+            "inline-end": "0px"
+           },
+           "grid-template-rows": "auto",
+           "grid-template-columns": "repeat(4, minmax(0, 1fr))"
+          },
+          "mobile": {
+           "grid-template-columns": "repeat(2, minmax(0, 1fr))"
+          }
+         },
+         "classes": [
+          "gap-l"
+         ]
+        },
+        {
+         "el": "e-paragraph",
+         "text": "{business_name}",
+         "classes": [
+          "type-display"
+         ],
+         "css": {
+          "desktop": {
+           "color": "var(on-band)",
+           "margin": "0px",
+           "opacity": "16%",
+           "letter-spacing": "-0.05em"
+          },
+          "mobile": {
+           "display": "none"
+          }
+         },
+         "label": "Wordmark"
+        },
+        {
+         "el": "e-paragraph",
+         "text": "{legal_line}",
+         "classes": [
+          "type-caption"
+         ],
+         "css": {
+          "desktop": {
+           "color": "var(on-band)",
+           "margin": "0px",
+           "opacity": "60%",
+           "padding": {
+            "block-start": "20px",
+            "block-end": "0px",
+            "inline-start": "0px",
+            "inline-end": "0px"
+           }
+          }
+         }
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "flex-direction": "column",
+         "align-items": "stretch",
+         "overflow": "hidden"
+        }
+       },
+       "classes": [
+        "container-max-1200"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(band)"
+      }
+     },
+     "classes": [
+      "section-gutter",
+      "section-tb-padding-l"
+     ],
+     "tag": "footer"
+    }
+   ]
+  },
+  "bento": {
+   "label": "Bento: a rounded band tile",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "Footer",
+     "children": [
+      {
+       "el": "e-grid",
+       "label": "Footer tile",
+       "children": [
+        {
+         "el": "e-flexbox",
+         "label": "About",
+         "children": [
+          {
+           "el": "e-paragraph",
+           "text": "{business_name}",
+           "classes": [
+            "type-h5"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(on-band)",
+             "margin": "0px",
+             "letter-spacing": "-0.02em"
+            }
+           }
+          },
+          {
+           "el": "e-paragraph",
+           "text": "{tagline}",
+           "classes": [
+            "type-small"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(on-band)",
+             "margin": "0px",
+             "opacity": "70%",
+             "max-width": "320px"
+            }
+           },
+           "if": "tagline"
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "column"
+          }
+         },
+         "classes": [
+          "gap-s"
+         ]
+        },
+        {
+         "el": "e-flexbox",
+         "label": "Menu",
+         "children": [
+          {
+           "el": "e-paragraph",
+           "text": "Menu",
+           "classes": [
+            "type-overline"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(on-band)",
+             "margin": "0px",
+             "opacity": "60%"
+            }
+           }
+          },
+          {
+           "each": "menu",
+           "as": "item",
+           "node": {
+            "el": "e-paragraph",
+            "text": "{item.label}",
+            "classes": [
+             "type-small"
+            ],
+            "css": {
+             "desktop": {
+              "color": "var(on-band)",
+              "margin": "0px"
+             }
+            },
+            "link": "{item.url}"
+           }
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "column",
+           "align-items": "flex-start"
+          }
+         },
+         "classes": [
+          "gap-s"
+         ],
+         "if": "menu"
+        },
+        {
+         "el": "e-flexbox",
+         "label": "Contact",
+         "children": [
+          {
+           "el": "e-paragraph",
+           "text": "Contact",
+           "classes": [
+            "type-overline"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(on-band)",
+             "margin": "0px",
+             "opacity": "60%"
+            }
+           }
+          },
+          {
+           "el": "e-paragraph",
+           "text": "{phone}",
+           "classes": [
+            "type-small"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(on-band)",
+             "margin": "0px"
+            }
+           },
+           "link": "{phone|tel}",
+           "if": "phone"
+          },
+          {
+           "el": "e-paragraph",
+           "text": "{email}",
+           "classes": [
+            "type-small"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(on-band)",
+             "margin": "0px"
+            }
+           },
+           "link": "{email|mailto}",
+           "if": "email"
+          },
+          {
+           "el": "e-paragraph",
+           "text": "{address}",
+           "classes": [
+            "type-small"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(on-band)",
+             "margin": "0px"
+            }
+           },
+           "if": "address"
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "column",
+           "align-items": "flex-start"
+          },
+          "mobile": {
+           "grid-column": "1 / -1"
+          }
+         },
+         "classes": [
+          "gap-s"
+         ]
+        },
+        {
+         "el": "e-flexbox",
+         "label": "Hours",
+         "children": [
+          {
+           "el": "e-paragraph",
+           "text": "Hours",
+           "classes": [
+            "type-overline"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(on-band)",
+             "margin": "0px",
+             "opacity": "60%"
+            }
+           }
+          },
+          {
+           "each": "hours",
+           "as": "item",
+           "node": {
+            "el": "e-paragraph",
+            "text": "{item.days} {item.time}",
+            "classes": [
+             "type-small"
+            ],
+            "css": {
+             "desktop": {
+              "color": "var(on-band)",
+              "margin": "0px"
+             }
+            }
+           }
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "column",
+           "align-items": "flex-start"
+          }
+         },
+         "classes": [
+          "gap-s"
+         ],
+         "if": "hours"
+        },
+        {
+         "el": "e-paragraph",
+         "text": "{legal_line}",
+         "classes": [
+          "type-caption"
+         ],
+         "css": {
+          "desktop": {
+           "color": "var(on-band)",
+           "margin": "0px",
+           "opacity": "60%",
+           "grid-column": "1 / -1"
+          }
+         }
+        }
+       ],
+       "css": {
+        "desktop": {
+         "grid-template-rows": "auto",
+         "grid-template-columns": "minmax(0, 1.4fr) repeat(3, minmax(0, 1fr))",
+         "background": "var(band)"
+        },
+        "mobile": {
+         "grid-template-columns": "repeat(2, minmax(0, 1fr))",
+         "padding": "26px",
+         "border-radius": "18px"
+        }
+       },
+       "classes": [
+        "container-max-1200",
+        "gap-l",
+        "card-border-radius",
+        "padding-l"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(surface)",
+       "padding": {
+        "block-start": "8px",
+        "block-end": "24px",
+        "inline-start": "40px",
+        "inline-end": "40px"
+       }
+      },
+      "mobile": {
+       "padding": {
+        "block-start": "4px",
+        "block-end": "12px",
+        "inline-start": "12px",
+        "inline-end": "12px"
+       }
+      }
+     },
+     "classes": [
+      "section-gutter"
+     ],
+     "tag": "footer"
+    }
+   ]
+  },
+  "billboard": {
+   "label": "Billboard: band with the name across the full width",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "Footer",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Inner",
+       "children": [
+        {
+         "el": "e-grid",
+         "label": "Columns",
+         "children": [
+          {
+           "el": "e-flexbox",
+           "label": "About",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "{tagline}",
+             "classes": [
+              "type-lead"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(on-band)",
+               "margin": "0px",
+               "max-width": "380px"
+              }
+             },
+             "if": "tagline"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column"
+            }
+           },
+           "classes": [
+            "gap-s"
+           ]
+          },
+          {
+           "el": "e-flexbox",
+           "label": "Menu",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "Menu",
+             "classes": [
+              "type-overline"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(on-band)",
+               "margin": "0px",
+               "opacity": "60%"
+              }
+             }
+            },
+            {
+             "each": "menu",
+             "as": "item",
+             "node": {
+              "el": "e-paragraph",
+              "text": "{item.label}",
+              "classes": [
+               "type-small"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(on-band)",
+                "margin": "0px"
+               }
+              },
+              "link": "{item.url}"
+             }
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column",
+             "align-items": "flex-start"
+            }
+           },
+           "classes": [
+            "gap-s"
+           ],
+           "if": "menu"
+          },
+          {
+           "el": "e-flexbox",
+           "label": "Contact",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "Contact",
+             "classes": [
+              "type-overline"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(on-band)",
+               "margin": "0px",
+               "opacity": "60%"
+              }
+             }
+            },
+            {
+             "el": "e-paragraph",
+             "text": "{phone}",
+             "classes": [
+              "type-small"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(on-band)",
+               "margin": "0px"
+              }
+             },
+             "link": "{phone|tel}",
+             "if": "phone"
+            },
+            {
+             "el": "e-paragraph",
+             "text": "{email}",
+             "classes": [
+              "type-small"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(on-band)",
+               "margin": "0px"
+              }
+             },
+             "link": "{email|mailto}",
+             "if": "email"
+            },
+            {
+             "el": "e-paragraph",
+             "text": "{address}",
+             "classes": [
+              "type-small"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(on-band)",
+               "margin": "0px"
+              }
+             },
+             "if": "address"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column",
+             "align-items": "flex-start"
+            },
+            "mobile": {
+             "grid-column": "1 / -1"
+            }
+           },
+           "classes": [
+            "gap-s"
+           ]
+          },
+          {
+           "el": "e-flexbox",
+           "label": "Hours",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "Hours",
+             "classes": [
+              "type-overline"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(on-band)",
+               "margin": "0px",
+               "opacity": "60%"
+              }
+             }
+            },
+            {
+             "each": "hours",
+             "as": "item",
+             "node": {
+              "el": "e-paragraph",
+              "text": "{item.days} {item.time}",
+              "classes": [
+               "type-small"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(on-band)",
+                "margin": "0px"
+               }
+              }
+             }
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column",
+             "align-items": "flex-start"
+            }
+           },
+           "classes": [
+            "gap-s"
+           ],
+           "if": "hours"
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": {
+            "block-start": "0px",
+            "block-end": "40px",
+            "inline-start": "0px",
+            "inline-end": "0px"
+           },
+           "grid-template-rows": "auto",
+           "grid-template-columns": "minmax(0, 1.4fr) repeat(3, minmax(0, 1fr))"
+          },
+          "mobile": {
+           "grid-template-columns": "repeat(2, minmax(0, 1fr))"
+          }
+         },
+         "classes": [
+          "gap-l"
+         ]
+        },
+        {
+         "el": "e-paragraph",
+         "text": "{business_name}",
+         "classes": [
+          "type-display",
+          "fit-text",
+          "headline-poster"
+         ],
+         "css": {
+          "desktop": {
+           "color": "var(on-band)",
+           "margin": "0px",
+           "font-size": "11vw"
+          }
+         },
+         "label": "Wordmark"
+        },
+        {
+         "el": "e-flexbox",
+         "label": "Legal",
+         "children": [
+          {
+           "el": "e-paragraph",
+           "text": "{legal_line}",
+           "classes": [
+            "type-caption"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(on-band)",
+             "margin": "0px",
+             "opacity": "60%"
+            }
+           }
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": {
+            "block-start": "18px",
+            "block-end": "0px",
+            "inline-start": "0px",
+            "inline-end": "0px"
+           },
+           "flex-direction": "column",
+           "border-color": "var(on-band)"
+          }
+         },
+         "classes": [
+          "border-top"
+         ]
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "flex-direction": "column",
+         "align-items": "stretch",
+         "overflow": "hidden"
+        }
+       },
+       "classes": [
+        "container-max-1600"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(band)"
+      }
+     },
+     "classes": [
+      "section-gutter",
+      "section-tb-padding-m"
+     ],
+     "tag": "footer"
+    }
+   ]
+  },
+  "lens": {
+   "label": "Lens: a light footer with columns",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "Footer",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Inner",
+       "children": [
+        {
+         "el": "e-grid",
+         "label": "Columns",
+         "children": [
+          {
+           "el": "e-flexbox",
+           "label": "About",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "{business_name}",
+             "classes": [
+              "type-h3",
+              "headline-refined"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(primary)",
+               "margin": "0px"
+              }
+             }
+            },
+            {
+             "el": "e-paragraph",
+             "text": "{tagline}",
+             "classes": [
+              "type-body"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(muted)",
+               "margin": "0px",
+               "max-width": "340px"
+              }
+             },
+             "if": "tagline"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column"
+            }
+           },
+           "classes": [
+            "gap-s"
+           ]
+          },
+          {
+           "el": "e-flexbox",
+           "label": "Menu",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "Menu",
+             "classes": [
+              "type-overline"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(muted)",
+               "margin": "0px"
+              }
+             }
+            },
+            {
+             "each": "menu",
+             "as": "item",
+             "node": {
+              "el": "e-paragraph",
+              "text": "{item.label}",
+              "classes": [
+               "type-small"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(text)",
+                "margin": "0px"
+               }
+              },
+              "link": "{item.url}"
+             }
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column",
+             "align-items": "flex-start"
+            }
+           },
+           "classes": [
+            "gap-s"
+           ],
+           "if": "menu"
+          },
+          {
+           "el": "e-flexbox",
+           "label": "Contact",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "Contact",
+             "classes": [
+              "type-overline"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(muted)",
+               "margin": "0px"
+              }
+             }
+            },
+            {
+             "el": "e-paragraph",
+             "text": "{phone}",
+             "classes": [
+              "type-small"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(text)",
+               "margin": "0px"
+              }
+             },
+             "link": "{phone|tel}",
+             "if": "phone"
+            },
+            {
+             "el": "e-paragraph",
+             "text": "{email}",
+             "classes": [
+              "type-small"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(text)",
+               "margin": "0px"
+              }
+             },
+             "link": "{email|mailto}",
+             "if": "email"
+            },
+            {
+             "el": "e-paragraph",
+             "text": "{address}",
+             "classes": [
+              "type-small"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(muted)",
+               "margin": "0px"
+              }
+             },
+             "if": "address"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column",
+             "align-items": "flex-start"
+            },
+            "mobile": {
+             "grid-column": "1 / -1"
+            }
+           },
+           "classes": [
+            "gap-s"
+           ]
+          },
+          {
+           "el": "e-flexbox",
+           "label": "Hours",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "Hours",
+             "classes": [
+              "type-overline"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(muted)",
+               "margin": "0px"
+              }
+             }
+            },
+            {
+             "each": "hours",
+             "as": "item",
+             "node": {
+              "el": "e-paragraph",
+              "text": "{item.days} {item.time}",
+              "classes": [
+               "type-small"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(text)",
+                "margin": "0px"
+               }
+              }
+             }
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column",
+             "align-items": "flex-start"
+            }
+           },
+           "classes": [
+            "gap-s"
+           ],
+           "if": "hours"
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "grid-template-rows": "auto",
+           "grid-template-columns": "minmax(0, 1.5fr) repeat(3, minmax(0, 1fr))"
+          },
+          "mobile": {
+           "grid-template-columns": "repeat(2, minmax(0, 1fr))"
+          }
+         },
+         "classes": [
+          "gap-l"
+         ]
+        },
+        {
+         "el": "e-flexbox",
+         "label": "Legal",
+         "children": [
+          {
+           "el": "e-paragraph",
+           "text": "{legal_line}",
+           "classes": [
+            "type-caption"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(muted)",
+             "margin": "0px"
+            }
+           }
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": {
+            "block-start": "20px",
+            "block-end": "0px",
+            "inline-start": "0px",
+            "inline-end": "0px"
+           },
+           "flex-direction": "column"
+          }
+         },
+         "classes": [
+          "border-top"
+         ]
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "flex-direction": "column",
+         "align-items": "stretch"
+        }
+       },
+       "classes": [
+        "container-max-1400",
+        "gap-xl"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(surface)"
+      }
+     },
+     "classes": [
+      "section-gutter",
+      "section-tb-padding-l"
+     ],
+     "tag": "footer"
+    }
+   ]
+  }
+ }
+}

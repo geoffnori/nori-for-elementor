@@ -1,0 +1,2027 @@
+{
+  "version": 4,
+  "groups": {
+    "scroll-animation": {
+      "label": "Scroll animation",
+      "description": "Pick one. Slide-Fade-Blur and Exit-Fade-Up both move elements as you scroll, so only one can be on at a time."
+    }
+  },
+  "modules": [
+    {
+      "key": "smooth-scroll",
+      "label": "Smooth Scroll",
+      "summary": "Momentum scrolling with Lenis (bundled, no CDN). In-page anchor links glide too.",
+      "how": "Works on the whole site as soon as it is on. Visitors who prefer reduced motion get normal scrolling.",
+      "preview": "smooth-scroll",
+      "classes": [],
+      "css": [
+        "smooth-scroll.css"
+      ],
+      "js": [
+        "smooth-scroll.js"
+      ],
+      "vendor_js": [
+        "assets/vendor/lenis/lenis.min.js"
+      ],
+      "settings": [
+        {
+          "key": "duration",
+          "label": "Glide duration",
+          "type": "range",
+          "min": 0.2,
+          "max": 2,
+          "step": 0.1,
+          "unit": "s",
+          "default": 0.8,
+          "js": true,
+          "help": "How long a scroll keeps gliding. Presets: Snappy 0.5s, Default 0.8s, Cinema 1.4s.",
+          "presets": {
+            "Snappy": 0.5,
+            "Default": 0.8,
+            "Cinema": 1.4
+          }
+        },
+        {
+          "key": "wheelMultiplier",
+          "label": "Wheel speed",
+          "type": "range",
+          "min": 0.5,
+          "max": 2,
+          "step": 0.1,
+          "unit": "×",
+          "default": 1,
+          "js": true,
+          "help": "How far one mouse-wheel notch travels."
+        },
+        {
+          "key": "syncTouch",
+          "label": "Smooth touch scrolling too",
+          "type": "toggle",
+          "default": false,
+          "js": true,
+          "help": "Off keeps the phone's own momentum scrolling, which usually feels best."
+        },
+        {
+          "key": "anchorOffset",
+          "label": "Anchor link offset",
+          "type": "range",
+          "min": 0,
+          "max": 300,
+          "step": 1,
+          "unit": "px",
+          "default": 0,
+          "js": true,
+          "help": "Space left above a section when an in-page link scrolls to it (e.g. your sticky header height)."
+        }
+      ]
+    },
+    {
+      "key": "smart-header",
+      "label": "Smart Header",
+      "summary": "Hides the header while scrolling down and brings it back when scrolling up or when it gets keyboard focus.",
+      "how": "Add the class to your header container. Handles the WordPress admin bar for logged-in users.",
+      "preview": "smart-header",
+      "classes": [
+        {
+          "key": "main-header",
+          "role": "Put this on your header container (in Theme Builder or on the page). It becomes fixed to the top and hides or shows as visitors scroll."
+        }
+      ],
+      "css": [
+        "smart-header.css"
+      ],
+      "js": [
+        "smart-header.js"
+      ],
+      "settings": [
+        {
+          "key": "topZone",
+          "label": "Always show near the top",
+          "type": "range",
+          "min": 0,
+          "max": 400,
+          "step": 10,
+          "unit": "px",
+          "default": 80,
+          "js": true,
+          "help": "The header never hides within this distance of the top of the page."
+        },
+        {
+          "key": "threshold",
+          "label": "Scroll sensitivity",
+          "type": "range",
+          "min": 0,
+          "max": 60,
+          "step": 1,
+          "unit": "px",
+          "default": 10,
+          "js": true,
+          "help": "Ignore scroll movements smaller than this, so the header doesn't flicker."
+        },
+        {
+          "key": "speed",
+          "label": "Slide speed",
+          "type": "range",
+          "min": 100,
+          "max": 1000,
+          "step": 10,
+          "unit": "ms",
+          "default": 350,
+          "css": "--nori-header-speed",
+          "variable": "header-speed"
+        }
+      ]
+    },
+    {
+      "key": "mobile-menu",
+      "label": "Mobile Menu",
+      "summary": "Turns the header menu into a menu button on phones (and optionally tablets). It opens a full-width menu below the header, with big, easy-to-tap links.",
+      "how": "Headers made by Nori (Header & footer, or the AI's site setup) already have it: switch the module on. For your own header, put menu-links-np on the desktop menu, menu-toggle-np on a container holding a menu icon and then a close icon, and mobile-menu-np on the container with the phone links.",
+      "preview": "mobile-menu",
+      "php": "module.php",
+      "classes": [
+        {
+          "key": "menu-toggle",
+          "role": "Put this on a small container holding two icons: the menu icon first, then the close icon. It becomes the menu button (a real button for keyboards and screen readers) and swaps its icons when the menu opens."
+        },
+        {
+          "key": "mobile-menu",
+          "role": "Put this on the container with the phone menu's links. It is hidden until the button opens it, then fills the screen below the header."
+        },
+        {
+          "key": "menu-links",
+          "role": "Put this on the desktop menu (and anything else in the header bar that the phone menu already has, like its button). It is hidden where the menu button takes over."
+        }
+      ],
+      "css": [
+        "mobile-menu.css"
+      ],
+      "js": [
+        "mobile-menu.js"
+      ],
+      "explain": [
+        {
+          "title": "A real button",
+          "text": "The menu button works with a keyboard (Enter or Space), tells screen readers whether the menu is open, and gets a name like \"Open menu\"."
+        },
+        {
+          "title": "Matches your header",
+          "text": "Under a rounded header bar (like Bento) the menu is a rounded card that floats just below it, with the same corners and border. Under a square header (like Studio) it is a full-width sheet down to the bottom of the screen. Either way it fades and slides in, and the page behind stays put until it closes."
+        },
+        {
+          "title": "Closes the way people expect",
+          "text": "With the button, the Esc key, a tap outside it, or by picking a link. Keyboard focus stays inside the menu while it's open."
+        },
+        {
+          "title": "Safe in the editor",
+          "text": "The Elementor editor shows your header as it is, and visitors without JavaScript keep the normal menu."
+        }
+      ],
+      "settings": [
+        {
+          "key": "breakpoint",
+          "label": "Use the menu button on",
+          "type": "select",
+          "default": "mobile",
+          "options": {
+            "mobile": "Phones (767px and narrower)",
+            "tablet": "Phones and tablets (1024px and narrower)"
+          },
+          "js": true,
+          "help": "Wider screens show the normal menu."
+        }
+      ]
+    },
+    {
+      "key": "marquee",
+      "label": "Marquee",
+      "summary": "A seamless looping ticker with a pause button. Copies are hidden from screen readers and search engines.",
+      "how": "Add the class to a flexbox; everything inside it scrolls in a loop. The flexbox gap becomes the space between items.",
+      "preview": "marquee",
+      "classes": [
+        {
+          "key": "custom-marquee",
+          "role": "Put this on a flexbox. Its children scroll sideways in an endless loop. Add as many logos, words or cards inside as you like."
+        }
+      ],
+      "css": [
+        "marquee.css"
+      ],
+      "js": [
+        "marquee.js"
+      ],
+      "settings": [
+        {
+          "key": "speed",
+          "label": "Loop duration",
+          "type": "range",
+          "min": 5,
+          "max": 120,
+          "step": 1,
+          "unit": "s",
+          "default": 35,
+          "css": "--nori-marquee-speed",
+          "help": "Time for one full loop. Lower is faster.",
+          "variable": "marquee-speed"
+        },
+        {
+          "key": "direction",
+          "label": "Direction",
+          "type": "select",
+          "options": {
+            "left": "Right to left",
+            "right": "Left to right"
+          },
+          "default": "left",
+          "js": true
+        },
+        {
+          "key": "pauseOnHover",
+          "label": "Pause on hover",
+          "type": "toggle",
+          "default": true,
+          "js": true
+        },
+        {
+          "key": "pauseButton",
+          "label": "Show a pause button",
+          "type": "toggle",
+          "default": true,
+          "js": true,
+          "help": "Recommended: lets visitors stop moving content (WCAG 2.2.2)."
+        }
+      ]
+    },
+    {
+      "key": "slide-fade-blur",
+      "group": "scroll-animation",
+      "label": "Slide-Fade-Blur",
+      "summary": "When a container scrolls into view, its children slide up, fade in and sharpen one after another.",
+      "how": "Add the first class to a container. The other two are optional fine-tuning.",
+      "preview": "slide-fade-blur",
+      "classes": [
+        {
+          "key": "slide-fade-blur",
+          "role": "Put this on the parent container. When it scrolls into view, each direct child animates in, one after another."
+        },
+        {
+          "key": "cascade-item",
+          "role": "Optional. Put this on specific elements deeper inside the container to animate only those, in page order, instead of the direct children."
+        },
+        {
+          "key": "cascade-ignore",
+          "role": "Optional. Put this on a direct child to leave it out of the animation (for example a background shape)."
+        }
+      ],
+      "css": [
+        "slide-fade-blur.css"
+      ],
+      "js": [
+        "slide-fade-blur.js"
+      ],
+      "settings": [
+        {
+          "key": "distance",
+          "label": "Slide distance",
+          "type": "range",
+          "min": 0,
+          "max": 120,
+          "step": 2,
+          "unit": "px",
+          "default": 32,
+          "css": "--nori-sfb-distance",
+          "variable": "sfb-distance"
+        },
+        {
+          "key": "blur",
+          "label": "Starting blur",
+          "type": "range",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 4,
+          "css": "--nori-sfb-blur",
+          "variable": "sfb-blur"
+        },
+        {
+          "key": "duration",
+          "label": "Duration per element",
+          "type": "range",
+          "min": 200,
+          "max": 2000,
+          "step": 50,
+          "unit": "ms",
+          "default": 650,
+          "css": "--nori-sfb-duration",
+          "js": true,
+          "variable": "sfb-duration"
+        },
+        {
+          "key": "stagger",
+          "label": "Delay between elements",
+          "type": "range",
+          "min": 0,
+          "max": 400,
+          "step": 10,
+          "unit": "ms",
+          "default": 80,
+          "js": true
+        },
+        {
+          "key": "triggerOffset",
+          "label": "Start when this far into view",
+          "type": "range",
+          "min": 0,
+          "max": 400,
+          "step": 10,
+          "unit": "px",
+          "default": 180,
+          "js": true,
+          "help": "Higher means the container has to scroll further onto the screen before animating."
+        },
+        {
+          "key": "replay",
+          "label": "Replay when scrolled back into view",
+          "type": "toggle",
+          "default": false,
+          "js": true
+        }
+      ]
+    },
+    {
+      "key": "exit-fade-up",
+      "group": "scroll-animation",
+      "label": "Exit-Fade-Up",
+      "summary": "Elements fade in from below as they arrive and drift up and out as they leave the top of the screen.",
+      "how": "Add the class to any element you want to fade with the scroll.",
+      "preview": "exit-fade-up",
+      "classes": [
+        {
+          "key": "exit-fade-up",
+          "role": "Put this on any element (a heading, a card, a whole section). Its opacity and position follow the scroll: it fades in near the bottom of the screen and fades out near the top."
+        }
+      ],
+      "css": [
+        "exit-fade-up.css"
+      ],
+      "js": [
+        "exit-fade-up.js"
+      ],
+      "settings": [
+        {
+          "key": "exitZone",
+          "label": "Fade-out zone at the top",
+          "type": "range",
+          "min": 5,
+          "max": 50,
+          "step": 1,
+          "unit": "%",
+          "default": 20,
+          "js": true,
+          "help": "How much of the top of the screen the fade-out happens over."
+        },
+        {
+          "key": "enterDistance",
+          "label": "Fade-in zone at the bottom",
+          "type": "range",
+          "min": 50,
+          "max": 400,
+          "step": 10,
+          "unit": "px",
+          "default": 200,
+          "js": true
+        },
+        {
+          "key": "exitShift",
+          "label": "Upward drift on exit",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "default": 30,
+          "js": true
+        },
+        {
+          "key": "enterShift",
+          "label": "Rise on entry",
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "default": 40,
+          "js": true
+        }
+      ]
+    },
+    {
+      "key": "lightbox",
+      "label": "Lightbox",
+      "summary": "Opens images, MP4s, YouTube and Vimeo links in an overlay. Locks scrolling, closes with ESC and returns keyboard focus.",
+      "how": "Add the class to anything that links to an image or video, or to a container holding one.",
+      "preview": "lightbox",
+      "classes": [
+        {
+          "key": "open-lightbox",
+          "role": "Put this on a button, image or container that links to an image, MP4, YouTube or Vimeo URL. Clicking it opens that media in the overlay instead of leaving the page."
+        }
+      ],
+      "css": [
+        "lightbox.css"
+      ],
+      "js": [
+        "lightbox.js"
+      ],
+      "settings": [
+        {
+          "key": "backdrop",
+          "label": "Backdrop darkness",
+          "type": "range",
+          "min": 0.5,
+          "max": 1,
+          "step": 0.02,
+          "unit": "",
+          "default": 0.88,
+          "css": "--nori-lb-backdrop"
+        },
+        {
+          "key": "blur",
+          "label": "Backdrop blur",
+          "type": "range",
+          "min": 0,
+          "max": 30,
+          "step": 1,
+          "unit": "px",
+          "default": 16,
+          "css": "--nori-lb-blur",
+          "variable": "lightbox-blur"
+        },
+        {
+          "key": "autoplay",
+          "label": "Autoplay videos",
+          "type": "toggle",
+          "default": true,
+          "js": true
+        }
+      ]
+    },
+    {
+      "key": "faded-carousel",
+      "label": "Faded Carousel",
+      "summary": "An endless carousel with the center slides in full and faded slides peeking in at both sides. Autoplays, pauses on hover, focus and touch, and moves by drag, swipe or arrow keys.",
+      "how": "Add a class to a flexbox; each child becomes a slide. Use faded-carousel-np for every screen size, or faded-carousel-mobile-np to keep your normal layout on desktop and get the carousel on tablet and mobile. The flexbox gap is the space between slides.",
+      "preview": "faded-carousel",
+      "classes": [
+        {
+          "key": "faded-carousel",
+          "role": "Put this on a flexbox. Each child (a card, an image, a testimonial) becomes a slide in an endless carousel on every screen size: the center slides in full, faded ones peeking in at the sides."
+        },
+        {
+          "key": "faded-carousel-mobile",
+          "role": "Use this instead for a carousel on tablet and mobile only (up to 1024px wide). On desktop the flexbox keeps the layout you built, for example cards in a row or a grid."
+        }
+      ],
+      "explain": [
+        {
+          "title": "Endless in both directions",
+          "text": "Nori adds copies of your slides before and after them, then jumps back by exactly one loop when you reach an end, so the carousel never runs out and the jump can't be seen."
+        },
+        {
+          "title": "Copies stay out of the way",
+          "text": "The copies are hidden from screen readers and search engines, lose their IDs and can't be reached with the Tab key, so each slide is read and indexed once."
+        },
+        {
+          "title": "Built from your own layout",
+          "text": "The Elementor editor and visitors without JavaScript see the flexbox as you built it. Slide width, gap and the faded look only apply once the carousel starts."
+        },
+        {
+          "title": "Stops when people want it to",
+          "text": "Autoplay waits while the pointer, keyboard focus or a finger is on the carousel, when the tab is in the background, and for visitors who prefer reduced motion."
+        }
+      ],
+      "css": [
+        "faded-carousel.css"
+      ],
+      "js": [
+        "faded-carousel.js"
+      ],
+      "shared_css": [
+        "assets/css/carousel.css"
+      ],
+      "shared_js": [
+        "assets/js/carousel.js"
+      ],
+      "settings": [
+        {
+          "key": "desktopCount",
+          "label": "Slides in full on desktop",
+          "type": "select",
+          "options": {
+            "1": "1",
+            "3": "3",
+            "5": "5"
+          },
+          "default": "3",
+          "js": true,
+          "help": "How many center slides show in full on screens wider than 1024px. Tablet and mobile always show one."
+        },
+        {
+          "key": "fade",
+          "label": "Faded slide opacity",
+          "type": "range",
+          "min": 0.1,
+          "max": 0.9,
+          "step": 0.05,
+          "unit": "",
+          "default": 0.5,
+          "css": "--nori-fc-fade"
+        },
+        {
+          "key": "tabletWidth",
+          "label": "Slide width on tablet",
+          "type": "range",
+          "min": 50,
+          "max": 95,
+          "step": 1,
+          "unit": "%",
+          "default": 70,
+          "css": "--nori-fc-tablet",
+          "help": "Share of the carousel width. The rest is the faded slides peeking in."
+        },
+        {
+          "key": "mobileWidth",
+          "label": "Slide width on mobile",
+          "type": "range",
+          "min": 50,
+          "max": 95,
+          "step": 1,
+          "unit": "%",
+          "default": 80,
+          "css": "--nori-fc-mobile"
+        },
+        {
+          "key": "autoplay",
+          "label": "Autoplay",
+          "type": "toggle",
+          "default": true,
+          "js": true
+        },
+        {
+          "key": "interval",
+          "label": "Time per slide",
+          "type": "range",
+          "min": 2,
+          "max": 10,
+          "step": 0.5,
+          "unit": "s",
+          "default": 4,
+          "js": true
+        },
+        {
+          "key": "pauseButton",
+          "label": "Show a pause button",
+          "type": "toggle",
+          "default": false,
+          "js": true,
+          "help": "Adds a small pause/play button under autoplaying carousels. Recommended for accessibility (WCAG 2.2.2)."
+        }
+      ]
+    },
+    {
+      "key": "video-carousel",
+      "label": "Video Carousel",
+      "summary": "An endless carousel of videos: one in the center, the others faded at the sides, with arrows and a play button. Works with self-hosted videos, YouTube and Vimeo. Only the center video plays, and it pauses when it moves away.",
+      "how": "Add the class to a flexbox whose children each hold a video: Elementor's Video widget (a self-hosted file), Elementor's YouTube widget, or a YouTube or Vimeo embed. Two videos are enough; Nori repeats them so the loop stays smooth.",
+      "preview": "video-carousel",
+      "classes": [
+        {
+          "key": "video-carousel",
+          "role": "Put this on a flexbox. Each child should hold one video (self-hosted, YouTube or Vimeo). Nori adds the arrows, the play button and the endless loop; a click on a faded video brings it to the center."
+        }
+      ],
+      "explain": [
+        {
+          "title": "One video at a time",
+          "text": "Only the center video can be played. Starting one pauses any other, and moving away from a playing video pauses it, for YouTube and Vimeo too."
+        },
+        {
+          "title": "A drag is not a click",
+          "text": "Dragging or swiping to the next video never starts the one under the pointer. A click on a faded video brings it to the center first."
+        },
+        {
+          "title": "YouTube and Vimeo load on play",
+          "text": "Until someone presses play, a YouTube or Vimeo slide shows the video's thumbnail. The player (from youtube-nocookie.com for YouTube) loads only then, so pages stay fast and no cookies are set before that. To use your own thumbnail, add a data-nori-poster attribute with an image URL to the slide."
+        },
+        {
+          "title": "Your colors, in Elementor too",
+          "text": "Each color below is an Elementor variable. The arrows use your primary-np and background-np colors by default, so they follow brand presets and Dark Mode. Pick any of your own Elementor colors instead, or a custom color, which becomes its own variable (like vc-play-color-np) you can change in the Elementor editor."
+        }
+      ],
+      "css": [
+        "video-carousel.css"
+      ],
+      "js": [
+        "video-carousel.js"
+      ],
+      "shared_css": [
+        "assets/css/carousel.css"
+      ],
+      "shared_js": [
+        "assets/js/carousel.js"
+      ],
+      "settings": [
+        {
+          "key": "width",
+          "label": "Video width on desktop",
+          "type": "range",
+          "min": 360,
+          "max": 1100,
+          "step": 10,
+          "unit": "px",
+          "default": 680,
+          "css": "--nori-vc-width",
+          "help": "Tablet and mobile use most of the screen width."
+        },
+        {
+          "key": "ratio",
+          "label": "Video shape",
+          "type": "select",
+          "options": {
+            "16-9": "16:9 (widescreen)",
+            "4-3": "4:3",
+            "1-1": "1:1 (square)",
+            "9-16": "9:16 (vertical)"
+          },
+          "default": "16-9",
+          "js": true
+        },
+        {
+          "key": "fade",
+          "label": "Faded video opacity",
+          "type": "range",
+          "min": 0.05,
+          "max": 0.9,
+          "step": 0.05,
+          "unit": "",
+          "default": 0.25,
+          "css": "--nori-vc-fade"
+        },
+        {
+          "key": "radius",
+          "label": "Corner radius",
+          "type": "range",
+          "min": 0,
+          "max": 48,
+          "step": 1,
+          "unit": "px",
+          "default": 24,
+          "css": "--nori-vc-radius"
+        },
+        {
+          "key": "playStyle",
+          "label": "Play button style",
+          "type": "select",
+          "options": {
+            "ring": "Outline ring",
+            "filled": "Filled circle",
+            "icon": "Icon only"
+          },
+          "default": "ring",
+          "js": true
+        },
+        {
+          "key": "playColor",
+          "label": "Play button color",
+          "type": "color",
+          "default": "#FFFFFF",
+          "css": "--nori-vc-play-color",
+          "variable": "vc-play-color",
+          "help": "The ring and the play icon."
+        },
+        {
+          "key": "playFill",
+          "label": "Play button fill",
+          "type": "color",
+          "default": "#111111",
+          "css": "--nori-vc-play-fill",
+          "variable": "vc-play-fill",
+          "help": "Used by the Filled circle style."
+        },
+        {
+          "key": "playSize",
+          "label": "Play button size",
+          "type": "range",
+          "min": 44,
+          "max": 140,
+          "step": 2,
+          "unit": "px",
+          "default": 88,
+          "css": "--nori-vc-play-size",
+          "help": "Mobile uses about three quarters of this."
+        },
+        {
+          "key": "tint",
+          "label": "Dark tint over videos",
+          "type": "range",
+          "min": 0,
+          "max": 0.7,
+          "step": 0.05,
+          "unit": "",
+          "default": 0.15,
+          "css": "--nori-vc-tint",
+          "help": "Behind the play button, so it stands out on bright videos."
+        },
+        {
+          "key": "arrows",
+          "label": "Show arrows",
+          "type": "toggle",
+          "default": true,
+          "js": true
+        },
+        {
+          "key": "arrowStyle",
+          "label": "Arrow style",
+          "type": "select",
+          "options": {
+            "circle": "Circle",
+            "square": "Rounded square",
+            "minimal": "Minimal (chevron only)"
+          },
+          "default": "circle",
+          "js": true
+        },
+        {
+          "key": "arrowSize",
+          "label": "Arrow size",
+          "type": "range",
+          "min": 32,
+          "max": 80,
+          "step": 2,
+          "unit": "px",
+          "default": 56,
+          "css": "--nori-vc-arrow-size"
+        },
+        {
+          "key": "arrowBg",
+          "label": "Arrow background",
+          "type": "color",
+          "default": "#FFFFFF",
+          "css": "--nori-vc-arrow-bg",
+          "variable": "vc-arrow-bg",
+          "link": "background"
+        },
+        {
+          "key": "arrowColor",
+          "label": "Arrow icon",
+          "type": "color",
+          "default": "#111111",
+          "css": "--nori-vc-arrow",
+          "variable": "vc-arrow-icon",
+          "help": "The chevron. With the Minimal style this is the only arrow color.",
+          "link": "primary"
+        },
+        {
+          "key": "arrowHoverBg",
+          "label": "Arrow background on hover",
+          "type": "color",
+          "default": "#111111",
+          "css": "--nori-vc-arrow-hover-bg",
+          "variable": "vc-arrow-hover-bg",
+          "link": "primary"
+        },
+        {
+          "key": "arrowHoverColor",
+          "label": "Arrow icon on hover",
+          "type": "color",
+          "default": "#FFFFFF",
+          "css": "--nori-vc-arrow-hover",
+          "variable": "vc-arrow-hover-icon",
+          "link": "background"
+        }
+      ]
+    },
+    {
+      "key": "button-ripple",
+      "label": "Button: Ripple Fill",
+      "summary": "A circle of color expands from the center of the button on hover and keyboard focus.",
+      "how": "Add the class to a button (a flexbox with its HTML tag set to a or button). Combines well with the button shape and size classes.",
+      "preview": "button-ripple",
+      "classes": [
+        {
+          "key": "btn-overlay-fx",
+          "role": "Put this on the button container. On hover or keyboard focus, a circle of the ripple color fills the button. The text color over the ripple is this class's Hover color, so you can change it per class in Elementor."
+        }
+      ],
+      "css": [
+        "button-ripple.css"
+      ],
+      "js": [],
+      "shared_css": [
+        "assets/css/button-states.css"
+      ],
+      "settings": [
+        {
+          "key": "color",
+          "label": "Ripple color",
+          "type": "color",
+          "default": "#D6FF00",
+          "css": "--nori-ripple-color",
+          "variable": "ripple-color",
+          "link": "accent"
+        },
+        {
+          "key": "text",
+          "label": "Text color over the ripple",
+          "type": "color",
+          "default": "#121212",
+          "css": "--nori-ripple-text",
+          "variable": "ripple-text",
+          "help": "Used by the class's Hover color. In Elementor you can pick a different color on the class, or on a single button.",
+          "link": "on-accent"
+        },
+        {
+          "key": "speed",
+          "label": "Expand speed",
+          "type": "range",
+          "min": 200,
+          "max": 1500,
+          "step": 50,
+          "unit": "ms",
+          "default": 650,
+          "css": "--nori-ripple-speed",
+          "variable": "ripple-speed"
+        }
+      ]
+    },
+    {
+      "key": "button-glow",
+      "label": "Button: Border Glow",
+      "summary": "The border lights up and a soft glow appears around the button on hover and keyboard focus.",
+      "how": "Add the class to a button container. Works best on outline or surface buttons.",
+      "preview": "button-glow",
+      "classes": [
+        {
+          "key": "btn-hover-glow",
+          "role": "Put this on the button container. On hover or keyboard focus the border and a soft glow take on the glow color. The border color, glow size and timing live in this class's Hover state, so you can fine-tune them in Elementor."
+        }
+      ],
+      "css": [
+        "button-glow.css"
+      ],
+      "js": [],
+      "shared_css": [
+        "assets/css/button-states.css"
+      ],
+      "settings": [
+        {
+          "key": "color",
+          "label": "Glow color",
+          "type": "color",
+          "default": "#D6FF00",
+          "previous_defaults": [
+            "#06B6D4"
+          ],
+          "css": "--nori-glow-color",
+          "variable": "glow-color",
+          "help": "Used by the class's Hover border and shadow. Glow size and timing are in the class itself: edit its Hover state in Elementor.",
+          "link": "accent"
+        }
+      ]
+    },
+    {
+      "key": "button-underline",
+      "label": "Button: Sliding Underline",
+      "summary": "A text-style button whose underline slides in on hover, with an optional arrow that nudges forward.",
+      "how": "Add the first class to the button container. Add the second to an icon inside it if you want the arrow nudge.",
+      "preview": "button-underline",
+      "classes": [
+        {
+          "key": "btn-underline",
+          "role": "Put this on the button container. It becomes a text-style button, and an underline slides in beneath it on hover or focus."
+        },
+        {
+          "key": "svg-mover",
+          "role": "Optional. Put this on an icon (SVG) inside a btn-underline-np button. It nudges forward on hover."
+        }
+      ],
+      "css": [
+        "button-underline.css"
+      ],
+      "js": [],
+      "shared_css": [
+        "assets/css/button-states.css"
+      ],
+      "settings": [
+        {
+          "key": "thickness",
+          "label": "Underline thickness",
+          "type": "range",
+          "min": 1,
+          "max": 6,
+          "step": 0.5,
+          "unit": "px",
+          "default": 1.5,
+          "css": "--nori-underline-thickness",
+          "variable": "underline-thickness"
+        },
+        {
+          "key": "speed",
+          "label": "Slide speed",
+          "type": "range",
+          "min": 100,
+          "max": 1000,
+          "step": 10,
+          "unit": "ms",
+          "default": 250,
+          "css": "--nori-underline-speed",
+          "variable": "underline-speed"
+        },
+        {
+          "key": "arrowShift",
+          "label": "Arrow nudge",
+          "type": "range",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 4,
+          "css": "--nori-arrow-shift",
+          "variable": "arrow-shift"
+        }
+      ]
+    },
+    {
+      "key": "button-gradient",
+      "label": "Button: Gradient Shift",
+      "summary": "A five-color gradient that slides across the button on hover and keyboard focus, as a fill or as an outline that follows your corner radius. The colors run there and back, so the slide never shows a seam.",
+      "how": "Add btn-gradient-np (filled) or btn-gradient-outline-np (outline) to a button (a flexbox with its HTML tag set to a or button). Combine it with the size and shape classes and with Button: Text Roll.",
+      "preview": "button-gradient",
+      "classes": [
+        {
+          "key": "btn-gradient",
+          "role": "Put this on the button container. Its background becomes the gradient, which slides across on hover or keyboard focus. Use it instead of a look class like btn-primary-np. The text is dark by default; set another color on the class or the button in Elementor."
+        },
+        {
+          "key": "btn-gradient-outline",
+          "role": "Put this on the button container for a gradient outline with a see-through inside. It follows the button's corner radius and slides on hover too. Set the text color on the class or the button in Elementor."
+        }
+      ],
+      "explain": [
+        {
+          "title": "Seamless slide",
+          "text": "The gradient runs through your five colors and back, and is twice as wide as the button. At rest you see colors 1 to 5; on hover it slides over to 5 to 1, with no seam and no muddy blend at the edge."
+        },
+        {
+          "title": "An outline with round corners",
+          "text": "The outline is drawn with a mask instead of border-image, so it follows the button's corner radius and the inside stays see-through."
+        },
+        {
+          "title": "Keyboard and reduced motion",
+          "text": "The slide also runs on keyboard focus. Visitors who prefer reduced motion get the colors without the movement."
+        },
+        {
+          "title": "No stray edge",
+          "text": "The gradient is measured from the button's outer edge, so a border (even a transparent one from a look class) never shows as a thin stroke. Pressing the button nudges it down 1px."
+        }
+      ],
+      "css": [
+        "button-gradient.css"
+      ],
+      "js": [],
+      "shared_css": [
+        "assets/css/button-states.css"
+      ],
+      "settings": [
+        {
+          "key": "color1",
+          "label": "Color 1",
+          "type": "color",
+          "default": "#F4FF7A",
+          "css": "--nori-grad-1",
+          "variable": "btn-gradient-1",
+          "previous_defaults": [
+            "#F18630"
+          ]
+        },
+        {
+          "key": "color2",
+          "label": "Color 2",
+          "type": "color",
+          "default": "#D6FF00",
+          "css": "--nori-grad-2",
+          "variable": "btn-gradient-2",
+          "previous_defaults": [
+            "#F8B43E"
+          ]
+        },
+        {
+          "key": "color3",
+          "label": "Color 3",
+          "type": "color",
+          "default": "#9BEA3A",
+          "css": "--nori-grad-3",
+          "variable": "btn-gradient-3",
+          "previous_defaults": [
+            "#F1E500"
+          ]
+        },
+        {
+          "key": "color4",
+          "label": "Color 4",
+          "type": "color",
+          "default": "#5ED68A",
+          "css": "--nori-grad-4",
+          "variable": "btn-gradient-4",
+          "previous_defaults": [
+            "#BACE12"
+          ]
+        },
+        {
+          "key": "color5",
+          "label": "Color 5",
+          "type": "color",
+          "default": "#2FC6B4",
+          "css": "--nori-grad-5",
+          "variable": "btn-gradient-5",
+          "previous_defaults": [
+            "#71B739"
+          ]
+        },
+        {
+          "key": "angle",
+          "label": "Angle",
+          "type": "range",
+          "min": 0,
+          "max": 360,
+          "step": 5,
+          "unit": "deg",
+          "default": 135,
+          "css": "--nori-grad-angle"
+        },
+        {
+          "key": "speed",
+          "label": "Slide speed",
+          "type": "range",
+          "min": 200,
+          "max": 2000,
+          "step": 50,
+          "unit": "ms",
+          "default": 700,
+          "css": "--nori-grad-speed",
+          "previous_defaults": [
+            600
+          ]
+        },
+        {
+          "key": "border",
+          "label": "Outline width",
+          "type": "range",
+          "min": 1,
+          "max": 6,
+          "step": 0.5,
+          "unit": "px",
+          "default": 2,
+          "css": "--nori-grad-border",
+          "help": "For btn-gradient-outline-np."
+        },
+        {
+          "key": "text",
+          "label": "Text color on the filled gradient",
+          "type": "color",
+          "default": "#121212",
+          "css": "--nori-grad-text",
+          "variable": "btn-gradient-text",
+          "help": "The class's text color in every state, so it also wins over a look class like btn-primary-np on the same button. You can pick another color on the class, or on a single button, in Elementor.",
+          "link": "on-accent"
+        }
+      ]
+    },
+    {
+      "key": "button-roll",
+      "label": "Button: Text Roll",
+      "summary": "On hover and keyboard focus the button's text and icon roll up and out while a copy rolls in from below. Works with any look and with the other button effects.",
+      "how": "Add the class to a button (a flexbox with its HTML tag set to a or button) with its text, and an icon if you like, inside. Each piece rolls on its own, with the icon a moment after the text.",
+      "preview": "button-roll",
+      "classes": [
+        {
+          "key": "btn-roll",
+          "role": "Put this on the button container. Its text and icon roll up on hover or keyboard focus while copies roll in. The copies take the button's hover text color, so an outline button that fills on hover shows the new color as it rolls in."
+        }
+      ],
+      "explain": [
+        {
+          "title": "Any icon",
+          "text": "The copy is a real copy of your icon, not a fixed arrow shape, so it works with whatever SVG or icon you use."
+        },
+        {
+          "title": "Read once",
+          "text": "The copies are hidden from screen readers, so the button's name is announced once, and they lose their IDs."
+        },
+        {
+          "title": "Clean edges",
+          "text": "Each piece is clipped by its own box, so the old and new text never overlap and nothing depends on the button hiding its overflow."
+        }
+      ],
+      "css": [
+        "button-roll.css"
+      ],
+      "js": [
+        "button-roll.js"
+      ],
+      "shared_css": [
+        "assets/css/button-states.css"
+      ],
+      "settings": [
+        {
+          "key": "direction",
+          "label": "Direction",
+          "type": "select",
+          "options": {
+            "up": "Roll up",
+            "down": "Roll down"
+          },
+          "default": "up",
+          "js": true
+        },
+        {
+          "key": "speed",
+          "label": "Roll speed",
+          "type": "range",
+          "min": 150,
+          "max": 1000,
+          "step": 10,
+          "unit": "ms",
+          "default": 400,
+          "css": "--nori-roll-speed"
+        },
+        {
+          "key": "stagger",
+          "label": "Icon delay",
+          "type": "range",
+          "min": 0,
+          "max": 200,
+          "step": 5,
+          "unit": "ms",
+          "default": 40,
+          "css": "--nori-roll-stagger",
+          "help": "Each piece after the first (usually the icon) starts this much later."
+        }
+      ]
+    },
+    {
+      "key": "dark-mode",
+      "label": "Dark Mode",
+      "summary": "A light/dark switch for your visitors. Nori's colors, and any of your own Elementor colors you give a dark version, turn dark without touching Elementor's own styles, and the Elementor editor always shows the light version.",
+      "how": "Switch it on, then put theme-toggle-np on a button (or any element) to let visitors switch. Colors from Nori's variables follow automatically: use them on your containers, text and buttons. Pick a brand preset under Variables > Starter colors to set these dark values for you.",
+      "preview": "dark-mode",
+      "php": "module.php",
+      "classes": [
+        {
+          "key": "theme-toggle",
+          "role": "Put this on a button, link or icon. Clicking it (or pressing Enter or Space) switches between light and dark. It gets aria-pressed, and an icon-only toggle gets a name for screen readers."
+        },
+        {
+          "key": "hide-in-dark",
+          "role": "Optional. Put this on anything that should only show in light mode, like a dark logo or a moon icon inside the toggle."
+        },
+        {
+          "key": "hide-in-light",
+          "role": "Optional. Put this on anything that should only show in dark mode, like a light logo or a sun icon inside the toggle."
+        }
+      ],
+      "explain": [
+        {
+          "title": "Built on Elementor's own variables",
+          "text": "Elementor prints every global variable as a CSS custom property. Dark mode gives Nori's color variables their dark values, so anything that uses them follows, and nothing else changes."
+        },
+        {
+          "title": "The editor stays light",
+          "text": "Dark mode never runs in the Elementor editor, so you always edit the design as you built it, and every element stays visible."
+        },
+        {
+          "title": "Your own colors too",
+          "text": "Every color variable you add in Elementor shows up under Your colors in dark mode, set to Same in dark. Give one a dark version (a custom color, another of your colors, or one of Nori's) and everything using that variable follows."
+        },
+        {
+          "title": "No flash on load",
+          "text": "A tiny script in the page head picks the theme before anything is drawn, so a dark-mode visitor never sees the light page first."
+        },
+        {
+          "title": "Colors you type in stay put",
+          "text": "A color typed straight into an element (not a variable) doesn't change in dark mode. To make it follow, pick a variable in Elementor's color picker instead: one of Nori's, or one of yours with a dark version."
+        }
+      ],
+      "css": [
+        "dark-mode.css"
+      ],
+      "js": [
+        "dark-mode.js"
+      ],
+      "settings": [
+        {
+          "key": "default",
+          "label": "Before a visitor picks",
+          "type": "select",
+          "options": {
+            "system": "Match the visitor's system setting",
+            "light": "Light",
+            "dark": "Dark"
+          },
+          "default": "system",
+          "js": true
+        },
+        {
+          "key": "remember",
+          "label": "Remember the visitor's choice",
+          "type": "toggle",
+          "default": true,
+          "js": true,
+          "help": "Stored in the visitor's browser (no cookie), so their choice carries across pages and visits."
+        },
+        {
+          "key": "pageBackground",
+          "label": "Darken the page background",
+          "type": "toggle",
+          "default": true,
+          "help": "Gives the page itself the dark background and text color, for areas without a background of their own."
+        },
+        {
+          "key": "darkPrimary",
+          "label": "Dark primary",
+          "type": "color",
+          "default": "#F5F5F5",
+          "plain": true
+        },
+        {
+          "key": "darkSecondary",
+          "label": "Dark secondary",
+          "type": "color",
+          "default": "#A3A3A3",
+          "plain": true
+        },
+        {
+          "key": "darkText",
+          "label": "Dark text",
+          "type": "color",
+          "default": "#F5F5F5",
+          "plain": true
+        },
+        {
+          "key": "darkAccent",
+          "label": "Dark accent",
+          "type": "color",
+          "default": "#D6FF00",
+          "plain": true
+        },
+        {
+          "key": "darkOnAccent",
+          "label": "Dark on-accent",
+          "type": "color",
+          "default": "#111827",
+          "plain": true
+        },
+        {
+          "key": "darkBackground",
+          "label": "Dark background",
+          "type": "color",
+          "default": "#121212",
+          "plain": true
+        },
+        {
+          "key": "darkSurface",
+          "label": "Dark surface",
+          "type": "color",
+          "default": "#1C1C1C",
+          "plain": true
+        },
+        {
+          "key": "darkLine",
+          "label": "Dark line",
+          "type": "color",
+          "default": "#323232",
+          "plain": true
+        },
+        {
+          "key": "darkMuted",
+          "label": "Dark muted text",
+          "type": "color",
+          "default": "#ACACAC",
+          "plain": true
+        },
+        {
+          "key": "darkBand",
+          "label": "Dark band",
+          "type": "color",
+          "default": "#222222",
+          "plain": true
+        },
+        {
+          "key": "darkOnBand",
+          "label": "Dark text on the band",
+          "type": "color",
+          "default": "#F5F5F5",
+          "plain": true
+        }
+      ]
+    },
+    {
+      "key": "accessibility",
+      "label": "Accessibility Enhancements",
+      "summary": "A two-tone focus ring that stays visible on light and dark backgrounds, labels for icon-only social and logo links, and hidden decorative icons.",
+      "how": "Works on the whole site as soon as it is on. No class needed.",
+      "preview": "accessibility",
+      "classes": [],
+      "css": [
+        "accessibility.css"
+      ],
+      "js": [
+        "accessibility.js"
+      ],
+      "settings": [
+        {
+          "key": "ring",
+          "label": "Focus ring color",
+          "type": "color",
+          "default": "#000000",
+          "css": "--nori-focus-color",
+          "variable": "focus-ring",
+          "link": "text"
+        },
+        {
+          "key": "halo",
+          "label": "Halo color",
+          "type": "color",
+          "default": "#FFFFFF",
+          "css": "--nori-focus-halo",
+          "variable": "focus-halo",
+          "link": "background"
+        },
+        {
+          "key": "width",
+          "label": "Ring width",
+          "type": "range",
+          "min": 2,
+          "max": 6,
+          "step": 1,
+          "unit": "px",
+          "default": 3,
+          "css": "--nori-focus-width",
+          "variable": "focus-width"
+        },
+        {
+          "key": "autoLabels",
+          "label": "Label icon-only social and logo links",
+          "type": "toggle",
+          "default": true,
+          "js": true
+        }
+      ]
+    },
+    {
+      "key": "form-protection",
+      "label": "Form Spam Protection",
+      "summary": "Stop form spam without a CAPTCHA. Visitors never solve puzzles or tick \"I'm not a robot\", bots are turned away quietly, and you can see what was blocked.",
+      "how": "Protects every Elementor form automatically as soon as it is on, including Atomic forms. Nothing to add to your forms.",
+      "preview": "form-protection",
+      "classes": [],
+      "css": [
+        "form-protection.css"
+      ],
+      "js": [
+        "form-protection.js"
+      ],
+      "php": "module.php",
+      "settings": [
+        {
+          "key": "minTime",
+          "label": "Minimum time before a form can be sent",
+          "type": "range",
+          "min": 0,
+          "max": 5000,
+          "step": 100,
+          "unit": "ms",
+          "default": 1200,
+          "js": true,
+          "help": "Entries sent faster than this after the page opened are treated as bots, by the browser and again by your server. 0 turns the timing check off."
+        },
+        {
+          "key": "rateLimit",
+          "label": "Most entries per visitor in 10 minutes",
+          "type": "range",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "",
+          "default": 5,
+          "help": "Stops one visitor (or bot) sending the form again and again. 0 turns it off. Logged-in editors are never limited. Nori never stores IP addresses, only a scrambled code for 10 minutes."
+        },
+        {
+          "key": "maxLinks",
+          "label": "Most links in one entry",
+          "type": "select",
+          "default": "3",
+          "options": {
+            "off": "No limit",
+            "0": "No links",
+            "1": "1 link",
+            "2": "2 links",
+            "3": "3 links",
+            "5": "5 links"
+          },
+          "help": "Spam is usually full of links; real messages rarely have more than one or two. Counts http://, https:// and www. in every field."
+        },
+        {
+          "key": "logOnly",
+          "label": "Test mode: log, but don't block",
+          "type": "toggle",
+          "default": false,
+          "js": true,
+          "help": "Every entry goes through and anything that would have been blocked is only logged below. Use it to check nothing real gets caught, then switch it off."
+        }
+      ],
+      "explain": [
+        {
+          "title": "An invisible honeypot",
+          "text": "Nori adds a hidden field that people never see or reach with the keyboard. Bots fill in every field they find, so a filled honeypot means a bot."
+        },
+        {
+          "title": "A signed pass from your site",
+          "text": "After the page loads, the visitor's browser quietly gets a one-time pass from your site and sends it with the entry. Your server turns away entries without a valid pass, which stops bots that post straight to WordPress without opening the page. It works with page caching and on both classic and Atomic forms."
+        },
+        {
+          "title": "Too fast to be human",
+          "text": "A person needs a few seconds to fill in a form. Entries sent sooner than the minimum time are dropped, checked by the browser and again by your server."
+        },
+        {
+          "title": "Limits for the persistent ones",
+          "text": "Optional limits on how often one visitor can send the form and how many links an entry may have."
+        },
+        {
+          "title": "Nothing for visitors to do",
+          "text": "No image grids, no third-party scripts and no tracking. Real visitors just press Send."
+        }
+      ],
+      "panel": "spam-log"
+    },
+    {
+      "key": "font-preconnect",
+      "label": "Font Preconnect",
+      "summary": "Connects to your font provider early so text appears sooner. Skipped when fonts are served from your own site.",
+      "how": "Works on the whole site as soon as it is on.",
+      "preview": "font-preconnect",
+      "classes": [],
+      "css": [],
+      "js": [],
+      "php": "module.php",
+      "settings": [
+        {
+          "key": "google",
+          "label": "Google Fonts",
+          "type": "toggle",
+          "default": true
+        },
+        {
+          "key": "typekit",
+          "label": "Adobe Fonts (Typekit)",
+          "type": "toggle",
+          "default": false
+        }
+      ]
+    },
+    {
+      "key": "hubspot-bridge",
+      "label": "HubSpot Bridge",
+      "summary": "Send Elementor Atomic form entries straight to a HubSpot form. Design the form any way you like in Elementor; HubSpot still gets every contact, with page tracking.",
+      "how": "Paste a HubSpot embed code below. Nori reads the form's fields, gives you a class for your Atomic form, and lists the inputs your form needs: each one's ID must be the HubSpot field name.",
+      "preview": "hubspot-bridge",
+      "panel": "hubspot",
+      "classes": [],
+      "js": [
+        "hubspot-bridge.js"
+      ],
+      "php": "module.php",
+      "explain": [
+        {
+          "title": "You design the form in Elementor",
+          "text": "Any layout, fonts, colors and animation, with the Atomic form. No HubSpot styling to fight and no iframe."
+        },
+        {
+          "title": "Nori reads the HubSpot form",
+          "text": "From the ids in the embed code Nori loads the HubSpot form's fields, and which ones are required, the same way HubSpot's embed does."
+        },
+        {
+          "title": "One class per bridge",
+          "text": "Each bridge gets its own class, like hs-bridge-a1b2c-np. Add it to the Atomic form, so two forms on one page never mix up."
+        },
+        {
+          "title": "Matching fields",
+          "text": "Every HubSpot field needs an input in your Atomic form with the same ID (select the input, Settings, ID), for example email. If a required field has no matching input, HubSpot rejects the entry."
+        },
+        {
+          "title": "HubSpot first, then Elementor",
+          "text": "On submit the entry goes to HubSpot, with the visitor's HubSpot tracking cookie and the page. Only when HubSpot accepts it does Elementor send its email and show the success message."
+        },
+        {
+          "title": "Privacy choices (GDPR)",
+          "text": "With Respect privacy choices on, the tracking cookie is left out when the visitor's browser sends Global Privacy Control, they declined HubSpot's cookie banner or used its do-not-track link, or a consent plugin that uses the WP Consent API has no marketing consent. The entry still reaches HubSpot, just not tied to their visits."
+        }
+      ],
+      "settings": [
+        {
+          "key": "respectPrivacy",
+          "label": "Respect privacy choices (GDPR, Global Privacy Control)",
+          "type": "toggle",
+          "default": true,
+          "js": true,
+          "help": "Leaves out the visitor's HubSpot tracking cookie when they have opted out of tracking. Entries are still sent. Switch it off only if you handle consent another way."
+        }
+      ]
+    },
+    {
+      "key": "background-video",
+      "label": "Background Video",
+      "summary": "Makes Elementor's Background Video element ready for real pages: a tint so text on top stays readable, tidy play and pause buttons, and video that pauses off screen, waits for visitors who prefer less motion and can stay off on phones. It can also play the video inside big letters.",
+      "how": "Add Elementor's Background Video element, pick a video, and put bg-video-np on it. For video inside letters, put video-text-np on a Background Video that holds only a heading (pairs well with fit-text-np on the heading).",
+      "preview": "background-video",
+      "classes": [
+        {
+          "key": "bg-video",
+          "role": "Put this on Elementor's Background Video element. Nori adds the tint, styles the play and pause buttons, pauses the video when it scrolls off screen and holds it still for visitors who prefer less motion."
+        },
+        {
+          "key": "video-text",
+          "role": "Put this on a Background Video element that holds only a heading. The video plays inside the letters and the rest shows the element's own background. Without JavaScript and in the editor the heading shows as normal text over the video."
+        }
+      ],
+      "css": [
+        "background-video.css"
+      ],
+      "js": [
+        "background-video.js"
+      ],
+      "explain": [
+        {
+          "title": "Built on Elementor's element",
+          "text": "Nori doesn't replace Elementor's Background Video: you pick the video, start and end times and loop in Elementor as usual. The class adds what a real page needs."
+        },
+        {
+          "title": "Readable on top",
+          "text": "A tint in your band color (or any color) sits between the video and your content: even, darker at the bottom, or darker on the left."
+        },
+        {
+          "title": "Easy on visitors",
+          "text": "The video pauses when it's off screen. Visitors who ask their device for less motion see a still frame and a Play button. On phones you can skip the video entirely, and it is skipped for visitors who turned on data saver."
+        }
+      ],
+      "settings": [
+        {
+          "key": "tint",
+          "label": "Tint color",
+          "type": "color",
+          "default": "#111827",
+          "css": "--nori-bgv-tint",
+          "variable": "bg-video-tint",
+          "link": "band",
+          "help": "Laid over the video so text stays readable."
+        },
+        {
+          "key": "strength",
+          "label": "Tint strength",
+          "type": "range",
+          "min": 0,
+          "max": 0.9,
+          "step": 0.05,
+          "unit": "",
+          "default": 0.45,
+          "css": "--nori-bgv-strength"
+        },
+        {
+          "key": "shape",
+          "label": "Tint shape",
+          "type": "select",
+          "options": {
+            "even": "Even",
+            "bottom": "Darker at the bottom",
+            "side": "Darker on the left"
+          },
+          "default": "even",
+          "js": true
+        },
+        {
+          "key": "phones",
+          "label": "Play on phones",
+          "type": "toggle",
+          "default": true,
+          "js": true,
+          "help": "Off: phones skip the video download and show the section's background color instead."
+        },
+        {
+          "key": "offscreen",
+          "label": "Pause when off screen",
+          "type": "toggle",
+          "default": true,
+          "js": true
+        }
+      ]
+    },
+    {
+      "key": "fit-text",
+      "label": "Fit Text",
+      "summary": "Poster-sized headlines: the text grows or shrinks to fill the full width of its container on one line, at any screen size.",
+      "how": "Put fit-text-np on a heading. Keep it short (a name or two or three words).",
+      "preview": "fit-text",
+      "classes": [
+        {
+          "key": "fit-text",
+          "role": "Put this on a heading. Its size is set so the words fill the container's width exactly, on one line. In the editor it keeps its own size."
+        }
+      ],
+      "css": [
+        "fit-text.css"
+      ],
+      "js": [
+        "fit-text.js"
+      ],
+      "settings": [
+        {
+          "key": "min",
+          "label": "Smallest size",
+          "type": "range",
+          "min": 16,
+          "max": 120,
+          "step": 2,
+          "unit": "px",
+          "default": 32,
+          "js": true,
+          "help": "Below this size, long text stacks its words on separate lines (each line as wide as it can be) instead of shrinking further."
+        },
+        {
+          "key": "max",
+          "label": "Largest size",
+          "type": "range",
+          "min": 80,
+          "max": 600,
+          "step": 10,
+          "unit": "px",
+          "default": 400,
+          "js": true
+        }
+      ]
+    },
+    {
+      "key": "split-reveal",
+      "label": "Split Reveal",
+      "summary": "Headlines rise into place word by word when they scroll into view. Works alongside Slide-Fade-Blur or Exit-Fade-Up: inside a section they animate, the words wait for it.",
+      "how": "Put split-reveal-np on a heading or a short paragraph. Headings with video text stay whole (the video shows through letters that don't move).",
+      "preview": "split-reveal",
+      "classes": [
+        {
+          "key": "split-reveal",
+          "role": "Put this on a heading or short paragraph. Each word rises out of a mask in turn when it comes into view. The text stays readable without JavaScript, in the editor and for reduced motion."
+        }
+      ],
+      "css": [
+        "split-reveal.css"
+      ],
+      "js": [
+        "split-reveal.js"
+      ],
+      "settings": [
+        {
+          "key": "stagger",
+          "label": "Delay between words",
+          "type": "range",
+          "min": 0,
+          "max": 200,
+          "step": 5,
+          "unit": "ms",
+          "default": 60,
+          "js": true
+        },
+        {
+          "key": "duration",
+          "label": "Rise duration",
+          "type": "range",
+          "min": 300,
+          "max": 1600,
+          "step": 50,
+          "unit": "ms",
+          "default": 900,
+          "js": true,
+          "css": "--nori-sr-duration"
+        }
+      ],
+      "explain": [
+        {
+          "title": "Its own animation",
+          "text": "Split Reveal moves the words of one headline; Slide-Fade-Blur and Exit-Fade-Up move whole sections. Use it with either of them, or on its own."
+        },
+        {
+          "title": "Waits its turn",
+          "text": "A headline inside a section that Slide-Fade-Blur or Exit-Fade-Up is animating starts once that section has arrived, so the two never fight over the same moment."
+        },
+        {
+          "title": "Always readable",
+          "text": "Words are only hidden once the script has split them. Without JavaScript, in the editor and for visitors who prefer less motion, the headline is simply there."
+        }
+      ]
+    },
+    {
+      "key": "scroll-expand",
+      "label": "Scroll Expand",
+      "summary": "A framed, rounded panel that opens to the full width of the screen as it scrolls up. Made for a Background Video or a big photo.",
+      "how": "Put scroll-expand-np on a full-width block, like a Background Video, an image or a flexbox.",
+      "preview": "scroll-expand",
+      "classes": [
+        {
+          "key": "scroll-expand",
+          "role": "Put this on a full-width block. It starts inset from the sides with rounded corners and opens to the full width as it scrolls toward the top of the screen."
+        }
+      ],
+      "css": [
+        "scroll-expand.css"
+      ],
+      "js": [
+        "scroll-expand.js"
+      ],
+      "settings": [
+        {
+          "key": "inset",
+          "label": "Starting inset on each side",
+          "type": "range",
+          "min": 0,
+          "max": 120,
+          "step": 2,
+          "unit": "px",
+          "default": 40,
+          "css": "--nori-se-inset",
+          "help": "Phones use 12px."
+        },
+        {
+          "key": "radius",
+          "label": "Starting corner radius",
+          "type": "range",
+          "min": 0,
+          "max": 60,
+          "step": 1,
+          "unit": "px",
+          "default": 24,
+          "css": "--nori-se-radius"
+        },
+        {
+          "key": "start",
+          "label": "Starts opening at",
+          "type": "range",
+          "min": 30,
+          "max": 100,
+          "step": 5,
+          "unit": "%",
+          "default": 55,
+          "js": true,
+          "help": "How far down the screen its top edge is when it starts to open."
+        },
+        {
+          "key": "distance",
+          "label": "Opening distance",
+          "type": "range",
+          "min": 15,
+          "max": 100,
+          "step": 5,
+          "unit": "%",
+          "default": 45,
+          "js": true,
+          "help": "How much of the screen's height it takes to open fully."
+        }
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "key": "scrolling",
+      "label": "Header & scrolling",
+      "description": "How the page itself scrolls, a header that gets out of the way, and a menu button for phones.",
+      "modules": [
+        "smooth-scroll",
+        "smart-header",
+        "mobile-menu"
+      ]
+    },
+    {
+      "key": "scroll-animation",
+      "label": "Scroll animation",
+      "group": "scroll-animation",
+      "description": "Animate things as they scroll into view. For sections, pick one: Slide-Fade-Blur and Exit-Fade-Up both move whole elements, so only one can be on at a time. Split Reveal is for headlines and works alongside either: a headline inside an animated section waits for it, then its words rise in.",
+      "modules": [
+        "slide-fade-blur",
+        "exit-fade-up",
+        "split-reveal"
+      ]
+    },
+    {
+      "key": "buttons",
+      "label": "Button effects",
+      "description": "Hover, focus and press effects for buttons: add one next to a look class like btn-primary-np. Each is its own module, so you only load the ones you use. The looks, sizes and shapes themselves are under Classes > Buttons.",
+      "modules": [
+        "button-ripple",
+        "button-glow",
+        "button-underline",
+        "button-gradient",
+        "button-roll"
+      ]
+    },
+    {
+      "key": "media",
+      "label": "Motion & media",
+      "description": "A looping marquee and a lightbox for images and videos.",
+      "modules": [
+        "marquee",
+        "lightbox"
+      ]
+    },
+    {
+      "key": "carousels",
+      "label": "Carousels",
+      "description": "Endless carousels built from a plain flexbox: faded cards, a tablet-and-mobile-only version, and a video carousel.",
+      "modules": [
+        "faded-carousel",
+        "video-carousel"
+      ]
+    },
+    {
+      "key": "video",
+      "label": "Video & big type",
+      "description": "Background video that behaves on real pages, video inside letters, poster-sized headlines and a panel that opens as you scroll.",
+      "modules": [
+        "background-video",
+        "fit-text",
+        "scroll-expand"
+      ]
+    },
+    {
+      "key": "forms",
+      "label": "Forms",
+      "description": "Keep your forms free of spam without a CAPTCHA, and send Atomic form entries straight to HubSpot.",
+      "modules": [
+        "form-protection",
+        "hubspot-bridge"
+      ]
+    },
+    {
+      "key": "site",
+      "label": "Site-wide",
+      "description": "Site-wide switches: a dark mode your visitors can toggle, accessibility improvements and faster font loading.",
+      "modules": [
+        "dark-mode",
+        "accessibility",
+        "font-preconnect"
+      ]
+    }
+  ],
+  "pairs_help": {
+    "pick-one": "Only one can be on. Both move whole elements as you scroll.",
+    "takes-turns": "Both run on the same spot, one after the other.",
+    "steps-aside": "Both can be on, but in one situation one of them doesn't run.",
+    "teams-up": "They're made for each other: one knows about the other, or a setting lines them up.",
+    "fine": "Checked together in a browser: no clash, nothing to do."
+  },
+  "pairs": [
+    {
+      "modules": [
+        "slide-fade-blur",
+        "exit-fade-up"
+      ],
+      "kind": "pick-one",
+      "text": "Both move whole elements as you scroll, so the admin lets you switch on only one."
+    },
+    {
+      "modules": [
+        "split-reveal",
+        "slide-fade-blur"
+      ],
+      "kind": "takes-turns",
+      "text": "A headline inside a section Slide-Fade-Blur is animating waits for the section to arrive, then its words rise."
+    },
+    {
+      "modules": [
+        "split-reveal",
+        "exit-fade-up"
+      ],
+      "kind": "takes-turns",
+      "text": "A headline inside a section Exit-Fade-Up is fading in waits until the section is (nearly) all the way in, then its words rise."
+    },
+    {
+      "modules": [
+        "split-reveal",
+        "background-video"
+      ],
+      "kind": "steps-aside",
+      "text": "Split Reveal skips headings with video text (video-text-np): the video shows through letters that stay still, so the words don't rise there."
+    },
+    {
+      "modules": [
+        "lightbox",
+        "background-video"
+      ],
+      "kind": "steps-aside",
+      "text": "Background videos pause while the Lightbox is open and play again when it closes (unless the visitor paused them)."
+    },
+    {
+      "modules": [
+        "lightbox",
+        "smooth-scroll"
+      ],
+      "kind": "steps-aside",
+      "text": "Smooth Scroll stops while the Lightbox is open, so the page behind it stays put."
+    },
+    {
+      "modules": [
+        "mobile-menu",
+        "smooth-scroll"
+      ],
+      "kind": "steps-aside",
+      "text": "Smooth Scroll stops while the phone menu is open, so the page behind it stays put."
+    },
+    {
+      "modules": [
+        "fit-text",
+        "background-video"
+      ],
+      "kind": "teams-up",
+      "text": "Put fit-text-np on the heading inside a video-text-np Background Video: whenever Fit Text resizes the name, the video's letter shapes are redrawn to match."
+    },
+    {
+      "modules": [
+        "form-protection",
+        "hubspot-bridge"
+      ],
+      "kind": "teams-up",
+      "text": "The HubSpot Bridge asks Form Spam Protection first, so a form it flags as spam is never sent to HubSpot."
+    },
+    {
+      "modules": [
+        "smooth-scroll",
+        "smart-header"
+      ],
+      "kind": "teams-up",
+      "text": "Set Smooth Scroll's anchor link offset to your header's height, so in-page links stop below the Smart Header."
+    },
+    {
+      "modules": [
+        "dark-mode",
+        "background-video"
+      ],
+      "kind": "teams-up",
+      "text": "The tint follows your band color (the default), so in dark mode it switches to the dark band color with everything else."
+    },
+    {
+      "modules": [
+        "scroll-expand",
+        "slide-fade-blur"
+      ],
+      "kind": "fine",
+      "text": "On the same element: Slide-Fade-Blur brings its children in while Scroll Expand opens the frame. They use different properties."
+    },
+    {
+      "modules": [
+        "scroll-expand",
+        "exit-fade-up"
+      ],
+      "kind": "fine",
+      "text": "On the same element: Exit-Fade-Up fades it in and out while Scroll Expand opens the frame. They use different properties."
+    },
+    {
+      "modules": [
+        "scroll-expand",
+        "smooth-scroll"
+      ],
+      "kind": "fine",
+      "text": "The frame opens smoothly with momentum scrolling."
+    },
+    {
+      "modules": [
+        "fit-text",
+        "split-reveal"
+      ],
+      "kind": "fine",
+      "text": "On the same heading: Fit Text sizes it, then the words rise."
+    },
+    {
+      "modules": [
+        "smart-header",
+        "background-video"
+      ],
+      "kind": "fine",
+      "text": "A fixed Smart Header leaves the play and pause buttons of a hero video clear and clickable."
+    },
+    {
+      "modules": [
+        "button-roll",
+        "split-reveal"
+      ],
+      "kind": "fine",
+      "text": "A rolling button inside a Split Reveal block rises in with the words and still rolls on hover."
+    }
+  ]
+}

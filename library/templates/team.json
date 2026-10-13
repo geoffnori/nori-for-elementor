@@ -1,0 +1,837 @@
+{
+ "key": "team",
+ "label": "Team",
+ "group": "proof",
+ "order": 70,
+ "anchor": "team",
+ "description": "The people behind the business, with a photo, name and role each.",
+ "slots": {
+  "eyebrow": {
+   "label": "Eyebrow",
+   "type": "text",
+   "sample": "The team"
+  },
+  "heading": {
+   "label": "Heading",
+   "type": "text",
+   "required": true,
+   "sample": "The people you'll meet"
+  },
+  "people": {
+   "label": "People",
+   "type": "list",
+   "min": 2,
+   "max": 8,
+   "required": true,
+   "fields": {
+    "name": {
+     "type": "text"
+    },
+    "role": {
+     "type": "text"
+    },
+    "photo": {
+     "type": "image"
+    }
+   },
+   "sample": [
+    {
+     "name": "Team member",
+     "role": "Role or title"
+    },
+    {
+     "name": "Team member",
+     "role": "Role or title"
+    },
+    {
+     "name": "Team member",
+     "role": "Role or title"
+    },
+    {
+     "name": "Team member",
+     "role": "Role or title"
+    }
+   ]
+  }
+ },
+ "variants": {
+  "studio": {
+   "label": "Studio: photo grid",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "Team",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Inner",
+       "children": [
+        {
+         "el": "e-flexbox",
+         "label": "Heading",
+         "children": [
+          {
+           "el": "e-paragraph",
+           "text": "{eyebrow}",
+           "classes": [
+            "type-overline"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(muted)",
+             "margin": "0px"
+            }
+           },
+           "if": "eyebrow"
+          },
+          {
+           "el": "e-heading",
+           "text": "{heading}",
+           "classes": [
+            "type-h2"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(primary)"
+            }
+           },
+           "tag": "h2"
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "column",
+           "align-items": "flex-start"
+          }
+         },
+         "classes": [
+          "gap-s"
+         ]
+        },
+        {
+         "el": "e-grid",
+         "label": "People",
+         "children": [
+          {
+           "each": "people",
+           "as": "item",
+           "node": {
+            "el": "e-flexbox",
+            "label": "{item.name}",
+            "children": [
+             {
+              "el": "e-image",
+              "image": "{item.photo}",
+              "label": "Photo",
+              "css": {
+               "desktop": {
+                "width": "100%",
+                "object-fit": "cover",
+                "height": "360px",
+                "border-radius": "var(border-radius-s)"
+               },
+               "mobile": {
+                "height": "220px"
+               }
+              }
+             },
+             {
+              "el": "e-paragraph",
+              "text": "{item.name}",
+              "classes": [
+               "type-h6"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(primary)",
+                "margin": "0px"
+               }
+              }
+             },
+             {
+              "el": "e-paragraph",
+              "text": "{item.role}",
+              "classes": [
+               "type-small"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(muted)",
+                "margin": "0px"
+               }
+              }
+             }
+            ],
+            "css": {
+             "desktop": {
+              "padding": "0px",
+              "flex-direction": "column",
+              "align-items": "stretch"
+             }
+            },
+            "classes": [
+             "gap-xs"
+            ]
+           }
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "grid-template-rows": "auto",
+           "grid-template-columns": "repeat(4, minmax(0, 1fr))"
+          },
+          "tablet": {
+           "grid-template-columns": "repeat(3, minmax(0, 1fr))"
+          },
+          "mobile": {
+           "grid-template-columns": "repeat(2, minmax(0, 1fr))"
+          }
+         },
+         "classes": [
+          "gap-m"
+         ]
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "flex-direction": "column",
+         "align-items": "stretch"
+        }
+       },
+       "classes": [
+        "container-max-1200",
+        "gap-l",
+        "scroll-anim"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(background)"
+      }
+     },
+     "classes": [
+      "section-gutter",
+      "section-tb-padding-l"
+     ],
+     "tag": "section"
+    }
+   ]
+  },
+  "bento": {
+   "label": "Bento: people tiles",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "Team",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Inner",
+       "children": [
+        {
+         "el": "e-flexbox",
+         "label": "Top",
+         "children": [
+          {
+           "el": "e-flexbox",
+           "label": "Heading",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "{eyebrow}",
+             "classes": [
+              "type-overline"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(muted)",
+               "margin": "0px"
+              }
+             },
+             "if": "eyebrow"
+            },
+            {
+             "el": "e-heading",
+             "text": "{heading}",
+             "classes": [
+              "type-h2"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(primary)"
+              }
+             },
+             "tag": "h2"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column",
+             "align-items": "flex-start"
+            }
+           },
+           "classes": [
+            "gap-xs"
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": {
+            "block-start": "40px",
+            "block-end": "10px",
+            "inline-start": "0px",
+            "inline-end": "0px"
+           },
+           "flex-direction": "row",
+           "justify-content": "space-between",
+           "align-items": "flex-end",
+           "flex-wrap": "wrap"
+          },
+          "mobile": {
+           "padding": {
+            "block-start": "24px",
+            "block-end": "4px",
+            "inline-start": "0px",
+            "inline-end": "0px"
+           }
+          }
+         },
+         "classes": [
+          "gap-m"
+         ]
+        },
+        {
+         "el": "e-grid",
+         "label": "People",
+         "children": [
+          {
+           "each": "people",
+           "as": "item",
+           "node": {
+            "el": "e-flexbox",
+            "label": "{item.name}",
+            "children": [
+             {
+              "el": "e-image",
+              "image": "{item.photo}",
+              "label": "Photo",
+              "css": {
+               "desktop": {
+                "width": "100%",
+                "object-fit": "cover",
+                "height": "280px",
+                "border-radius": "var(border-radius-s)"
+               },
+               "mobile": {
+                "height": "170px"
+               }
+              }
+             },
+             {
+              "el": "e-flexbox",
+              "label": "Name",
+              "children": [
+               {
+                "el": "e-paragraph",
+                "text": "{item.name}",
+                "classes": [
+                 "type-h6"
+                ],
+                "css": {
+                 "desktop": {
+                  "color": "var(primary)",
+                  "margin": "0px"
+                 }
+                }
+               },
+               {
+                "el": "e-paragraph",
+                "text": "{item.role}",
+                "classes": [
+                 "type-small"
+                ],
+                "css": {
+                 "desktop": {
+                  "color": "var(muted)",
+                  "margin": "0px"
+                 }
+                }
+               }
+              ],
+              "css": {
+               "desktop": {
+                "padding": {
+                 "block-start": "4px",
+                 "block-end": "6px",
+                 "inline-start": "8px",
+                 "inline-end": "8px"
+                },
+                "flex-direction": "column",
+                "gap": "2px"
+               }
+              }
+             }
+            ],
+            "css": {
+             "desktop": {
+              "flex-direction": "column",
+              "background": "var(background)",
+              "align-items": "flex-start"
+             },
+             "mobile": {
+              "padding": "10px",
+              "border-radius": "18px"
+             }
+            },
+            "classes": [
+             "card-border-radius",
+             "gap-xs",
+             "padding-xs"
+            ]
+           }
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "grid-template-rows": "auto",
+           "grid-template-columns": "repeat(4, minmax(0, 1fr))"
+          },
+          "tablet": {
+           "grid-template-columns": "repeat(3, minmax(0, 1fr))"
+          },
+          "mobile": {
+           "grid-template-columns": "repeat(2, minmax(0, 1fr))"
+          }
+         },
+         "classes": [
+          "gap-s"
+         ]
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "flex-direction": "column",
+         "align-items": "stretch"
+        }
+       },
+       "classes": [
+        "container-max-1200",
+        "gap-s",
+        "scroll-anim"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(surface)"
+      }
+     },
+     "classes": [
+      "section-gutter",
+      "section-tb-padding-s"
+     ],
+     "tag": "section"
+    }
+   ]
+  },
+  "billboard": {
+   "label": "Billboard: a square photo grid",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "Team",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Inner",
+       "children": [
+        {
+         "el": "e-flexbox",
+         "label": "Top",
+         "children": [
+          {
+           "el": "e-flexbox",
+           "label": "Heading",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "{eyebrow}",
+             "classes": [
+              "type-overline"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(muted)",
+               "margin": "0px"
+              }
+             },
+             "if": "eyebrow"
+            },
+            {
+             "el": "e-heading",
+             "text": "{heading}",
+             "classes": [
+              "type-h2",
+              "all-caps"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(primary)",
+               "max-width": "900px"
+              }
+             },
+             "tag": "h2"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column",
+             "align-items": "flex-start",
+             "flex": {
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "flexBasis": "420px"
+             }
+            }
+           },
+           "classes": [
+            "gap-s"
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "row",
+           "justify-content": "space-between",
+           "align-items": "flex-end",
+           "flex-wrap": "wrap"
+          }
+         },
+         "classes": [
+          "gap-m"
+         ]
+        },
+        {
+         "el": "e-grid",
+         "label": "People",
+         "children": [
+          {
+           "each": "people",
+           "as": "item",
+           "node": {
+            "el": "e-flexbox",
+            "label": "{item.name}",
+            "children": [
+             {
+              "el": "e-image",
+              "image": "{item.photo}",
+              "label": "Photo",
+              "css": {
+               "desktop": {
+                "width": "100%",
+                "object-fit": "cover",
+                "height": "380px"
+               },
+               "mobile": {
+                "height": "220px"
+               }
+              }
+             },
+             {
+              "el": "e-paragraph",
+              "text": "{item.name}",
+              "classes": [
+               "type-h5",
+               "all-caps"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(primary)",
+                "margin": "0px"
+               }
+              }
+             },
+             {
+              "el": "e-paragraph",
+              "text": "{item.role}",
+              "classes": [
+               "type-small"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(muted)",
+                "margin": "0px"
+               }
+              }
+             }
+            ],
+            "css": {
+             "desktop": {
+              "padding": "0px",
+              "flex-direction": "column",
+              "align-items": "stretch"
+             }
+            },
+            "classes": [
+             "gap-xs"
+            ]
+           }
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "grid-template-rows": "auto",
+           "grid-template-columns": "repeat(4, minmax(0, 1fr))"
+          },
+          "tablet": {
+           "grid-template-columns": "repeat(3, minmax(0, 1fr))"
+          },
+          "mobile": {
+           "grid-template-columns": "repeat(2, minmax(0, 1fr))"
+          }
+         },
+         "classes": [
+          "gap-m"
+         ]
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "flex-direction": "column",
+         "align-items": "stretch"
+        }
+       },
+       "classes": [
+        "container-max-1600",
+        "gap-l",
+        "scroll-anim"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(background)"
+      }
+     },
+     "classes": [
+      "section-gutter",
+      "section-tb-padding-l"
+     ],
+     "tag": "section"
+    }
+   ]
+  },
+  "lens": {
+   "label": "Lens: rounded photo grid",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "Team",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Inner",
+       "children": [
+        {
+         "el": "e-flexbox",
+         "label": "Top",
+         "children": [
+          {
+           "el": "e-flexbox",
+           "label": "Heading",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "{eyebrow}",
+             "classes": [
+              "type-overline"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(muted)",
+               "margin": "0px"
+              }
+             },
+             "if": "eyebrow"
+            },
+            {
+             "el": "e-heading",
+             "text": "{heading}",
+             "classes": [
+              "type-h1",
+              "headline-refined"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(primary)",
+               "max-width": "880px"
+              }
+             },
+             "tag": "h2"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "column",
+             "align-items": "flex-start",
+             "text-align": "start",
+             "flex": {
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "flexBasis": "420px"
+             }
+            }
+           },
+           "classes": [
+            "gap-s"
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "row",
+           "justify-content": "space-between",
+           "align-items": "flex-end",
+           "flex-wrap": "wrap"
+          }
+         },
+         "classes": [
+          "gap-m"
+         ]
+        },
+        {
+         "el": "e-grid",
+         "label": "People",
+         "children": [
+          {
+           "each": "people",
+           "as": "item",
+           "node": {
+            "el": "e-flexbox",
+            "label": "{item.name}",
+            "children": [
+             {
+              "el": "e-image",
+              "image": "{item.photo}",
+              "label": "Photo",
+              "css": {
+               "desktop": {
+                "width": "100%",
+                "object-fit": "cover",
+                "height": "420px"
+               },
+               "mobile": {
+                "height": "220px",
+                "border-radius": "18px"
+               }
+              },
+              "classes": [
+               "card-border-radius"
+              ]
+             },
+             {
+              "el": "e-paragraph",
+              "text": "{item.name}",
+              "classes": [
+               "type-h5",
+               "headline-refined"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(primary)",
+                "margin": "0px"
+               }
+              }
+             },
+             {
+              "el": "e-paragraph",
+              "text": "{item.role}",
+              "classes": [
+               "type-small"
+              ],
+              "css": {
+               "desktop": {
+                "color": "var(muted)",
+                "margin": "0px"
+               }
+              }
+             }
+            ],
+            "css": {
+             "desktop": {
+              "padding": "0px",
+              "flex-direction": "column",
+              "align-items": "stretch"
+             }
+            },
+            "classes": [
+             "gap-xs"
+            ]
+           }
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "grid-template-rows": "auto",
+           "grid-template-columns": "repeat(4, minmax(0, 1fr))"
+          },
+          "tablet": {
+           "grid-template-columns": "repeat(3, minmax(0, 1fr))"
+          },
+          "mobile": {
+           "grid-template-columns": "repeat(2, minmax(0, 1fr))"
+          }
+         },
+         "classes": [
+          "gap-m"
+         ]
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "flex-direction": "column",
+         "align-items": "stretch"
+        }
+       },
+       "classes": [
+        "container-max-1400",
+        "gap-xl",
+        "scroll-anim"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(background)"
+      }
+     },
+     "classes": [
+      "section-gutter",
+      "section-tb-padding-l"
+     ],
+     "tag": "section"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,1398 @@
+{
+ "key": "site-header",
+ "label": "Header",
+ "group": "site",
+ "order": 10,
+ "anchor": "top",
+ "description": "Logo or business name, menu, phone number and one call to action..",
+ "slots": {
+  "business_name": {
+   "label": "Business name",
+   "type": "text",
+   "required": true,
+   "sample": "Alder Creek Plumbing",
+   "help": "Shown when there is no logo image."
+  },
+  "logo": {
+   "label": "Logo image",
+   "type": "image",
+   "help": "A media library image. Leave empty to show the business name."
+  },
+  "menu": {
+   "label": "Menu links",
+   "type": "list",
+   "max": 7,
+   "fields": {
+    "label": {
+     "type": "text"
+    },
+    "url": {
+     "type": "url"
+    }
+   },
+   "sample": [
+    {
+     "label": "Home",
+     "url": "/"
+    },
+    {
+     "label": "Services",
+     "url": "/services/"
+    },
+    {
+     "label": "About",
+     "url": "/about/"
+    },
+    {
+     "label": "Contact",
+     "url": "/contact/"
+    }
+   ]
+  },
+  "phone": {
+   "label": "Phone",
+   "type": "text",
+   "sample": "(541) 555-0148"
+  },
+  "cta": {
+   "label": "Button",
+   "type": "link",
+   "sample": {
+    "label": "Book a visit",
+    "url": "/contact/"
+   }
+  }
+ },
+ "variants": {
+  "studio": {
+   "label": "Studio: a clean bar with a hairline",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "Header",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Header inner",
+       "children": [
+        {
+         "el": "e-image",
+         "if": "logo",
+         "image": "{logo}",
+         "link": "/",
+         "label": "Logo",
+         "css": {
+          "desktop": {
+           "width": "auto",
+           "max-height": "40px"
+          }
+         }
+        },
+        {
+         "el": "e-paragraph",
+         "text": "{business_name}",
+         "classes": [
+          "type-h6"
+         ],
+         "css": {
+          "desktop": {
+           "color": "var(primary)",
+           "margin": "0px",
+           "letter-spacing": "-0.02em"
+          }
+         },
+         "unless": "logo",
+         "link": "/",
+         "label": "Business name"
+        },
+        {
+         "el": "e-flexbox",
+         "label": "Menu",
+         "children": [
+          {
+           "each": "menu",
+           "as": "item",
+           "node": {
+            "el": "e-paragraph",
+            "text": "{item.label}",
+            "classes": [
+             "type-label"
+            ],
+            "css": {
+             "desktop": {
+              "color": "var(text)",
+              "margin": "0px"
+             }
+            },
+            "link": "{item.url}"
+           }
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "row",
+           "flex-wrap": "wrap",
+           "align-items": "center",
+           "width": "auto"
+          },
+          "mobile": {
+           "order": "3",
+           "width": "100%",
+           "gap": "18px"
+          }
+         },
+         "classes": [
+          "menu-links",
+          "gap-m"
+         ],
+         "tag": "nav",
+         "if": "menu"
+        },
+        {
+         "el": "e-flexbox",
+         "label": "Actions",
+         "children": [
+          {
+           "el": "e-paragraph",
+           "text": "{phone}",
+           "classes": [
+            "type-label"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(text)",
+             "margin": "0px"
+            },
+            "mobile": {
+             "display": "none"
+            }
+           },
+           "link": "{phone|tel}",
+           "label": "Phone",
+           "if": "phone"
+          },
+          {
+           "el": "button",
+           "link": "{cta}",
+           "classes": [
+            "btn-secondary",
+            "btn-sm",
+            "btn-pill",
+            "menu-links"
+           ],
+           "label": "Button",
+           "if": "cta"
+          },
+          {
+           "el": "e-flexbox",
+           "label": "Menu button",
+           "children": [
+            {
+             "el": "e-svg",
+             "icon": "menu",
+             "css": {
+              "desktop": {
+               "width": "26px",
+               "height": "26px",
+               "color": "var(primary)"
+              }
+             },
+             "label": "Menu icon"
+            },
+            {
+             "el": "e-svg",
+             "icon": "close",
+             "css": {
+              "desktop": {
+               "width": "26px",
+               "height": "26px",
+               "color": "var(primary)"
+              }
+             },
+             "label": "Close icon"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "row",
+             "display": "none",
+             "width": "44px",
+             "height": "44px",
+             "align-items": "center",
+             "justify-content": "center"
+            }
+           },
+           "classes": [
+            "menu-toggle"
+           ],
+           "if": "menu"
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "row",
+           "align-items": "center",
+           "width": "auto"
+          },
+          "mobile": {
+           "gap": "10px"
+          }
+         },
+         "classes": [
+          "gap-m"
+         ]
+        },
+        {
+         "el": "e-flexbox",
+         "label": "Mobile menu",
+         "children": [
+          {
+           "each": "menu",
+           "as": "item",
+           "node": {
+            "el": "e-paragraph",
+            "text": "{item.label}",
+            "classes": [
+             "type-h4",
+             "border-bottom"
+            ],
+            "css": {
+             "desktop": {
+              "color": "var(primary)",
+              "margin": "0px",
+              "width": "100%",
+              "text-align": "end",
+              "padding": {
+               "block-start": "18px",
+               "block-end": "18px",
+               "inline-start": "0px",
+               "inline-end": "0px"
+              }
+             }
+            },
+            "link": "{item.url}"
+           }
+          },
+          {
+           "el": "e-flexbox",
+           "label": "Menu actions",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "{phone}",
+             "classes": [
+              "type-label"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(text)",
+               "margin": "0px"
+              }
+             },
+             "link": "{phone|tel}",
+             "label": "Phone",
+             "if": "phone"
+            },
+            {
+             "el": "button",
+             "link": "{cta}",
+             "classes": [
+              "btn-primary",
+              "btn-pill"
+             ],
+             "label": "Button",
+             "if": "cta"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": {
+              "block-start": "28px",
+              "block-end": "0px",
+              "inline-start": "0px",
+              "inline-end": "0px"
+             },
+             "flex-direction": "column",
+             "align-items": "flex-end"
+            }
+           },
+           "classes": [
+            "gap-s"
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": {
+            "block-start": "8px",
+            "block-end": "40px",
+            "inline-start": "24px",
+            "inline-end": "24px"
+           },
+           "flex-direction": "column",
+           "display": "none",
+           "align-items": "stretch",
+           "background": "var(background)"
+          }
+         },
+         "classes": [
+          "mobile-menu"
+         ],
+         "tag": "nav",
+         "if": "menu"
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "flex-direction": "row",
+         "justify-content": "space-between",
+         "align-items": "center",
+         "flex-wrap": "wrap"
+        },
+        "mobile": {
+         "gap": "14px"
+        }
+       },
+       "classes": [
+        "container-max-1200",
+        "gap-m"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(background)",
+       "padding": {
+        "block-start": "22px",
+        "block-end": "22px",
+        "inline-start": "40px",
+        "inline-end": "40px"
+       }
+      },
+      "mobile": {
+       "padding": {
+        "block-start": "16px",
+        "block-end": "16px",
+        "inline-start": "18px",
+        "inline-end": "18px"
+       }
+      }
+     },
+     "classes": [
+      "section-gutter",
+      "border-bottom"
+     ],
+     "tag": "header"
+    }
+   ]
+  },
+  "bento": {
+   "label": "Bento: a floating rounded bar",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "Header",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Header inner",
+       "children": [
+        {
+         "el": "e-image",
+         "if": "logo",
+         "image": "{logo}",
+         "link": "/",
+         "label": "Logo",
+         "css": {
+          "desktop": {
+           "width": "auto",
+           "max-height": "36px"
+          }
+         }
+        },
+        {
+         "el": "e-paragraph",
+         "text": "{business_name}",
+         "classes": [
+          "type-h6"
+         ],
+         "css": {
+          "desktop": {
+           "color": "var(primary)",
+           "margin": "0px",
+           "letter-spacing": "-0.02em"
+          }
+         },
+         "unless": "logo",
+         "link": "/",
+         "label": "Business name"
+        },
+        {
+         "el": "e-flexbox",
+         "label": "Menu",
+         "children": [
+          {
+           "each": "menu",
+           "as": "item",
+           "node": {
+            "el": "e-paragraph",
+            "text": "{item.label}",
+            "classes": [
+             "type-label"
+            ],
+            "css": {
+             "desktop": {
+              "color": "var(text)",
+              "margin": "0px"
+             }
+            },
+            "link": "{item.url}"
+           }
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "row",
+           "flex-wrap": "wrap",
+           "align-items": "center",
+           "width": "auto"
+          },
+          "mobile": {
+           "order": "3",
+           "width": "100%",
+           "gap": "16px",
+           "padding": {
+            "block-start": "4px",
+            "block-end": "6px",
+            "inline-start": "4px",
+            "inline-end": "4px"
+           }
+          }
+         },
+         "classes": [
+          "menu-links",
+          "gap-m"
+         ],
+         "tag": "nav",
+         "if": "menu"
+        },
+        {
+         "el": "e-flexbox",
+         "label": "Actions",
+         "children": [
+          {
+           "el": "e-paragraph",
+           "text": "{phone}",
+           "classes": [
+            "type-label"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(text)",
+             "margin": "0px"
+            },
+            "mobile": {
+             "display": "none"
+            }
+           },
+           "link": "{phone|tel}",
+           "label": "Phone",
+           "if": "phone"
+          },
+          {
+           "el": "button",
+           "link": "{cta}",
+           "classes": [
+            "btn-secondary",
+            "btn-sm",
+            "btn-pill",
+            "menu-links"
+           ],
+           "label": "Button",
+           "if": "cta"
+          },
+          {
+           "el": "e-flexbox",
+           "label": "Menu button",
+           "children": [
+            {
+             "el": "e-svg",
+             "icon": "menu",
+             "css": {
+              "desktop": {
+               "width": "26px",
+               "height": "26px",
+               "color": "var(primary)"
+              }
+             },
+             "label": "Menu icon"
+            },
+            {
+             "el": "e-svg",
+             "icon": "close",
+             "css": {
+              "desktop": {
+               "width": "26px",
+               "height": "26px",
+               "color": "var(primary)"
+              }
+             },
+             "label": "Close icon"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "row",
+             "display": "none",
+             "width": "44px",
+             "height": "44px",
+             "align-items": "center",
+             "justify-content": "center"
+            }
+           },
+           "classes": [
+            "menu-toggle"
+           ],
+           "if": "menu"
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "row",
+           "align-items": "center",
+           "width": "auto"
+          },
+          "mobile": {
+           "gap": "8px"
+          }
+         },
+         "classes": [
+          "gap-s"
+         ]
+        },
+        {
+         "el": "e-flexbox",
+         "label": "Mobile menu",
+         "children": [
+          {
+           "each": "menu",
+           "as": "item",
+           "node": {
+            "el": "e-paragraph",
+            "text": "{item.label}",
+            "classes": [
+             "type-h4",
+             "border-bottom"
+            ],
+            "css": {
+             "desktop": {
+              "color": "var(primary)",
+              "margin": "0px",
+              "width": "100%",
+              "text-align": "end",
+              "padding": {
+               "block-start": "18px",
+               "block-end": "18px",
+               "inline-start": "0px",
+               "inline-end": "0px"
+              }
+             }
+            },
+            "link": "{item.url}"
+           }
+          },
+          {
+           "el": "e-flexbox",
+           "label": "Menu actions",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "{phone}",
+             "classes": [
+              "type-label"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(text)",
+               "margin": "0px"
+              }
+             },
+             "link": "{phone|tel}",
+             "label": "Phone",
+             "if": "phone"
+            },
+            {
+             "el": "button",
+             "link": "{cta}",
+             "classes": [
+              "btn-primary",
+              "btn-pill"
+             ],
+             "label": "Button",
+             "if": "cta"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": {
+              "block-start": "28px",
+              "block-end": "0px",
+              "inline-start": "0px",
+              "inline-end": "0px"
+             },
+             "flex-direction": "column",
+             "align-items": "flex-end"
+            }
+           },
+           "classes": [
+            "gap-s"
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": {
+            "block-start": "4px",
+            "block-end": "20px",
+            "inline-start": "20px",
+            "inline-end": "20px"
+           },
+           "flex-direction": "column",
+           "display": "none",
+           "align-items": "stretch",
+           "background": "var(background)"
+          }
+         },
+         "classes": [
+          "mobile-menu"
+         ],
+         "tag": "nav",
+         "if": "menu"
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": {
+          "block-start": "10px",
+          "block-end": "10px",
+          "inline-start": "24px",
+          "inline-end": "10px"
+         },
+         "flex-direction": "row",
+         "justify-content": "space-between",
+         "align-items": "center",
+         "flex-wrap": "wrap",
+         "background": "var(background)",
+         "border-width": "1px",
+         "border-style": "solid",
+         "border-color": "var(line)"
+        },
+        "mobile": {
+         "border-radius": "22px",
+         "gap": "10px",
+         "padding": {
+          "block-start": "10px",
+          "block-end": "10px",
+          "inline-start": "16px",
+          "inline-end": "10px"
+         }
+        }
+       },
+       "classes": [
+        "container-max-1200",
+        "border-radius-pill",
+        "gap-m"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(surface)",
+       "padding": {
+        "block-start": "16px",
+        "block-end": "8px",
+        "inline-start": "40px",
+        "inline-end": "40px"
+       }
+      },
+      "mobile": {
+       "padding": {
+        "block-start": "12px",
+        "block-end": "4px",
+        "inline-start": "12px",
+        "inline-end": "12px"
+       }
+      }
+     },
+     "classes": [
+      "section-gutter"
+     ],
+     "tag": "header"
+    }
+   ]
+  },
+  "billboard": {
+   "label": "Billboard: a bold bar with a hairline",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "Header",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Header inner",
+       "children": [
+        {
+         "el": "e-image",
+         "if": "logo",
+         "image": "{logo}",
+         "link": "/",
+         "label": "Logo",
+         "css": {
+          "desktop": {
+           "width": "auto",
+           "max-height": "40px"
+          }
+         }
+        },
+        {
+         "el": "e-paragraph",
+         "text": "{business_name}",
+         "classes": [
+          "type-h6",
+          "headline-poster"
+         ],
+         "css": {
+          "desktop": {
+           "color": "var(primary)",
+           "margin": "0px"
+          }
+         },
+         "unless": "logo",
+         "link": "/",
+         "label": "Business name"
+        },
+        {
+         "el": "e-flexbox",
+         "label": "Menu",
+         "children": [
+          {
+           "each": "menu",
+           "as": "item",
+           "node": {
+            "el": "e-paragraph",
+            "text": "{item.label}",
+            "classes": [
+             "type-label",
+             "all-caps"
+            ],
+            "css": {
+             "desktop": {
+              "color": "var(text)",
+              "margin": "0px"
+             }
+            },
+            "link": "{item.url}"
+           }
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "row",
+           "flex-wrap": "wrap",
+           "align-items": "center",
+           "width": "auto"
+          },
+          "mobile": {
+           "order": "3",
+           "width": "100%",
+           "gap": "18px"
+          }
+         },
+         "classes": [
+          "menu-links",
+          "gap-m"
+         ],
+         "tag": "nav",
+         "if": "menu"
+        },
+        {
+         "el": "e-flexbox",
+         "label": "Actions",
+         "children": [
+          {
+           "el": "e-paragraph",
+           "text": "{phone}",
+           "classes": [
+            "type-label"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(text)",
+             "margin": "0px"
+            },
+            "mobile": {
+             "display": "none"
+            }
+           },
+           "link": "{phone|tel}",
+           "label": "Phone",
+           "if": "phone"
+          },
+          {
+           "el": "button",
+           "link": "{cta}",
+           "classes": [
+            "btn-primary",
+            "btn-sm",
+            "btn-sharp",
+            "menu-links"
+           ],
+           "label": "Button",
+           "if": "cta"
+          },
+          {
+           "el": "e-flexbox",
+           "label": "Menu button",
+           "children": [
+            {
+             "el": "e-svg",
+             "icon": "menu",
+             "css": {
+              "desktop": {
+               "width": "26px",
+               "height": "26px",
+               "color": "var(primary)"
+              }
+             },
+             "label": "Menu icon"
+            },
+            {
+             "el": "e-svg",
+             "icon": "close",
+             "css": {
+              "desktop": {
+               "width": "26px",
+               "height": "26px",
+               "color": "var(primary)"
+              }
+             },
+             "label": "Close icon"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "row",
+             "display": "none",
+             "width": "44px",
+             "height": "44px",
+             "align-items": "center",
+             "justify-content": "center"
+            }
+           },
+           "classes": [
+            "menu-toggle"
+           ],
+           "if": "menu"
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "row",
+           "align-items": "center",
+           "width": "auto"
+          },
+          "mobile": {
+           "gap": "10px"
+          }
+         },
+         "classes": [
+          "gap-m"
+         ]
+        },
+        {
+         "el": "e-flexbox",
+         "label": "Mobile menu",
+         "children": [
+          {
+           "each": "menu",
+           "as": "item",
+           "node": {
+            "el": "e-paragraph",
+            "text": "{item.label}",
+            "classes": [
+             "type-h4",
+             "border-bottom"
+            ],
+            "css": {
+             "desktop": {
+              "color": "var(primary)",
+              "margin": "0px",
+              "width": "100%",
+              "text-align": "end",
+              "padding": {
+               "block-start": "18px",
+               "block-end": "18px",
+               "inline-start": "0px",
+               "inline-end": "0px"
+              }
+             }
+            },
+            "link": "{item.url}"
+           }
+          },
+          {
+           "el": "e-flexbox",
+           "label": "Menu actions",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "{phone}",
+             "classes": [
+              "type-label"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(text)",
+               "margin": "0px"
+              }
+             },
+             "link": "{phone|tel}",
+             "label": "Phone",
+             "if": "phone"
+            },
+            {
+             "el": "button",
+             "link": "{cta}",
+             "classes": [
+              "btn-primary",
+              "btn-sharp"
+             ],
+             "label": "Button",
+             "if": "cta"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": {
+              "block-start": "28px",
+              "block-end": "0px",
+              "inline-start": "0px",
+              "inline-end": "0px"
+             },
+             "flex-direction": "column",
+             "align-items": "flex-end"
+            }
+           },
+           "classes": [
+            "gap-s"
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": {
+            "block-start": "8px",
+            "block-end": "40px",
+            "inline-start": "24px",
+            "inline-end": "24px"
+           },
+           "flex-direction": "column",
+           "display": "none",
+           "align-items": "stretch",
+           "background": "var(background)"
+          }
+         },
+         "classes": [
+          "mobile-menu"
+         ],
+         "tag": "nav",
+         "if": "menu"
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "flex-direction": "row",
+         "justify-content": "space-between",
+         "align-items": "center",
+         "flex-wrap": "wrap"
+        },
+        "mobile": {
+         "gap": "14px"
+        }
+       },
+       "classes": [
+        "container-max-1600",
+        "gap-m"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(background)",
+       "padding": {
+        "block-start": "18px",
+        "block-end": "18px",
+        "inline-start": "40px",
+        "inline-end": "40px"
+       }
+      },
+      "mobile": {
+       "padding": {
+        "block-start": "14px",
+        "block-end": "14px",
+        "inline-start": "18px",
+        "inline-end": "18px"
+       }
+      }
+     },
+     "classes": [
+      "section-gutter",
+      "border-bottom"
+     ],
+     "tag": "header"
+    }
+   ]
+  },
+  "lens": {
+   "label": "Lens: a light, open bar",
+   "tree": [
+    {
+     "el": "e-flexbox",
+     "label": "Header",
+     "children": [
+      {
+       "el": "e-flexbox",
+       "label": "Header inner",
+       "children": [
+        {
+         "el": "e-image",
+         "if": "logo",
+         "image": "{logo}",
+         "link": "/",
+         "label": "Logo",
+         "css": {
+          "desktop": {
+           "width": "auto",
+           "max-height": "40px"
+          }
+         }
+        },
+        {
+         "el": "e-paragraph",
+         "text": "{business_name}",
+         "classes": [
+          "type-h6",
+          "headline-refined"
+         ],
+         "css": {
+          "desktop": {
+           "color": "var(primary)",
+           "margin": "0px"
+          }
+         },
+         "unless": "logo",
+         "link": "/",
+         "label": "Business name"
+        },
+        {
+         "el": "e-flexbox",
+         "label": "Menu",
+         "children": [
+          {
+           "each": "menu",
+           "as": "item",
+           "node": {
+            "el": "e-paragraph",
+            "text": "{item.label}",
+            "classes": [
+             "type-body"
+            ],
+            "css": {
+             "desktop": {
+              "color": "var(text)",
+              "margin": "0px"
+             }
+            },
+            "link": "{item.url}"
+           }
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "row",
+           "flex-wrap": "wrap",
+           "align-items": "center",
+           "width": "auto"
+          },
+          "mobile": {
+           "order": "3",
+           "width": "100%",
+           "gap": "18px"
+          }
+         },
+         "classes": [
+          "menu-links",
+          "gap-m"
+         ],
+         "tag": "nav",
+         "if": "menu"
+        },
+        {
+         "el": "e-flexbox",
+         "label": "Actions",
+         "children": [
+          {
+           "el": "e-paragraph",
+           "text": "{phone}",
+           "classes": [
+            "type-label"
+           ],
+           "css": {
+            "desktop": {
+             "color": "var(text)",
+             "margin": "0px"
+            },
+            "mobile": {
+             "display": "none"
+            }
+           },
+           "link": "{phone|tel}",
+           "label": "Phone",
+           "if": "phone"
+          },
+          {
+           "el": "button",
+           "link": "{cta}",
+           "classes": [
+            "btn-secondary",
+            "btn-sm",
+            "btn-pill",
+            "menu-links"
+           ],
+           "label": "Button",
+           "if": "cta"
+          },
+          {
+           "el": "e-flexbox",
+           "label": "Menu button",
+           "children": [
+            {
+             "el": "e-svg",
+             "icon": "menu",
+             "css": {
+              "desktop": {
+               "width": "26px",
+               "height": "26px",
+               "color": "var(primary)"
+              }
+             },
+             "label": "Menu icon"
+            },
+            {
+             "el": "e-svg",
+             "icon": "close",
+             "css": {
+              "desktop": {
+               "width": "26px",
+               "height": "26px",
+               "color": "var(primary)"
+              }
+             },
+             "label": "Close icon"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": "0px",
+             "flex-direction": "row",
+             "display": "none",
+             "width": "44px",
+             "height": "44px",
+             "align-items": "center",
+             "justify-content": "center"
+            }
+           },
+           "classes": [
+            "menu-toggle"
+           ],
+           "if": "menu"
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": "0px",
+           "flex-direction": "row",
+           "align-items": "center",
+           "width": "auto"
+          },
+          "mobile": {
+           "gap": "10px"
+          }
+         },
+         "classes": [
+          "gap-m"
+         ]
+        },
+        {
+         "el": "e-flexbox",
+         "label": "Mobile menu",
+         "children": [
+          {
+           "each": "menu",
+           "as": "item",
+           "node": {
+            "el": "e-paragraph",
+            "text": "{item.label}",
+            "classes": [
+             "type-h4",
+             "border-bottom"
+            ],
+            "css": {
+             "desktop": {
+              "color": "var(primary)",
+              "margin": "0px",
+              "width": "100%",
+              "text-align": "end",
+              "padding": {
+               "block-start": "18px",
+               "block-end": "18px",
+               "inline-start": "0px",
+               "inline-end": "0px"
+              }
+             }
+            },
+            "link": "{item.url}"
+           }
+          },
+          {
+           "el": "e-flexbox",
+           "label": "Menu actions",
+           "children": [
+            {
+             "el": "e-paragraph",
+             "text": "{phone}",
+             "classes": [
+              "type-label"
+             ],
+             "css": {
+              "desktop": {
+               "color": "var(text)",
+               "margin": "0px"
+              }
+             },
+             "link": "{phone|tel}",
+             "label": "Phone",
+             "if": "phone"
+            },
+            {
+             "el": "button",
+             "link": "{cta}",
+             "classes": [
+              "btn-primary",
+              "btn-pill"
+             ],
+             "label": "Button",
+             "if": "cta"
+            }
+           ],
+           "css": {
+            "desktop": {
+             "padding": {
+              "block-start": "28px",
+              "block-end": "0px",
+              "inline-start": "0px",
+              "inline-end": "0px"
+             },
+             "flex-direction": "column",
+             "align-items": "flex-end"
+            }
+           },
+           "classes": [
+            "gap-s"
+           ]
+          }
+         ],
+         "css": {
+          "desktop": {
+           "padding": {
+            "block-start": "8px",
+            "block-end": "40px",
+            "inline-start": "24px",
+            "inline-end": "24px"
+           },
+           "flex-direction": "column",
+           "display": "none",
+           "align-items": "stretch",
+           "background": "var(background)"
+          }
+         },
+         "classes": [
+          "mobile-menu"
+         ],
+         "tag": "nav",
+         "if": "menu"
+        }
+       ],
+       "css": {
+        "desktop": {
+         "padding": "0px",
+         "flex-direction": "row",
+         "justify-content": "space-between",
+         "align-items": "center",
+         "flex-wrap": "wrap"
+        },
+        "mobile": {
+         "gap": "14px"
+        }
+       },
+       "classes": [
+        "container-max-1400",
+        "gap-m"
+       ]
+      }
+     ],
+     "css": {
+      "desktop": {
+       "flex-direction": "column",
+       "background": "var(background)",
+       "padding": {
+        "block-start": "22px",
+        "block-end": "22px",
+        "inline-start": "40px",
+        "inline-end": "40px"
+       }
+      },
+      "mobile": {
+       "padding": {
+        "block-start": "16px",
+        "block-end": "16px",
+        "inline-start": "18px",
+        "inline-end": "18px"
+       }
+      }
+     },
+     "classes": [
+      "section-gutter"
+     ],
+     "tag": "header"
+    }
+   ]
+  }
+ }
+}

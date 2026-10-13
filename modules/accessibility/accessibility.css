@@ -1,0 +1,15 @@
+/* Nori: Accessibility Enhancements.
+   A two-tone focus ring (dark outline + light halo) that stays visible on light and dark backgrounds. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+	outline: var(--focus-width-np, var(--nori-focus-width, 3px)) solid var(--nori-focus-color, #000) !important;
+	outline-offset: var(--focus-width-np, var(--nori-focus-width, 3px)) !important;
+	box-shadow: 0 0 0 calc(var(--focus-width-np, var(--nori-focus-width, 3px)) * 2) var(--nori-focus-halo, #fff) !important;
+}
+/* Proportional trademark / registered symbols */
+.tm-symbol-np, .registered-symbol-np {
+	font-size: 0.65em;
+	line-height: 0;
+	vertical-align: 0.28em;
+	margin-inline-start: 0.04em;
+	display: inline-block;
+}
