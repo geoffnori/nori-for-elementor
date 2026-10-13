@@ -5,7 +5,7 @@ Tags: elementor, atomic, global classes, animations, design system
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.24.3
+Stable tag: 0.24.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -108,7 +108,7 @@ Nori itself sends nothing to Nori or anyone else, with one exception for MCP cli
 == Source Code ==
 
 Nori for Elementor is open source. The development repository and full source code are publicly hosted and maintained at:
-https://github.com/geoffnori/nori-wordpress-plugin
+https://github.com/geoffnori/nori-for-elementor
 
 Nori's own JavaScript (assets/admin/app.js and the module scripts) is handwritten, human-readable vanilla JavaScript, shipped exactly as written: no build step, bundler or minification. The one minified file is the bundled Lenis library (assets/vendor/lenis/lenis.min.js); its source is linked under Third-party code.
 
@@ -118,6 +118,9 @@ Nori's own JavaScript (assets/admin/app.js and the module scripts) is handwritte
   Bundled locally for privacy and offline reliability in assets/vendor/lenis.
 
 == Changelog ==
+
+= 0.24.4 =
+* Improved: The readme and admin app link Nori's public source repository.
 
 = 0.24.3 =
 * Fixed: Sturdier MCP abilities: site setup, the modules list and page anchors handle a missing Elementor piece without an error.

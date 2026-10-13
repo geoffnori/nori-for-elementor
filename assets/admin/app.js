@@ -1,6 +1,6 @@
 /* Nori for Elementor: the admin app.
  *
- * Source repository: https://github.com/geoffnori/nori-wordpress-plugin
+ * Source repository: https://github.com/geoffnori/nori-for-elementor
  * Handwritten vanilla JavaScript, shipped as written: no build step, bundler or minification.
  *
  * One screen with a sidebar. Everything it shows comes from NoriApp.state (built by
