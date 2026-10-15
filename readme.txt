@@ -15,6 +15,8 @@ Editable Atomic global classes and variables, plus lightweight animation and int
 
 Nori gives Elementor 4's Atomic editor a ready-made design system and a set of small, well-behaved interaction modules.
 
+See every class, module and page template, with live demos, at [noriforelement.com](https://noriforelement.com/).
+
 **Classes and variables you can edit**
 
 * 92 global classes: container widths, section spacing, padding and gap scales, borders, buttons (a look, an optional size and shape, plus effects), hover effects, a type scale and text helpers. Each one has desktop, tablet and mobile values.
