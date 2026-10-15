@@ -117,6 +117,15 @@ Nori's own JavaScript (assets/admin/app.js and the module scripts) is handwritte
 * Lenis Smooth Scroll (v1.1.14) by darkroom.engineering, MIT License: https://github.com/darkroomengineering/lenis
   Bundled locally for privacy and offline reliability in assets/vendor/lenis.
 
+== Screenshots ==
+
+1. Home: your design system at a glance, with a shortcut into each part.
+2. Page templates in four styles (Studio, Bento, Billboard and Lens), made as drafts you edit in Elementor.
+3. Colors and dark mode: pick the kind of site and start from a brand preset.
+4. The type scale: 14 type classes from one body size and one ratio.
+5. Every class Nori adds to Elementor, where it's used, and whether you've edited it.
+6. Button effects, each its own module with a live preview.
+
 == Changelog ==
 
 = 0.24.4 =
