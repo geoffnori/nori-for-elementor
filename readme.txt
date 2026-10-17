@@ -3,7 +3,7 @@ Contributors: medlgeoff
 Donate link: https://ko-fi.com/E6H3280AYK
 Tags: elementor, atomic, global classes, animations, design system
 Requires at least: 6.5
-Tested up to: 7.1
+Tested up to: 7.1.3
 Requires PHP: 7.4
 Stable tag: 0.24.4
 License: GPLv2 or later
